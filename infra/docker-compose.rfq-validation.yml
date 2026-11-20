@@ -1,0 +1,36 @@
+# Disposable validation stack. No existing application volumes or ports are used.
+name: ownerpilot-rfq-validation
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_DB: ownerpilot_rfq_validation
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: rfq-validation-local
+    ports: ["127.0.0.1:55433:5432"]
+    tmpfs: ["/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ownerpilot_rfq_validation"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  redis:
+    image: redis:7.4-alpine
+    ports: ["127.0.0.1:6380:6379"]
+  worker:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    command: ["celery", "-A", "api.rfq.worker:celery", "worker", "-B", "--loglevel=INFO", "--concurrency=1", "--schedule=/tmp/rfq-beat"]
+    environment:
+      DATABASE_URL: postgresql://postgres:rfq-validation-local@postgres:5432/ownerpilot_rfq_validation
+      RFQ_REDIS_URL: redis://redis:6379/0
+      RFQ_OLLAMA_URL: http://host.docker.internal:11434
+      RFQ_OLLAMA_MODEL: ${RFQ_OLLAMA_MODEL:-}
+      RFQ_STORAGE_ROOT: /rfq-documents
+    volumes: ["../.local/rfq/documents:/rfq-documents"]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    mem_limit: 2g
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_started}

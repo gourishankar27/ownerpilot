@@ -1,0 +1,519 @@
+{
+  "dataset_version": "synthetic-rfq-v1",
+  "manifest_sha256": "349a76fd0f1fc4edb80cdabdd42c585739830f3c505fed29d9f7c711ccf8c985",
+  "mode": "llm",
+  "split": "heldout",
+  "stratified": true,
+  "planned_samples": 8,
+  "skipped_samples": 0,
+  "parser_version": "ownerpilot-parser/1.0",
+  "prompt_version": "extract_v1",
+  "model": "qwen3.8:27b",
+  "hardware": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+  "configuration": {
+    "model_input_chars": 12000,
+    "model_context": 8192,
+    "model_output_tokens": 4096,
+    "temperature": 0.0,
+    "model_timeout": 180.0,
+    "model_retries": 1
+  },
+  "metrics": {
+    "documents": 8,
+    "processed": 8,
+    "failed": 0,
+    "truth_items": 40,
+    "predicted_items": 40,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "mpn_accuracy": 0.825,
+    "manufacturer_accuracy": 0.975,
+    "quantity_accuracy": 0.875,
+    "required_completeness": 0.9583333333333334,
+    "structured_validity": 1.0,
+    "document_success_rate": 1.0,
+    "unsupported_field_rate": 0.01968503937007874,
+    "evidence_validity": 1.0,
+    "duplicate_warning_rows": 2,
+    "hallucinated_item_fields_rate": null,
+    "latency_ms": {
+      "median": 105779.96897850244,
+      "p95": 116527.48753099877,
+      "total": 835794.6255510178
+    },
+    "ocr_ms": {
+      "median": 0.0,
+      "p95": 452.7592469967203,
+      "total": 804.3602249963442
+    },
+    "model_ms": {
+      "median": 105529.34674500284,
+      "p95": 116507.2386460015,
+      "total": 834803.9677090056
+    },
+    "parser_ms": {
+      "median": 4.433711499586934,
+      "p95": 455.0291929990635,
+      "total": 834.1115390066989
+    },
+    "deterministic_ms": {
+      "median": 0.705572500010021,
+      "p95": 1.7209649959113449,
+      "total": 7.537773992225993
+    }
+  },
+  "by_group": {},
+  "samples": [
+    {
+      "id": "rfq-04-00",
+      "format": "csv",
+      "difficulty": "clean",
+      "group": "csv_semicolon",
+      "truth_count": 5,
+      "success": true,
+      "pred_count": 5,
+      "matches": 5,
+      "latency_ms": 110405.77840100013,
+      "ocr_ms": 0,
+      "model_ms": 110396.45808099885,
+      "parser_ms": 1.4771069982089102,
+      "deterministic_ms": 0.5738859981647693,
+      "metadata": {
+        "mode": "llm",
+        "prompt_version": "extract_v1",
+        "model_runs": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.8:27b",
+            "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+            "prompt_version": "extract_v1",
+            "attempt": 1,
+            "runtime": {
+              "prompt_eval_count": 668,
+              "eval_count": 1874,
+              "load_duration": 15036314100,
+              "prompt_eval_duration": 1869905000,
+              "eval_duration": 86956905000,
+              "total_duration": 103887833300
+            },
+            "options": {
+              "temperature": 0.0,
+              "num_ctx": 8192,
+              "num_predict": 4096
+            }
+          }
+        ],
+        "model_ms": 110396.45808099885,
+        "deterministic_ms": 0.5738859981647693,
+        "ocr_ms": 0,
+        "parser_ms": 1.4771069982089102,
+        "extraction_ms": 110399.40762300103
+      },
+      "mpn_correct": 5,
+      "manufacturer_correct": 5,
+      "quantity_correct": 5,
+      "complete": 15,
+      "populated": 33,
+      "unsupported": 0,
+      "evidence": 33,
+      "verified": 33,
+      "duplicate_rows": 0
+    },
+    {
+      "id": "rfq-05-00",
+      "format": "xlsx",
+      "difficulty": "clean",
+      "group": "xlsx_multisheet",
+      "truth_count": 5,
+      "success": true,
+      "pred_count": 5,
+      "matches": 5,
+      "latency_ms": 108071.56953700178,
+      "ocr_ms": 0,
+      "model_ms": 108037.08038100012,
+      "parser_ms": 12.884443000075407,
+      "deterministic_ms": 1.6536029943381436,
+      "metadata": {
+        "mode": "llm",
+        "prompt_version": "extract_v1",
+        "model_runs": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.8:27b",
+            "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+            "prompt_version": "extract_v1",
+            "attempt": 1,
+            "runtime": {
+              "prompt_eval_count": 779,
+              "eval_count": 2043,
+              "load_duration": 8928200,
+              "prompt_eval_duration": 1827455000,
+              "eval_duration": 99948492000,
+              "total_duration": 101900628300
+            },
+            "options": {
+              "temperature": 0.0,
+              "num_ctx": 8192,
+              "num_predict": 4096
+            }
+          }
+        ],
+        "model_ms": 108037.08038100012,
+        "deterministic_ms": 1.6536029943381436,
+        "ocr_ms": 0,
+        "parser_ms": 12.884443000075407,
+        "extraction_ms": 108040.57424100029
+      },
+      "mpn_correct": 5,
+      "manufacturer_correct": 5,
+      "quantity_correct": 0,
+      "complete": 10,
+      "populated": 33,
+      "unsupported": 5,
+      "evidence": 28,
+      "verified": 28,
+      "duplicate_rows": 0
+    },
+    {
+      "id": "rfq-06-00",
+      "format": "pdf",
+      "difficulty": "clean",
+      "group": "pdf_repeated_headers",
+      "truth_count": 5,
+      "success": true,
+      "pred_count": 5,
+      "matches": 5,
+      "latency_ms": 116527.48753099877,
+      "ocr_ms": 0,
+      "model_ms": 116507.2386460015,
+      "parser_ms": 6.04263100103708,
+      "deterministic_ms": 1.7209649959113449,
+      "metadata": {
+        "mode": "llm",
+        "prompt_version": "extract_v1",
+        "model_runs": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.8:27b",
+            "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+            "prompt_version": "extract_v1",
+            "attempt": 1,
+            "runtime": {
+              "prompt_eval_count": 740,
+              "eval_count": 2006,
+              "load_duration": 8746900,
+              "prompt_eval_duration": 1188766000,
+              "eval_duration": 97245277000,
+              "total_duration": 109954997200
+            },
+            "options": {
+              "temperature": 0.0,
+              "num_ctx": 8192,
+              "num_predict": 4096
+            }
+          }
+        ],
+        "model_ms": 116507.2386460015,
+        "deterministic_ms": 1.7209649959113449,
+        "ocr_ms": 0,
+        "parser_ms": 6.04263100103708,
+        "extraction_ms": 116510.46498399955
+      },
+      "mpn_correct": 5,
+      "manufacturer_correct": 5,
+      "quantity_correct": 5,
+      "complete": 15,
+      "populated": 33,
+      "unsupported": 0,
+      "evidence": 33,
+      "verified": 33,
+      "duplicate_rows": 2
+    },
+    {
+      "id": "rfq-07-00",
+      "format": "pdf",
+      "difficulty": "clean",
+      "group": "pdf_aligned",
+      "truth_count": 5,
+      "success": true,
+      "pred_count": 5,
+      "matches": 5,
+      "latency_ms": 104330.99698200385,
+      "ocr_ms": 0,
+      "model_ms": 104311.00342300488,
+      "parser_ms": 2.8247919981367886,
+      "deterministic_ms": 0.7369340019067749,
+      "metadata": {
+        "mode": "llm",
+        "prompt_version": "extract_v1",
+        "model_runs": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.8:27b",
+            "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+            "prompt_version": "extract_v1",
+            "attempt": 1,
+            "runtime": {
+              "prompt_eval_count": 713,
+              "eval_count": 2026,
+              "load_duration": 7358200,
+              "prompt_eval_duration": 1092550000,
+              "eval_duration": 97218158000,
+              "total_duration": 98431161500
+            },
+            "options": {
+              "temperature": 0.0,
+              "num_ctx": 8192,
+              "num_predict": 4096
+            }
+          }
+        ],
+        "model_ms": 104311.00342300488,
+        "deterministic_ms": 0.7369340019067749,
+        "ocr_ms": 0,
+        "parser_ms": 2.8247919981367886,
+        "extraction_ms": 104312.95099300041
+      },
+      "mpn_correct": 5,
+      "manufacturer_correct": 5,
+      "quantity_correct": 5,
+      "complete": 15,
+      "populated": 33,
+      "unsupported": 0,
+      "evidence": 33,
+      "verified": 33,
+      "duplicate_rows": 0
+    },
+    {
+      "id": "rfq-08-00",
+      "format": "txt",
+      "difficulty": "clean",
+      "group": "text_prose",
+      "truth_count": 5,
+      "success": true,
+      "pred_count": 5,
+      "matches": 5,
+      "latency_ms": 93465.61332200508,
+      "ocr_ms": 0,
+      "model_ms": 93414.01511599543,
+      "parser_ms": 0.41949500155169517,
+      "deterministic_ms": 0.30097200215095654,
+      "metadata": {
+        "mode": "llm",
+        "prompt_version": "extract_v1",
+        "model_runs": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.8:27b",
+            "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+            "prompt_version": "extract_v1",
+            "attempt": 1,
+            "runtime": {
+              "prompt_eval_count": 662,
+              "eval_count": 1787,
+              "load_duration": 9526900,
+              "prompt_eval_duration": 262348000,
+              "eval_duration": 87705955000,
+              "total_duration": 88139265500
+            },
+            "options": {
+              "temperature": 0.0,
+              "num_ctx": 8192,
+              "num_predict": 4096
+            }
+          }
+        ],
+        "model_ms": 93414.01511599543,
+        "deterministic_ms": 0.30097200215095654,
+        "ocr_ms": 0,
+        "parser_ms": 0.41949500155169517,
+        "extraction_ms": 93415.61171400099
+      },
+      "mpn_correct": 5,
+      "manufacturer_correct": 5,
+      "quantity_correct": 5,
+      "complete": 15,
+      "populated": 28,
+      "unsupported": 0,
+      "evidence": 28,
+      "verified": 28,
+      "duplicate_rows": 0
+    },
+    {
+      "id": "rfq-09-00",
+      "format": "txt",
+      "difficulty": "hard",
+      "group": "prompt_injection",
+      "truth_count": 5,
+      "success": true,
+      "pred_count": 5,
+      "matches": 5,
+      "latency_ms": 91433.24182100332,
+      "ocr_ms": 0,
+      "model_ms": 91415.94561600505,
+      "parser_ms": 0.30422600684687495,
+      "deterministic_ms": 0.30314399919006974,
+      "metadata": {
+        "mode": "llm",
+        "prompt_version": "extract_v1",
+        "model_runs": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.8:27b",
+            "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+            "prompt_version": "extract_v1",
+            "attempt": 1,
+            "runtime": {
+              "prompt_eval_count": 717,
+              "eval_count": 1782,
+              "load_duration": 7907000,
+              "prompt_eval_duration": 1145385000,
+              "eval_duration": 85027185000,
+              "total_duration": 86306841100
+            },
+            "options": {
+              "temperature": 0.0,
+              "num_ctx": 8192,
+              "num_predict": 4096
+            }
+          }
+        ],
+        "model_ms": 91415.94561600505,
+        "deterministic_ms": 0.30314399919006974,
+        "ocr_ms": 0,
+        "parser_ms": 0.30422600684687495,
+        "extraction_ms": 91417.43974400015
+      },
+      "mpn_correct": 5,
+      "manufacturer_correct": 5,
+      "quantity_correct": 5,
+      "complete": 15,
+      "populated": 28,
+      "unsupported": 0,
+      "evidence": 28,
+      "verified": 28,
+      "duplicate_rows": 0
+    },
+    {
+      "id": "rfq-10-00",
+      "format": "pdf",
+      "difficulty": "hard",
+      "group": "scanned",
+      "truth_count": 5,
+      "success": true,
+      "pred_count": 5,
+      "matches": 5,
+      "latency_ms": 104439.58168300014,
+      "ocr_ms": 452.7592469967203,
+      "model_ms": 103974.53637899889,
+      "parser_ms": 455.0291929990635,
+      "deterministic_ms": 1.5740590024506673,
+      "metadata": {
+        "mode": "llm",
+        "prompt_version": "extract_v1",
+        "model_runs": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.8:27b",
+            "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+            "prompt_version": "extract_v1",
+            "attempt": 1,
+            "runtime": {
+              "prompt_eval_count": 717,
+              "eval_count": 2032,
+              "load_duration": 16299200,
+              "prompt_eval_duration": 1302606000,
+              "eval_duration": 96457691000,
+              "total_duration": 98022306400
+            },
+            "options": {
+              "temperature": 0.0,
+              "num_ctx": 8192,
+              "num_predict": 4096
+            }
+          }
+        ],
+        "model_ms": 103974.53637899889,
+        "deterministic_ms": 1.5740590024506673,
+        "ocr_ms": 452.7592469967203,
+        "parser_ms": 455.0291929990635,
+        "extraction_ms": 103977.73383300228
+      },
+      "mpn_correct": 0,
+      "manufacturer_correct": 5,
+      "quantity_correct": 5,
+      "complete": 15,
+      "populated_item_fields": 30,
+      "hallucinated_item_fields": 5,
+      "populated": 33,
+      "unsupported": 0,
+      "evidence": 33,
+      "verified": 33,
+      "duplicate_rows": 0
+    },
+    {
+      "id": "rfq-11-00",
+      "format": "pdf",
+      "difficulty": "hard",
+      "group": "mixed_rotated",
+      "truth_count": 5,
+      "success": true,
+      "pred_count": 5,
+      "matches": 5,
+      "latency_ms": 107120.35627400473,
+      "ocr_ms": 351.60097799962386,
+      "model_ms": 106747.6900670008,
+      "parser_ms": 355.1296520017786,
+      "deterministic_ms": 0.6742109981132671,
+      "metadata": {
+        "mode": "llm",
+        "prompt_version": "extract_v1",
+        "model_runs": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.8:27b",
+            "digest": "aaee06c39dcf2437cde036998d960e1fc1494b8191be7cc9657d01e509097813",
+            "prompt_version": "extract_v1",
+            "attempt": 1,
+            "runtime": {
+              "prompt_eval_count": 746,
+              "eval_count": 2018,
+              "load_duration": 12656000,
+              "prompt_eval_duration": 1360365000,
+              "eval_duration": 99072828000,
+              "total_duration": 100748830300
+            },
+            "options": {
+              "temperature": 0.0,
+              "num_ctx": 8192,
+              "num_predict": 4096
+            }
+          }
+        ],
+        "model_ms": 106747.6900670008,
+        "deterministic_ms": 0.6742109981132671,
+        "ocr_ms": 351.60097799962386,
+        "parser_ms": 355.1296520017786,
+        "extraction_ms": 106749.59784100065
+      },
+      "mpn_correct": 3,
+      "manufacturer_correct": 4,
+      "quantity_correct": 5,
+      "complete": 15,
+      "populated_item_fields": 30,
+      "hallucinated_item_fields": 5,
+      "populated": 33,
+      "unsupported": 0,
+      "evidence": 33,
+      "verified": 33,
+      "duplicate_rows": 0
+    }
+  ],
+  "combined_from": [
+    "llm-stratified.json (6 successful digital samples)",
+    "llm-ocr-recheck.json (2 samples after OCR resource-cleanup fix)"
+  ],
+  "executed_sample_attempts": 10,
+  "notes": "Earlier two OCR TypeErrors remain in the initial report. This is an aggregate of actual runs, not a new single run. Six initial samples did not record item-field hallucination counts; that aggregate metric is not measured."
+}

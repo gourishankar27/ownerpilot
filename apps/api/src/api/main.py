@@ -2,10 +2,14 @@ from __future__ import annotations
 
 from datetime import date
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile, Request
+from fastapi.responses import JSONResponse
+import psycopg
 from fastapi.middleware.cors import CORSMiddleware
 
 from api.config import get_settings
+from api.rfq.routes import router as rfq_router
+from api.rfq.middleware import RfqBodyLimit
 from api.models import (
     ActionDraft,
     ActionCenterSnapshot,
@@ -69,6 +73,21 @@ from api.services.demo_data import (
 settings = get_settings()
 
 app = FastAPI(title=settings.app_name, version="1.0.0")
+
+app.include_router(rfq_router)
+app.add_middleware(RfqBodyLimit)
+
+
+@app.exception_handler(psycopg.Error)
+async def database_error(request: Request, exc: psycopg.Error):
+    return JSONResponse(
+        status_code=503,
+        content={
+            "detail": "Database unavailable or schema not ready. Check local PostgreSQL and apply the appropriate migrations."
+        },
+    )
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.origin_list,

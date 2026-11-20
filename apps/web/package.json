@@ -11,12 +11,13 @@
     "test": "pnpm typecheck",
     "db:generate": "drizzle-kit generate --config drizzle.config.ts",
     "db:migrate": "drizzle-kit push --config drizzle.config.ts",
-    "auth:migrate": "npx auth@latest migrate --config ./lib/auth.ts --yes"
+    "auth:migrate": "npx auth@latest migrate --config ./lib/auth.ts --yes",
+    "auth:migrate:local": "node scripts/migrate-auth.mjs"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@ownerpilot/contracts": "workspace:*",
     "@ownerpilot/ui": "workspace:*",
-    "@hookform/resolvers": "^5.2.2",
     "better-auth": "^1.3.7",
     "drizzle-orm": "^0.45.2",
     "lucide-react": "^0.542.0",
@@ -29,6 +30,7 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/pg": "^8.15.6",

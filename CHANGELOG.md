@@ -4,6 +4,21 @@ All notable changes to OwnerPilot are documented in this file.
 
 ## Unreleased
 
+### Added
+
+- Workspace-authenticated Procurement UI and isolated RFQ APIs, additive procurement
+  schema migrations, durable Redis/Celery jobs, bounded PDF/OCR/CSV/XLSX/TXT parsers,
+  real local Ollama structured extraction, verified source evidence and explicit
+  versioned human correction/approval workflows.
+- Frozen synthetic RFQ dataset (48 documents, 240 items), reproducible extraction
+  metrics, PostgreSQL/security/recovery tests, Playwright flows and Windows runbooks.
+
+### Fixed
+
+- API uv package discovery (`api` module), Python version and locked container installs.
+- Drizzle ownership filters protect auth and RFQ schemas from business schema push.
+- Added an installed-library auth migration command without a floating CLI download.
+
 ### Changed
 
 - Aligned workspace and API version metadata to `1.0.0` to match the public `v1.0.0-showcase` release baseline.
