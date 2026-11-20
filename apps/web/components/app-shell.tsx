@@ -13,6 +13,7 @@ export function AppShell({
     { href: "/dashboard", label: "Overview" },
     { href: "/imports", label: "Imports" },
     { href: "/documents", label: "Documents" },
+    { href: "/procurement", label: "Procurement" },
     { href: "/planner", label: "Forecast Lab" },
     { href: "/reorder", label: "Reorder Plan" },
     { href: "/actions", label: "Action Center" },

@@ -1,0 +1,53 @@
+# Overlay: docker compose -f infra/docker-compose.yml -f infra/docker-compose.rfq.yml up -d redis rfq-worker rfq-dispatcher
+services:
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "128mb", "--maxmemory-policy", "noeviction"]
+    ports: ["127.0.0.1:6380:6379"]
+    volumes: ["ownerpilot-rfq-redis:/data"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  api:
+    environment:
+      RFQ_AUTH_SECRET: ${RFQ_AUTH_SECRET:?Set RFQ_AUTH_SECRET with at least 32 random characters}
+      RFQ_REDIS_URL: redis://redis:6379/0
+      RFQ_OLLAMA_URL: ${RFQ_OLLAMA_URL:-http://host.docker.internal:11434}
+      RFQ_OLLAMA_MODEL: ${RFQ_OLLAMA_MODEL:-}
+      RFQ_STORAGE_ROOT: /var/lib/ownerpilot/rfq
+    volumes: ["ownerpilot-rfq-documents:/var/lib/ownerpilot/rfq"]
+  web:
+    environment:
+      RFQ_AUTH_SECRET: ${RFQ_AUTH_SECRET:?Set RFQ_AUTH_SECRET}
+  rfq-worker:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    command: ["celery", "-A", "api.rfq.worker:celery", "worker", "--loglevel=INFO", "--concurrency=1", "--max-tasks-per-child=20", "--max-memory-per-child=1500000"]
+    environment: &rfq-env
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/ownerpilot
+      RFQ_REDIS_URL: redis://redis:6379/0
+      RFQ_OLLAMA_URL: ${RFQ_OLLAMA_URL:-http://host.docker.internal:11434}
+      RFQ_OLLAMA_MODEL: ${RFQ_OLLAMA_MODEL:-}
+      RFQ_STORAGE_ROOT: /var/lib/ownerpilot/rfq
+    volumes: ["ownerpilot-rfq-documents:/var/lib/ownerpilot/rfq"]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    mem_limit: 2g
+    cpus: 2
+    depends_on:
+      redis: {condition: service_healthy}
+      postgres: {condition: service_healthy}
+  rfq-dispatcher:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    command: ["celery", "-A", "api.rfq.worker:celery", "beat", "--loglevel=INFO", "--schedule=/tmp/rfq-beat"]
+    environment: *rfq-env
+    depends_on:
+      redis: {condition: service_healthy}
+      postgres: {condition: service_healthy}
+volumes:
+  ownerpilot-rfq-redis:
+  ownerpilot-rfq-documents:

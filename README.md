@@ -32,6 +32,19 @@ OwnerPilot focuses on closing that gap with:
 - explainable recommendations with evidence and confidence traces
 
 ## What is implemented now
+### Procurement and RFQ Intelligence (Phase 1)
+
+An isolated local RFQ workflow now supports authenticated workspace requests, secure
+PDF/CSV/XLSX/TXT uploads, Linux OCR workers, real Ollama structured extraction,
+source evidence, corrections and explicit auditable approval. Processing is durable
+and retry-safe with PostgreSQL, Redis and Celery. Existing showcase analytics remain
+deterministic; the new module makes actual local model HTTP calls.
+
+- [RFQ setup and Windows commands](docs/rfq/WINDOWS_SETUP.md)
+- [Synthetic demonstration](docs/rfq/DEMO_RUNBOOK.md)
+- [Validation, measured quality and limitations](docs/rfq/PHASE1_VALIDATION.md)
+- [Current phase status](docs/rfq/STATUS.md)
+
 Current showcase scope (`v1.0.0-showcase`) includes:
 
 ### Owner operations
