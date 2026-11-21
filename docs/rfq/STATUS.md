@@ -1,5 +1,11 @@
 # RFQ status
 
+Current milestone: [Phase 1.1](phase1_1/STATUS.md) is implemented and locally
+functionally validated with unmet performance targets. Its [final report](phase1_1/FINAL_IMPLEMENTATION_REPORT.md)
+contains complete v1/v2 evaluation, 103 backend/six browser checks, preservation and
+migration evidence. The text below records the historical Phase 1 status; those
+reports and measurements remain unchanged.
+
 Phase 0: completed audit and credible baseline. Phase 1: implemented and locally
 validated, with documented extraction-quality limitations. No missing local runtime
 blocker remains. Phase 2 has not been implemented.

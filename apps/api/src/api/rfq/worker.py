@@ -9,11 +9,11 @@ import psycopg
 from celery import Celery
 from psycopg.types.json import Jsonb
 
-from .config import settings
+from .config import settings, activate, deactivate
 from .contracts import ParsedDocument
 from .db import connection
 from .extraction import extract
-from .parsers import PARSER_VERSION, parse_document
+from .parsers import PARSER_VERSION, parse_document, cache_identity
 from .provider import ProviderError
 from .repository import ACTIVE_STATES, publish
 from .storage import DocumentError, LocalStorage, fingerprint
@@ -66,6 +66,7 @@ def stage(job, state, completed=0):
 
 def process_job(job_id: str):
     start = time.perf_counter()
+    configuration_token = None
     # Session advisory lock lasts across stage commits and is released on worker death.
     with connection() as lock_conn:
         locked = lock_conn.execute(
@@ -89,25 +90,30 @@ def process_job(job_id: str):
                         (job_id,),
                     )
                     return "attempt_limit"
-                conn.execute(
-                    "update procurement.rfq_processing_jobs set attempts=attempts+1,state='validating',started_at=now(),stage_started_at=now() where id=%s",
+                started_row = conn.execute(
+                    "update procurement.rfq_processing_jobs set attempts=attempts+1,state='validating',started_at=now(),stage_started_at=now() where id=%s returning started_at",
                     (job_id,),
-                )
+                ).fetchone()
+                job["started_at"] = started_row["started_at"]
                 job["attempts"] += 1
                 docs = conn.execute(
                     "select * from procurement.rfq_documents where rfq_id=%s and workspace_id=%s order by created_at,id",
                     (job["rfq_id"], job["workspace_id"]),
                 ).fetchall()
             try:
+                configuration = job.get("configuration") or {"policy": "phase1"}
+                policy = configuration.get("policy", "phase1")
+                configuration_token = activate(configuration)
                 parsed = []
                 for doc in docs:
                     if time.perf_counter() - start > cfg.job_timeout:
                         raise ProviderError("job_timeout", True)
                     stage(job, "parsing", len(parsed))
+                    cache_key = cache_identity(policy, doc["filename"])
                     with connection() as conn:
                         cache = conn.execute(
                             "select content from procurement.rfq_document_pages where document_id=%s and parser_version=%s",
-                            (doc["id"], PARSER_VERSION),
+                            (doc["id"], cache_key),
                         ).fetchone()
                     if cache:
                         page_data = ParsedDocument.model_validate(cache["content"])
@@ -120,14 +126,14 @@ def process_job(job_id: str):
                         if fingerprint(content) != doc["fingerprint"]:
                             raise DocumentError("Stored document fingerprint mismatch.")
                         page_data = parse_document(
-                            doc["filename"], content, str(doc["id"])
+                            doc["filename"], content, str(doc["id"]), policy=policy
                         )
                         with connection() as conn:
                             conn.execute(
                                 "insert into procurement.rfq_document_pages(document_id,parser_version,content) values(%s,%s,%s) on conflict do nothing",
                                 (
                                     doc["id"],
-                                    PARSER_VERSION,
+                                    cache_key,
                                     Jsonb(page_data.model_dump(mode="json")),
                                 ),
                             )
@@ -141,7 +147,13 @@ def process_job(job_id: str):
 
                 async def bounded():
                     return await asyncio.wait_for(
-                        extract(parsed, job["mode"]), timeout=remaining
+                        extract(
+                            parsed,
+                            job["mode"],
+                            policy=policy,
+                            cancel_check=lambda: stage(job, "extracting", len(parsed)),
+                        ),
+                        timeout=remaining,
                     )
 
                 result = asyncio.run(bounded())
@@ -159,6 +171,14 @@ def process_job(job_id: str):
                         ],
                         "duration_ms": (time.perf_counter() - start) * 1000,
                         "attempt": job["attempts"],
+                        "processing_configuration": configuration,
+                        "queue_wait_ms": max(
+                            0,
+                            (job["started_at"] - job["created_at"]).total_seconds()
+                            * 1000,
+                        )
+                        if job.get("started_at")
+                        else None,
                     }
                 )
                 stage(job, "validating_results", len(parsed))
@@ -173,6 +193,9 @@ def process_job(job_id: str):
                     duration_ms=(time.perf_counter() - start) * 1000,
                     parser=PARSER_VERSION,
                     model=cfg.ollama_model or None,
+                    policy=result.metadata.get("policy"),
+                    model_calls=result.metadata.get("model_call_count"),
+                    merge=result.metadata.get("merge"),
                 )
                 return "awaiting_review"
             except Exception as exc:
@@ -232,6 +255,8 @@ def process_job(job_id: str):
                 )
                 return "retry_queued" if retryable else "failed"
         finally:
+            if configuration_token is not None:
+                deactivate(configuration_token)
             lock_conn.execute(
                 "select pg_advisory_unlock(hashtextextended(%s,0))", (str(job_id),)
             )

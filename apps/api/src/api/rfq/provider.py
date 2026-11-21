@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import time
 from pathlib import Path
 from typing import Protocol
 from urllib.parse import urlparse
@@ -9,7 +10,7 @@ import httpx
 from pydantic import ValidationError
 
 from .config import settings
-from .contracts import Block, Proposal
+from .contracts import Block, Proposal, CompactProposal
 
 PROMPT_VERSION = "extract_v1"
 PROMPT = (Path(__file__).parent / "prompts" / "extract_v1.txt").read_text(
@@ -29,8 +30,29 @@ class Provider(Protocol):
 
 
 class OllamaProvider:
-    def __init__(self, transport: httpx.AsyncBaseTransport | None = None):
-        self.cfg = settings()
+    def __init__(
+        self,
+        transport: httpx.AsyncBaseTransport | None = None,
+        *,
+        model: str | None = None,
+        compact: bool = False,
+    ):
+        self.cfg = (
+            settings().model_copy(update={"ollama_model": model})
+            if model
+            else settings()
+        )
+        self.compact = compact
+        self.prompt_version = (
+            self.cfg.compact_prompt_version if compact else PROMPT_VERSION
+        )
+        self.prompt = (
+            (
+                Path(__file__).parent / "prompts" / (self.prompt_version + ".txt")
+            ).read_text(encoding="utf-8")
+            if compact
+            else PROMPT
+        )
         self.transport = transport
         parsed = urlparse(self.cfg.ollama_url)
         # Prevent accidentally forwarding private documents to an external endpoint.
@@ -71,18 +93,34 @@ class OllamaProvider:
     async def extract(self, blocks: list[Block]) -> tuple[Proposal, dict]:
         import json
 
+        started = time.perf_counter()
+
         health = await self.health()
         if not health["available"]:
             raise ProviderError("model_unavailable", True)
         payload = json.dumps(
-            [{"block_id": b.id, "text": b.text} for b in blocks], ensure_ascii=False
+            [
+                {
+                    "block_id": b.id,
+                    "text": b.text,
+                    **(
+                        {"columns": b.metadata.get("table_columns"), "cells": b.cells}
+                        if self.compact and b.cells
+                        else {}
+                    ),
+                }
+                for b in blocks
+            ],
+            ensure_ascii=False,
         )
         if sum(len(b.text) for b in blocks) > self.cfg.model_input_chars:
             raise ProviderError("model_input_limit")
         # UTF-8 bytes give a conservative upper bound without introducing a second
         # tokenizer/model dependency. Reserve output and message-template headroom.
         if (
-            len((PROMPT + payload).encode("utf-8")) + self.cfg.model_output_tokens + 256
+            len((self.prompt + payload).encode("utf-8"))
+            + self.cfg.model_output_tokens
+            + 256
             > self.cfg.model_context
         ):
             raise ProviderError("model_context_budget_exceeded")
@@ -90,9 +128,12 @@ class OllamaProvider:
             "model": self.cfg.ollama_model,
             "stream": False,
             "think": False,
-            "format": Proposal.model_json_schema(),
+            "format": (
+                CompactProposal if self.compact else Proposal
+            ).model_json_schema(),
+            "keep_alive": self.cfg.model_keep_alive_seconds,
             "messages": [
-                {"role": "system", "content": PROMPT},
+                {"role": "system", "content": self.prompt},
                 {"role": "user", "content": "UNTRUSTED_DOCUMENT_BLOCKS\n" + payload},
             ],
             "options": {
@@ -124,7 +165,47 @@ class OllamaProvider:
                     or data.get("done_reason") == "length"
                 ):
                     raise ProviderError("model_incomplete_or_identity_mismatch")
-                proposal = Proposal.model_validate_json(data["message"]["content"])
+                conflicts = []
+                if self.compact:
+                    compact = CompactProposal.model_validate_json(
+                        data["message"]["content"]
+                    )
+                    index = {b.id: b for b in blocks}
+
+                    def field(value, source):
+                        block = index.get(source)
+                        return {
+                            "value": value,
+                            "block_id": source,
+                            "excerpt": block.text
+                            if block and value is not None and value in block.text
+                            else None,
+                        }
+
+                    header = {}
+                    for entry in compact.header:
+                        if (
+                            entry.field in header
+                            and header[entry.field]["value"] != entry.value
+                        ):
+                            conflicts.append(entry.field)
+                        else:
+                            header[entry.field] = field(entry.value, entry.source)
+                    proposal = Proposal.model_validate(
+                        {
+                            "header": header,
+                            "items": [
+                                {
+                                    name: field(value, row.source)
+                                    for name, value in row.values.model_dump().items()
+                                    if value is not None
+                                }
+                                for row in compact.items
+                            ],
+                        }
+                    )
+                else:
+                    proposal = Proposal.model_validate_json(data["message"]["content"])
                 metadata = {
                     k: data[k]
                     for k in (
@@ -141,7 +222,17 @@ class OllamaProvider:
                     "provider": "ollama",
                     "model": self.cfg.ollama_model,
                     "digest": health.get("digest"),
-                    "prompt_version": PROMPT_VERSION,
+                    "prompt_version": self.prompt_version,
+                    "schema_profile": "compact-source-row/v2"
+                    if self.compact
+                    else "phase1-full/v1",
+                    "header_conflicts": conflicts,
+                    "call_duration_ms": (time.perf_counter() - started) * 1000,
+                    "input_chars": len(payload),
+                    "tokens_per_second": data.get("eval_count", 0)
+                    / (data["eval_duration"] / 1e9)
+                    if data.get("eval_duration", 0) > 0
+                    else None,
                     "attempt": attempt + 1,
                     "runtime": metadata,
                     "options": body["options"],

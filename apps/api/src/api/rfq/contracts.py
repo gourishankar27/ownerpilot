@@ -56,6 +56,8 @@ class Block(StrictModel):
     location: Location
     method: str
     cells: list[str] | None = None
+    cell_locations: list[Location] | None = None
+    metadata: dict = Field(default_factory=dict)
 
 
 class ParsedDocument(StrictModel):
@@ -68,6 +70,7 @@ class ParsedDocument(StrictModel):
     ocr_pages: list[int] = Field(default_factory=list)
     duration_ms: float = 0
     ocr_ms: float = 0
+    metadata: dict = Field(default_factory=dict)
 
 
 class Evidence(StrictModel):
@@ -79,6 +82,14 @@ class Evidence(StrictModel):
     method: str
     identity: str
     verified: bool
+    source_occurrence: bool | None = None
+    row_association: Literal["verified", "unverified", "unknown"] = "unknown"
+    column_association: Literal["verified", "unverified", "unknown"] = "unknown"
+    association_reason: str | None = None
+    raw_ocr: str | None = None
+    alternatives: list[str] = Field(default_factory=list)
+    ocr_confidence: float | None = None
+    source_eligible: bool = True
     extracted_at: str = Field(
         default_factory=lambda: datetime.now(timezone.utc).isoformat()
     )
@@ -142,6 +153,29 @@ class Proposal(StrictModel):
     items: list[ProposedItem] = Field(max_length=250)  # type: ignore[valid-type]
 
 
+CompactValues = create_model(
+    "CompactValues",
+    __base__=StrictModel,
+    **{name: (str | None, None) for name in ITEM_FIELDS},
+)
+
+
+class CompactRow(StrictModel):
+    source: str = Field(max_length=300)
+    values: CompactValues  # type: ignore[valid-type]
+
+
+class CompactHeader(StrictModel):
+    field: Literal[*HEADER_FIELDS]
+    value: str = Field(max_length=4000)
+    source: str = Field(max_length=300)
+
+
+class CompactProposal(StrictModel):
+    header: list[CompactHeader] = Field(default_factory=list, max_length=30)
+    items: list[CompactRow] = Field(max_length=250)
+
+
 class CreateRfq(StrictModel):
     title: str = Field(min_length=1, max_length=160)
     customer_name: str | None = Field(None, max_length=300)
@@ -161,6 +195,7 @@ class RevisionRequest(StrictModel):
 
 class ProcessRequest(RevisionRequest):
     mode: Literal["deterministic", "llm", "hybrid"] = "hybrid"
+    policy: Literal["phase1", "selective-v2"] = "selective-v2"
 
 
 class EditRequest(RevisionRequest):
@@ -225,6 +260,7 @@ class JobDto(BaseModel):
     requested_by: str
     created_at: datetime
     dispatch_warning: str | None = None
+    configuration: dict = Field(default_factory=dict)
 
 
 class RunDto(BaseModel):

@@ -294,8 +294,14 @@ def enqueue(rfq_id, payload, identity, reprocess=False):
         if not count:
             raise HTTPException(422, "Upload a document before processing.")
         identifier = uuid4()
+        from .config import PROCESSING_KEYS
+
+        configuration = {key: getattr(settings(), key) for key in PROCESSING_KEYS}
+        configuration["policy"] = payload.policy
+        if payload.policy == "phase1":
+            configuration["ocr_strategy"] = "legacy-v1"
         job = conn.execute(
-            "insert into procurement.rfq_processing_jobs(id,rfq_id,workspace_id,mode,base_revision,total_documents,requested_by) values(%s,%s,%s,%s,%s,%s,%s) returning *",
+            "insert into procurement.rfq_processing_jobs(id,rfq_id,workspace_id,mode,base_revision,total_documents,requested_by,configuration) values(%s,%s,%s,%s,%s,%s,%s,%s) returning *",
             (
                 identifier,
                 rfq_id,
@@ -304,6 +310,7 @@ def enqueue(rfq_id, payload, identity, reprocess=False):
                 rfq["revision"],
                 count,
                 identity.user_id,
+                Jsonb(configuration),
             ),
         ).fetchone()
         audit(

@@ -6,6 +6,14 @@ All notable changes to OwnerPilot are documented in this file.
 
 ### Added
 
+- Phase 1.1 versioned selective RFQ routing, bounded geometry-aware OCR, explicit
+  source occurrence/row/column associations, processing telemetry and review filters.
+- Local 4B/8B/27B inference experiments, independent frozen v2 synthetic layouts,
+  maximum-weight evaluation matching and 192 final document/configuration attempts.
+- Safe equivalent-constraint reconciliation on disposable populated schemas,
+  preservation/rollback evidence, 45 additional backend cases and two browser cases.
+  Final validation: 103 backend and six browser tests pass. OCR/model extraction
+  quality targets remain unmet; see docs/rfq/phase1_1/FINAL_IMPLEMENTATION_REPORT.md.
 - Workspace-authenticated Procurement UI and isolated RFQ APIs, additive procurement
   schema migrations, durable Redis/Celery jobs, bounded PDF/OCR/CSV/XLSX/TXT parsers,
   real local Ollama structured extraction, verified source evidence and explicit

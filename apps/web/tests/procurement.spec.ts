@@ -1,17 +1,10 @@
 import { test, expect, type Page } from "@playwright/test";
-import { randomUUID } from "node:crypto";
+import { signupSynthetic } from "./rfq-account";
+const screenshots =
+  process.env.RFQ_SCREENSHOT_DIR ?? "../../.local/rfq/screenshots";
 
 async function account(page: Page) {
-  const id = randomUUID();
-  const signup = await page.request.post("/api/auth/sign-up/email", {
-    data: {
-      name: "Synthetic RFQ Reviewer",
-      email: `rfq-${id}@example.test`,
-      password: `Rfq-${randomUUID()}!`,
-    },
-    headers: { origin: "http://localhost:3000" },
-  });
-  expect(signup.ok(), await signup.text()).toBeTruthy();
+  const id = await signupSynthetic(page);
   const workspace = await page.request.post("/api/workspaces", {
     data: { name: "Synthetic Procurement Lab", slug: `rfq-${id}` },
   });
@@ -89,7 +82,7 @@ test("create upload process inspect correct approve and reload persisted RFQ", a
     page.getByRole("complementary", { name: "Source evidence" }),
   ).toContainText("row 2 column B");
   await page.screenshot({
-    path: "../../docs/rfq/screenshots/evidence.png",
+    path: `${screenshots}/evidence.png`,
     fullPage: true,
   });
   await expect(
@@ -120,7 +113,7 @@ test("create upload process inspect correct approve and reload persisted RFQ", a
     page.getByRole("button", { name: /15.*corrected/ }),
   ).toBeVisible();
   await page.screenshot({
-    path: "../../docs/rfq/screenshots/approved.png",
+    path: `${screenshots}/approved.png`,
     fullPage: true,
   });
 });
@@ -169,7 +162,8 @@ test("invalid uploads and stale review updates remain visible errors", async ({
     `/api/procurement/rfqs/${rfq.id}/header`,
     {
       headers: {
-        origin: "http://localhost:3000",
+        origin: new URL(process.env.RFQ_WEB_URL ?? "http://localhost:3000")
+          .origin,
         "x-workspace-id": workspaces[0].id,
       },
       data: {

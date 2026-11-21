@@ -32,6 +32,19 @@ OwnerPilot focuses on closing that gap with:
 - explainable recommendations with evidence and confidence traces
 
 ## What is implemented now
+### Procurement extraction hardening (Phase 1.1)
+
+Versioned selective RFQ routing, bounded OCR geometry/preprocessing, stronger source
+associations, local 4B/8B/27B model experiments and an independent frozen synthetic
+dataset are implemented. All 103 backend tests and six browser scenarios pass;
+192 final document/configuration evaluations completed. Extraction quality targets
+remain unmet, especially scanned identifiers and selective model repair.
+
+- [Phase 1.1 measured report and limitations](docs/rfq/phase1_1/FINAL_IMPLEMENTATION_REPORT.md)
+- [Evaluation results and exact counts](docs/rfq/phase1_1/EVALUATION_RESULTS.md)
+- [Windows setup, isolated demo and reproduction commands](docs/rfq/phase1_1/WINDOWS_SETUP.md)
+- [Validation and preservation evidence](docs/rfq/phase1_1/PHASE1_1_VALIDATION.md)
+
 ### Procurement and RFQ Intelligence (Phase 1)
 
 An isolated local RFQ workflow now supports authenticated workspace requests, secure

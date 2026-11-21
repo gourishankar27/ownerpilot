@@ -112,7 +112,9 @@ def normalize(
                 "Identifier contains invalid characters or exceeds 160 characters."
             )
         # Preserve significant punctuation and zeros; comparison only folds case.
-        field.comparison = value.casefold()
+        field.comparison = value.translate(
+            str.maketrans({"‐": "-", "‑": "-", "–": "-", "−": "-"})
+        )
     if field.issues and field.status == "validated":
         field.status = "requires_review"
     return field

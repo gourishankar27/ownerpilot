@@ -1,0 +1,162 @@
+{
+  "applied": false,
+  "renames": [
+    {
+      "table": "action_center_items",
+      "old": "action_center_items_workspace_id_fkey",
+      "new": "action_center_items_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "business_documents",
+      "old": "business_documents_workspace_id_fkey",
+      "new": "business_documents_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "business_workspaces",
+      "old": "business_workspaces_slug_key",
+      "new": "business_workspaces_slug_unique",
+      "definition": "UNIQUE (slug)"
+    },
+    {
+      "table": "document_chunks",
+      "old": "document_chunks_document_id_fkey",
+      "new": "document_chunks_document_id_business_documents_id_fk",
+      "definition": "FOREIGN KEY (document_id) REFERENCES business_documents(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "document_chunks",
+      "old": "document_chunks_workspace_id_fkey",
+      "new": "document_chunks_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "expense_entries",
+      "old": "expense_entries_workspace_id_fkey",
+      "new": "expense_entries_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "import_job_rows",
+      "old": "import_job_rows_job_id_fkey",
+      "new": "import_job_rows_job_id_import_jobs_id_fk",
+      "definition": "FOREIGN KEY (job_id) REFERENCES import_jobs(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "import_job_rows",
+      "old": "import_job_rows_workspace_id_fkey",
+      "new": "import_job_rows_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "import_jobs",
+      "old": "import_jobs_workspace_id_fkey",
+      "new": "import_jobs_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "model_provider_settings",
+      "old": "model_provider_settings_workspace_id_fkey",
+      "new": "model_provider_settings_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "products",
+      "old": "products_workspace_id_fkey",
+      "new": "products_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "purchase_transactions",
+      "old": "purchase_transactions_workspace_id_fkey",
+      "new": "purchase_transactions_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "recurring_obligations",
+      "old": "recurring_obligations_workspace_id_fkey",
+      "new": "recurring_obligations_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "sales_transactions",
+      "old": "sales_transactions_workspace_id_fkey",
+      "new": "sales_transactions_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "scheduler_runs",
+      "old": "scheduler_runs_workspace_id_fkey",
+      "new": "scheduler_runs_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    },
+    {
+      "table": "workspace_members",
+      "old": "workspace_members_workspace_id_fkey",
+      "new": "workspace_members_workspace_id_business_workspaces_id_fk",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE"
+    }
+  ],
+  "blocked": [
+    {
+      "table": "suppliers",
+      "definition": "PRIMARY KEY (id)",
+      "reason": "No structurally identical constraint; no semantic change is inferred."
+    },
+    {
+      "table": "suppliers",
+      "definition": "FOREIGN KEY (workspace_id) REFERENCES business_workspaces(id) ON DELETE CASCADE",
+      "reason": "No structurally identical constraint; no semantic change is inferred."
+    }
+  ],
+  "before_sha256": {
+    "procurement.rfq_audit_events": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfq_document_pages": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfq_documents": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfq_extraction_runs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfq_line_items": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfq_processing_jobs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfqs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.schema_migrations": "7409530e280901d025f40ba5b48fa9d264e828501a492de2de8661dbb77dc857",
+    "public.action_center_items": "96b205dce061d49cfb97434f09b96aa28b76a2c5b9517d5293599e7d81954348",
+    "public.business_documents": "d2054e93aee444c782a6e0483312ea9e475ec4d3749fe7c485b231bac749111f",
+    "public.business_workspaces": "051d3063ac9f16ca899406f05f7b84514da0eb205419b5e55e0c20a575379347",
+    "public.document_chunks": "b67b212d24c158874fbbde5675259cab10bfe371ec7f1ceb2f6b86d5f47bb70c",
+    "public.expense_entries": "92ce07056f65f6b2ba4cd0c7e15830a2fa6099421b674d4ace9246fdaac59881",
+    "public.import_job_rows": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public.import_jobs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public.model_provider_settings": "8abc9a7eac84375bae0a325d9d686b0f4e81caa7007abb873e351eb16885818b",
+    "public.products": "05aab180885d999d5514eae6a7dfd918db8d8a31094137bfc99afd20e3775ccc",
+    "public.purchase_transactions": "6dde86b434a774cf8107196faf00c0f03c202e9f082313093cc856e103d770b2",
+    "public.recurring_obligations": "c26591d81daa41e6dcdecedd2644bbc05425266e582d132dd00297c5d3565672",
+    "public.sales_transactions": "6213cf8412fee57737e579cb9cf65dc35e835a13b75b9ef3040dbd69f3da4589",
+    "public.scheduler_runs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public.workspace_members": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "after_sha256": {
+    "procurement.rfq_audit_events": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfq_document_pages": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfq_documents": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfq_extraction_runs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfq_line_items": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfq_processing_jobs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.rfqs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "procurement.schema_migrations": "7409530e280901d025f40ba5b48fa9d264e828501a492de2de8661dbb77dc857",
+    "public.action_center_items": "96b205dce061d49cfb97434f09b96aa28b76a2c5b9517d5293599e7d81954348",
+    "public.business_documents": "d2054e93aee444c782a6e0483312ea9e475ec4d3749fe7c485b231bac749111f",
+    "public.business_workspaces": "051d3063ac9f16ca899406f05f7b84514da0eb205419b5e55e0c20a575379347",
+    "public.document_chunks": "b67b212d24c158874fbbde5675259cab10bfe371ec7f1ceb2f6b86d5f47bb70c",
+    "public.expense_entries": "92ce07056f65f6b2ba4cd0c7e15830a2fa6099421b674d4ace9246fdaac59881",
+    "public.import_job_rows": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public.import_jobs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public.model_provider_settings": "8abc9a7eac84375bae0a325d9d686b0f4e81caa7007abb873e351eb16885818b",
+    "public.products": "05aab180885d999d5514eae6a7dfd918db8d8a31094137bfc99afd20e3775ccc",
+    "public.purchase_transactions": "6dde86b434a774cf8107196faf00c0f03c202e9f082313093cc856e103d770b2",
+    "public.recurring_obligations": "c26591d81daa41e6dcdecedd2644bbc05425266e582d132dd00297c5d3565672",
+    "public.sales_transactions": "6213cf8412fee57737e579cb9cf65dc35e835a13b75b9ef3040dbd69f3da4589",
+    "public.scheduler_runs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public.workspace_members": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "rows_preserved": true
+}

@@ -1,0 +1,25 @@
+# Isolated Phase 1.1 validation services. Reuses only the disposable PG port 55433.
+name: ownerpilot-rfq-phase11
+services:
+  redis:
+    image: redis:7.4-alpine
+    ports: ["127.0.0.1:6381:6379"]
+  worker:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    command: ["celery", "-A", "api.rfq.worker:celery", "worker", "-B", "--concurrency=1", "--loglevel=INFO", "--schedule=/tmp/rfq-phase11-beat"]
+    environment:
+      DATABASE_URL: postgresql://postgres:rfq-validation-local@host.docker.internal:55433/ownerpilot_rfq_phase11_demo
+      RFQ_REDIS_URL: redis://redis:6379/0
+      RFQ_OLLAMA_URL: http://host.docker.internal:11434
+      RFQ_OLLAMA_MODEL: qwen3:4b
+      RFQ_MODEL_CONTEXT: 8192
+      RFQ_MODEL_OUTPUT_TOKENS: 4096
+      RFQ_MODEL_SCHEMA_PROFILE: full
+      RFQ_OCR_STRATEGY: enhanced-v2
+      RFQ_STORAGE_ROOT: /rfq-documents
+    volumes: ["../.local/rfq/phase1_1/documents:/rfq-documents"]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    mem_limit: 2g
+    depends_on: [redis]

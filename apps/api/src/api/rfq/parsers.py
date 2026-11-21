@@ -3,8 +3,6 @@ from __future__ import annotations
 import csv
 import io
 import shutil
-import subprocess
-import tempfile
 import time
 import zipfile
 from pathlib import Path
@@ -17,7 +15,7 @@ from .config import settings
 from .contracts import Block, Location, ParsedDocument
 from .storage import DocumentError, fingerprint
 
-PARSER_VERSION = "ownerpilot-parser/1.0"
+PARSER_VERSION = "ownerpilot-parser/1.1"
 MIMES = {
     ".pdf": {"application/pdf"},
     ".xlsx": {"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
@@ -108,8 +106,17 @@ def result(content: bytes, document_id: str, kind: str) -> ParsedDocument:
 
 
 def check_text(doc: ParsedDocument) -> None:
+    import json
+
     if sum(len(b.text) for b in doc.blocks) > settings().max_text_chars:
         raise DocumentError("Extracted text exceeds the processing limit.")
+    if (
+        len(json.dumps(doc.model_dump(), ensure_ascii=False).encode("utf-8"))
+        > settings().max_metadata_bytes
+    ):
+        raise DocumentError(
+            "Parsed text/geometry metadata exceeds the retention budget."
+        )
 
 
 class TextParser:
@@ -232,6 +239,9 @@ class ExcelParser:
 
 class PdfParser:
     def parse(self, content: bytes, document_id: str) -> ParsedDocument:
+        from .ocr import ocr_page
+        import pypdfium2 as pdfium
+
         doc = result(content, document_id, "pdf")
         cfg = settings()
         reader = PdfReader(io.BytesIO(content), strict=True)
@@ -241,78 +251,62 @@ class PdfParser:
         if doc.pages > cfg.max_pages:
             raise DocumentError("PDF page limit exceeded.")
         for number, page in enumerate(reader.pages, 1):
-            # Reject oversized decompressed page streams before layout extraction.
             stream = page.get_contents()
             if stream and len(stream.get_data()) > cfg.max_uncompressed_bytes:
                 raise DocumentError("PDF page stream exceeds resource limit.")
             text = page.extract_text(extraction_mode="layout") or ""
-            method = "pdf_native"
-            if sum(c.isalnum() for c in text) < 24:
-                if not shutil.which(cfg.ocr_command):
-                    raise DocumentError(
-                        "OCR runtime unavailable. Install Tesseract or use the RFQ worker container."
-                    )
-                started = time.perf_counter()
-                import pypdfium2 as pdfium
-
+            resources = page.get("/Resources", {})
+            if hasattr(resources, "get_object"):
+                resources = resources.get_object()
+            objects = resources.get("/XObject", {})
+            if hasattr(objects, "get_object"):
+                objects = objects.get_object()
+            images = any(
+                value.get_object().get("/Subtype") == "/Image"
+                for value in objects.values()
+            )
+            if sum(c.isalnum() for c in text) < 24 or (
+                images and sum(c.isalnum() for c in text) < 200
+            ):
+                dpi = cfg.ocr_dpi
                 with pdfium.PdfDocument(content) as rendered:
                     rendered_page = rendered[number - 1]
                     try:
                         width, height = rendered_page.get_size()
-                        if width * height * 4 > 24000000:
+                        if width * height * (dpi / 72) ** 2 > cfg.ocr_max_pixels:
                             raise DocumentError("PDF page exceeds OCR pixel limit.")
-                        bitmap = rendered_page.render(scale=2)
+                        bitmap = rendered_page.render(scale=dpi / 72)
                         try:
-                            with tempfile.TemporaryDirectory(prefix="rfq-ocr-") as temp:
-                                source = Path(temp) / "page.png"
-                                bitmap.to_pil().save(source)
-                                completed = subprocess.run(
-                                    [
-                                        cfg.ocr_command,
-                                        str(source),
-                                        "stdout",
-                                        "-l",
-                                        cfg.ocr_language,
-                                        "--psm",
-                                        "3",
-                                    ],
-                                    capture_output=True,
-                                    timeout=cfg.ocr_timeout,
-                                    check=False,
-                                )
-                                if completed.returncode:
-                                    raise DocumentError(
-                                        "OCR failed. Check language data and page quality."
-                                    )
-                                text = completed.stdout.decode(
-                                    "utf-8", errors="replace"
-                                )
+                            blocks, metadata = ocr_page(
+                                bitmap.to_pil(), number, cfg.ocr_strategy, dpi
+                            )
                         finally:
                             bitmap.close()
                     finally:
                         rendered_page.close()
-                doc.ocr_ms += (time.perf_counter() - started) * 1000
+                doc.blocks.extend(blocks)
+                doc.ocr_ms += metadata["duration_ms"]
                 doc.ocr_pages.append(number)
-                method = "tesseract"
-            if not text.strip():
-                doc.warnings.append(f"Page {number} contains no readable text.")
-            offset = 0
-            for row, line in enumerate(text.splitlines(keepends=True), 1):
-                if line.strip():
-                    doc.blocks.append(
-                        Block(
-                            id=f"page:{number}:row:{row}",
-                            text=line.rstrip(),
-                            location=Location(
-                                page=number,
-                                row=row,
-                                start=offset,
-                                end=offset + len(line.rstrip()),
-                            ),
-                            method=method,
+                doc.metadata.setdefault("ocr_pages", []).append(metadata)
+                doc.metadata["ocr_strategy"] = cfg.ocr_strategy
+            else:
+                offset = 0
+                for row, line in enumerate(text.splitlines(keepends=True), 1):
+                    if line.strip():
+                        doc.blocks.append(
+                            Block(
+                                id=f"page:{number}:row:{row}",
+                                text=line.rstrip(),
+                                location=Location(
+                                    page=number,
+                                    row=row,
+                                    start=offset,
+                                    end=offset + len(line.rstrip()),
+                                ),
+                                method="pdf_native",
+                            )
                         )
-                    )
-                offset += len(line)
+                    offset += len(line)
             check_text(doc)
         return doc
 
@@ -325,7 +319,53 @@ PARSERS: dict[str, type] = {
 }
 
 
-def parse_document(name: str, content: bytes, document_id: str) -> ParsedDocument:
+def cache_identity(policy: str, filename: str) -> str:
+    import hashlib
+    import json
+
+    if policy == "phase1":
+        return "ownerpilot-parser/1.0"
+    cfg = settings()
+    from .ocr import OCR_VERSION
+
+    configuration = {
+        k: getattr(cfg, k)
+        for k in (
+            "ocr_strategy",
+            "ocr_dpi",
+            "ocr_language",
+            "ocr_max_regions",
+            "ocr_max_passes",
+            "ocr_max_pixels",
+        )
+    }
+    configuration["ocr_configuration_version"] = OCR_VERSION
+    if Path(filename).suffix.lower() == ".pdf":
+        from .ocr import engine_version
+
+        configuration["engine"] = (
+            engine_version(cfg.ocr_command)
+            if shutil.which(cfg.ocr_command)
+            else "unavailable"
+        )
+    return (
+        PARSER_VERSION
+        + ":"
+        + hashlib.sha256(
+            json.dumps(configuration, sort_keys=True).encode()
+        ).hexdigest()[:20]
+    )
+
+
+def parse_document(
+    name: str, content: bytes, document_id: str, policy: str | None = None
+) -> ParsedDocument:
+    if policy == "phase1":
+        from .legacy_v1.parsers import parse_document as original
+
+        return ParsedDocument.model_validate(
+            original(name, content, document_id).model_dump()
+        )
     started = time.perf_counter()
     extension = validate_upload(name, None, content)
     doc = PARSERS[extension]().parse(content, document_id)
