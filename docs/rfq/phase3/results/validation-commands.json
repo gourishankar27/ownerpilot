@@ -1,0 +1,109 @@
+{
+  "recorded_at_utc": "2026-11-22T04:25:24.907106+00:00",
+  "user_date": "2026-11-21 America/Phoenix",
+  "branch": "feature/rfq-intelligence-phase-3",
+  "base": "dd3bd99c6fede176d987aab41b1478ea3ba41ca6",
+  "commands": [
+    {
+      "command": ".venv/Scripts/python.exe -m pytest -c apps/api/pyproject.toml apps/api/tests -q --junitxml=docs/rfq/phase3/results/all-tests.xml",
+      "observed_exit_code": 0,
+      "result": "260 passed; 1 strict xfail for preserved oracle defect"
+    },
+    {
+      "command": ".venv/Scripts/ruff.exe check apps/api scripts/procurement-*.py --exclude legacy_v1",
+      "observed_exit_code": 0,
+      "result": "All checks passed"
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m compileall -q apps/api/src",
+      "observed_exit_code": 0,
+      "result": "Passed"
+    },
+    {
+      "command": "python -m uv lock --project apps/api --check",
+      "observed_exit_code": 0,
+      "result": "Resolved 57 packages; lock valid"
+    },
+    {
+      "command": "pnpm lint",
+      "observed_exit_code": 0,
+      "result": "All three package tasks passed"
+    },
+    {
+      "command": "pnpm typecheck",
+      "observed_exit_code": 0,
+      "result": "All three package tasks passed"
+    },
+    {
+      "command": "pnpm test",
+      "observed_exit_code": 0,
+      "result": "All three repository type-level test tasks passed"
+    },
+    {
+      "command": "pnpm build",
+      "observed_exit_code": 0,
+      "result": "Production build passed"
+    },
+    {
+      "command": "pnpm --dir apps/web exec playwright test",
+      "observed_exit_code": 0,
+      "result": "11 passed; no skipped or flaky cases; real local services with labeled UI outage fixtures"
+    },
+    {
+      "command": "docker compose -f infra/docker-compose.yml -f infra/docker-compose.rfq.yml -f infra/docker-compose.procurement.yml config --quiet",
+      "observed_exit_code": 0,
+      "result": "Overlay configuration valid; standard stack not deployed"
+    },
+    {
+      "command": "docker compose -f infra/docker-compose.procurement-validation.yml up -d --build",
+      "observed_exit_code": 0,
+      "result": "Isolated worker rebuilt and running"
+    },
+    {
+      "command": ".venv/Scripts/python.exe scripts/procurement-migration-check.py",
+      "observed_exit_code": 0,
+      "result": "27 original tables preserved; seven new; repeat migrations passed"
+    },
+    {
+      "command": ".venv/Scripts/python.exe scripts/procurement-retrieval-outage.py",
+      "observed_exit_code": 0,
+      "result": "Four non-vector methods succeeded; hybrid blocked with actual unreachable endpoint"
+    },
+    {
+      "command": ".venv/Scripts/python.exe scripts/procurement-runtime-check.py",
+      "observed_exit_code": 0,
+      "result": "Three real HTTP model-outage probes and in-flight cancellation passed"
+    },
+    {
+      "command": ".venv/Scripts/python.exe scripts/procurement-recovery.py",
+      "observed_exit_code": 0,
+      "result": "SIGKILL safe recovery passed; final needs_attention, not completed research"
+    },
+    {
+      "command": "git diff --check",
+      "observed_exit_code": 0,
+      "result": "Passed; informational Windows checkout line-ending notice only"
+    },
+    {
+      "command": ".venv/Scripts/python.exe scripts/procurement-evaluate.py --split development",
+      "observed_exit_code": 0,
+      "result": "Final development run 2/2 verified; earlier attempts preserved separately"
+    },
+    {
+      "command": ".venv/Scripts/python.exe scripts/procurement-evaluate.py --split held_out",
+      "observed_exit_code": 0,
+      "result": "Eight actual native runs recorded; 4/8 verified, remaining four safely need attention"
+    },
+    {
+      "command": ".venv/Scripts/python.exe scripts/procurement-preservation.py",
+      "observed_exit_code": 0,
+      "result": "434 protected files; zero unexpected changes"
+    },
+    {
+      "command": ".venv/Scripts/python.exe scripts/procurement-report.py",
+      "observed_exit_code": 0,
+      "result": "Exact native/quote accounting and artifact hashes generated"
+    }
+  ],
+  "note": "Records observed local executions; detailed test/benchmark/recovery results are separate artifacts. No push/deployment."
+}

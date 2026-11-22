@@ -1,6 +1,7 @@
 import hashlib
 import json
 from uuid import UUID
+from typing import Literal
 
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, Form
 from pydantic import BaseModel, ConfigDict, Field
@@ -33,6 +34,7 @@ class Confirm(Closed):
 class Search(Closed):
     revision: int = Field(ge=0)
     versions: list[UUID] = Field(min_length=1, max_length=10)
+    method: Literal["exact", "bm25", "sql", "exact_bm25", "reranked"] = "reranked"
 
 
 class Review(Closed):
@@ -311,13 +313,16 @@ def search(
     with connection() as conn:
         rfq, query = approved_query(conn, rfq_id, item_id, identity, payload.revision)
     try:
-        result = retrieve(identity.workspace_id, payload.versions, query)
+        result = retrieve(
+            identity.workspace_id, payload.versions, query, payload.method
+        )
     except (ValueError, RuntimeError) as exc:
         raise HTTPException(503, str(exc)) from None
     with connection() as conn:
+        load_rfq(conn, rfq_id, identity.workspace_id, True)
         approved_query(conn, rfq_id, item_id, identity, payload.revision)
         row = conn.execute(
-            "insert into procurement.catalog_match_runs(workspace_id,rfq_id,item_id,revision,query,versions,result,created_by) values(%s,%s,%s,%s,%s,%s,%s,%s) returning id",
+            "insert into procurement.catalog_match_runs(workspace_id,rfq_id,item_id,revision,query,versions,result,created_by,created_at) values(%s,%s,%s,%s,%s,%s,%s,%s,clock_timestamp()) returning id",
             (
                 identity.workspace_id,
                 rfq_id,
@@ -365,6 +370,8 @@ def match_run(run_id: UUID, identity: Identity = Depends(authenticate)):
 def review(run_id: UUID, payload: Review, identity: Identity = Depends(authenticate)):
     identity.require_approve()
     with connection() as conn:
+        initial = owned(conn, "catalog_match_runs", run_id, identity.workspace_id)
+        load_rfq(conn, initial["rfq_id"], identity.workspace_id, True)
         run = owned(conn, "catalog_match_runs", run_id, identity.workspace_id, True)
         approved_query(conn, run["rfq_id"], run["item_id"], identity, run["revision"])
         for v in run["versions"]:

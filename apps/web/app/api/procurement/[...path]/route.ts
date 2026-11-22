@@ -26,7 +26,7 @@ async function proxy(
     );
   const { path } = await context.params;
   if (
-    !/^(rfqs|rfq-jobs|rfq-health|catalogs|catalog-health|catalog-import-jobs|catalog-match-runs)$/.test(
+    !/^(rfqs|rfq-jobs|rfq-health|catalogs|catalog-health|catalog-import-jobs|catalog-match-runs|agent-health|agent-runs|supplier-offers|quotes)$/.test(
       path[0] ?? "",
     ) ||
     path.some((p) => !/^[a-zA-Z0-9-]+$/.test(p))

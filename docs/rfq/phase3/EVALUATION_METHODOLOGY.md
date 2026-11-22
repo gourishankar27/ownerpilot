@@ -1,0 +1,19 @@
+# Evaluation methodology
+
+All data are fictional CC0 synthetic records. No private RFQs or supplier quotes were sent to a model. The corpus and manifests are under `data/evaluation/procurement-v1`; generators refuse overwrite.
+
+There are 34 standalone commercial/financial cases, 20 templated ten-line financial batches (200 quote lines) and 10 native research cases. The batches span five currencies/categories, three fictional supplier labels and separate development/validation/held-out partitions. These are correlated arithmetic families, not 200 independent real procurement tasks. The native benchmark is deliberately much smaller: two development and eight held-out scenarios, one approved line each. It does not establish broad procurement accuracy or statistically robust generalization.
+
+Expected standalone totals and failure states were authored without importing production calculations. Batch expectations use an independent integer-minor-unit oracle, whose known JPY tax defect is retained and reported. No model-generated correctness labels are used. The research fixtures were frozen before prompt tuning; the batch expansion was frozen independently before financial execution and never used to tune the model.
+
+Native evaluation uses actual HTTP approval/catalog review/attestation routes, real local neural indexing, real native Ollama calls, the production runner and actual restricted tool executions. The isolated worker is paused during each paired inline runner measurement to prevent a competing consumer, then unpaused in `finally`. This is an evaluation scheduling measure, not a production substitute or mock. Separate browser/recovery experiments exercise actual Celery execution.
+
+The final prompt/tool contract was selected only on the two development cases. Earlier failures are retained in `results/development-attempt-*`, including qwen3:4b protocol/citation failures, 8B citation issues and the data-envelope/decimal-string contract improvements. No held-out result was used for further prompt tuning. Final tag: installed qwen3:8b; prompt procurement-native/5; tools procurement-tools/2.
+
+Comparisons use identical final scenarios. A deterministic baseline lists authorized source facts; the paired quote baseline also calculates declared human policy without agent research. The no-verifier counter accepts a closed-schema model candidate and measures its individual claim validity offline. The verified result applies exact receipt/pointer/type/value checks and full line offer coverage to that same actual trace. There is no unsafe no-verifier production mode. Schema validity is not counted as evidence correctness.
+
+Metrics report numerators/denominators. Median is the ordinary sample median; P95 is nearest rank. Tool execution success/argument authorization is measurable, but is not by itself proof of optimal investigative tool selection. The final agent chiefly chose approved RFQ, reviewed selection and supplier offers. Optional tools are implemented/tested; the benchmark is not evidence that the model used all ten tools.
+
+The verifier rejects an entire unsupported summary, including otherwise-valid claims. Therefore accepted-claim evidence validity and completion rates have different denominators. `needs_attention` is safe abstention, not successful research completion. Development attempts, browser traces, finance tests, protocol fixtures and the final 10-run native benchmark are reported separately. Mocked HTTP/UI outage fixtures are never counted as real native completions.
+
+Not measured reliably: peak GPU/RAM per run, complete token counts, live supplier data quality, real customer workload accuracy or a large independent native validation split. The provider enforces actual tag/digest and bounded requests; all benchmark output artifacts retain metadata and real tool receipts without hidden reasoning.

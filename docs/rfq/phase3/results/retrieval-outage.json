@@ -1,0 +1,55 @@
+{
+  "real_database_and_previously_learned_index": true,
+  "embedding_endpoint": "http://127.0.0.1:9",
+  "actual_unreachable_endpoint": true,
+  "read_only": true,
+  "lexical": [
+    {
+      "method": "exact",
+      "executed_channels": [
+        "exact"
+      ],
+      "execution_status": "complete",
+      "embedding_provider_invoked": false,
+      "candidate_count": 1,
+      "passed": true
+    },
+    {
+      "method": "bm25",
+      "executed_channels": [
+        "bm25"
+      ],
+      "execution_status": "complete",
+      "embedding_provider_invoked": false,
+      "candidate_count": 1,
+      "passed": true
+    },
+    {
+      "method": "sql",
+      "executed_channels": [
+        "sql_fts"
+      ],
+      "execution_status": "complete",
+      "embedding_provider_invoked": false,
+      "candidate_count": 0,
+      "passed": true
+    },
+    {
+      "method": "exact_bm25",
+      "executed_channels": [
+        "exact",
+        "bm25"
+      ],
+      "execution_status": "complete",
+      "embedding_provider_invoked": false,
+      "candidate_count": 1,
+      "passed": true
+    }
+  ],
+  "hybrid": {
+    "blocked": true,
+    "reason": "Requested vector channel unavailable; no hybrid fallback executed",
+    "fallback_masqueraded_as_full_hybrid": false
+  },
+  "passed": true
+}

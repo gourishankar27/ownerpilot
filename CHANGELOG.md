@@ -6,11 +6,18 @@ All notable changes to OwnerPilot are documented in this file.
 
 ### Added
 
+- Phase 3 restricted native Ollama procurement research, durable tool receipts,
+  explicit product resolutions, append-only supplier attestations/supersession,
+  deterministic Decimal quote preparation and immutable internal review/approval.
+  Added signed APIs, responsive review UI, synthetic evaluation and real worker
+  recovery/cancellation probes. Final native benchmark: 6/10 verified completions,
+  30/30 authorized successful tool calls, zero accepted unsupported claims. Research
+  quality target remains unmet; one frozen financial oracle defect is retained.
 - Phase 2 Catalog Intelligence: versioned catalog preview/confirmation, durable
   neural indexing, genuine BM25, pgvector cosine retrieval, RRF, deterministic
   compatibility and approved-RFQ product decision history. Synthetic corpus has
   1,224 offers/1,020 products;816 final query/method comparisons,145 backend tests
-  and seven browser scenarios. No distributor actions or Phase 3 implementation.
+  and seven browser scenarios at that milestone.
 - Phase 1.1 versioned selective RFQ routing, bounded geometry-aware OCR, explicit
   source occurrence/row/column associations, processing telemetry and review filters.
 - Local 4B/8B/27B inference experiments, independent frozen v2 synthetic layouts,
@@ -28,6 +35,11 @@ All notable changes to OwnerPilot are documented in this file.
 
 ### Fixed
 
+- Exact/BM25/SQL catalog retrieval no longer requires the embedding provider;
+  vector/hybrid failures are explicit and channel metadata is recorded. Preserved
+  ranking semantics. Constrained long catalog line selectors on mobile screens.
+- Windows fixture checkout attributes preserve original frozen payload hashes;
+  verified binary/text repairs changed no historical labels or Git payload objects.
 - API uv package discovery (`api` module), Python version and locked container installs.
 - Drizzle ownership filters protect auth and RFQ schemas from business schema push.
 - Added an installed-library auth migration command without a floating CLI download.

@@ -32,6 +32,22 @@ OwnerPilot focuses on closing that gap with:
 - explainable recommendations with evidence and confidence traces
 
 ## What is implemented now
+### Procurement research and internal quotes (Phase 3)
+
+Approved RFQs now support explicit reviewed product resolutions, versioned supplier
+attestations, real local Ollama tool-using research, durable evidence receipts, and
+Decimal quote preparation with human review and immutable internal approval.
+Exact/BM25/SQL retrieval remains usable without an embedding service.
+
+Local validation: 260 backend tests passed with one retained expected-label defect;
+30/30 native tool calls executed, while 6/10 research summaries passed verification.
+The 95% research-completion aspiration remains unmet. No quote delivery, purchasing
+or payment action is enabled.
+
+- [Phase 3 report and measured limitations](docs/rfq/phase3/FINAL_IMPLEMENTATION_REPORT.md)
+- [Validation and evaluation](docs/rfq/phase3/PHASE3_VALIDATION.md)
+- [Windows setup](docs/rfq/phase3/WINDOWS_SETUP.md) · [Demo runbook](docs/rfq/phase3/DEMO_RUNBOOK.md)
+
 ### Catalog Intelligence (Phase 2)
 
 Approved RFQ lines can be matched to versioned catalogs using exact manufacturer/MPN,

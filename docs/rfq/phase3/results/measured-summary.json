@@ -1,0 +1,76 @@
+{
+  "native_runs": 10,
+  "development_runs": 2,
+  "held_out_runs": 8,
+  "verified_complete": 6,
+  "held_out_verified_complete": 4,
+  "tool_calls": 30,
+  "successful_authorized_tool_calls": 30,
+  "model_calls": 40,
+  "candidate_claims": 160,
+  "source_supported_candidate_claims": 156,
+  "unsupported_candidate_claims": [
+    {
+      "scenario": "mixed_currency",
+      "claim": {
+        "receipt_id": "78f383f3-6ccb-49a0-ad90-471185e32e3b",
+        "pointer": "/data/attestations/0/price",
+        "value": "10},{"
+      },
+      "reason": "Claim value differs from cited evidence"
+    },
+    {
+      "scenario": "unavailable",
+      "claim": {
+        "receipt_id": "b42e56d9-22a8-4dd7-a172-0559f814c54e",
+        "pointer": "/data/attestations/0/price",
+        "value": "10},{"
+      },
+      "reason": "Claim value differs from cited evidence"
+    },
+    {
+      "scenario": "unknown_availability",
+      "claim": {
+        "receipt_id": "47ff7725-4872-4c14-8ab1-00856c3963b9",
+        "pointer": "/data/attestations/0/price",
+        "value": "10},{"
+      },
+      "reason": "Claim value differs from cited evidence"
+    },
+    {
+      "scenario": "unknown_source_date",
+      "claim": {
+        "receipt_id": "6aee4187-fcb6-4a59-b035-5ffa5352600c",
+        "pointer": "/data/attestations/0/price",
+        "value": "10},{"
+      },
+      "reason": "Claim value differs from cited evidence"
+    }
+  ],
+  "accepted_claims": 80,
+  "accepted_unsupported_claims": 0,
+  "research_median_ms": 16786.674849980045,
+  "research_p95_ms": 18823.590100044385,
+  "deterministic_fact_listing_median_ms": 0.05490001058205962,
+  "deterministic_fact_listing_p95_ms": 0.06489991210401058,
+  "deterministic_quote_preparation_complete": 4,
+  "deterministic_quote_preparation_median_ms": 0.03250001464039087,
+  "deterministic_quote_preparation_p95_ms": 0.11690007522702217,
+  "finance_frozen_standalone_cases": 34,
+  "finance_frozen_batch_cases": 20,
+  "finance_frozen_batch_lines": 200,
+  "known_bad_batch_total_labels": 1,
+  "pytest": {
+    "tests": 261,
+    "failures": 0,
+    "errors": 0,
+    "skipped_including_xfail": 1
+  },
+  "limitations": [
+    "10 actual model runs, 8 held-out; small synthetic sample",
+    "200 financial lines are templated batches, not native-agent tasks",
+    "Deterministic policy is fixed human input; research cannot fill missing commercial facts",
+    "Final prompt was not retuned after held-out evaluation",
+    "Known frozen JPY oracle total defect retained, not relabeled"
+  ]
+}
