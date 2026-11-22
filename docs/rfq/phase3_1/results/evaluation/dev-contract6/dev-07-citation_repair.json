@@ -1,0 +1,2523 @@
+{
+  "scenario": "dev-07",
+  "split": "development",
+  "pattern": "pack",
+  "variant": "citation_repair",
+  "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+  "model": {
+    "model": "qwen3:8b",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "context": 8192,
+    "max_calls": 8,
+    "max_turns": 4,
+    "max_repeats": 2,
+    "max_seconds": 240,
+    "temperature": 0,
+    "tool_schema": "procurement-tools/2",
+    "capabilities": [
+      "completion",
+      "tools",
+      "thinking"
+    ],
+    "claim_schema": "research-citation-only/2",
+    "prompt_version": "procurement-native/6",
+    "max_repair_calls": 1,
+    "verifier_version": "research-verifier/2",
+    "max_initial_turns": 4,
+    "max_response_bytes": 65536,
+    "source_fingerprint": "a2814a53e975fef95b97f2b5ee51ac055fe038dcc50e47e25e32c4cae36ec6bb",
+    "max_total_model_calls": 5,
+    "provider_timeout_seconds": 60
+  },
+  "state": "complete",
+  "error": null,
+  "source_snapshot": {
+    "lines": [
+      {
+        "unit": "EA",
+        "fields": {
+          "mpn": {
+            "raw": "D-007-01/A",
+            "value": "D-007-01/A",
+            "issues": [],
+            "status": "validated",
+            "evidence": [
+              {
+                "method": "deterministic",
+                "excerpt": "D-007-01/A",
+                "raw_ocr": null,
+                "block_id": "row:2",
+                "identity": "ownerpilot-parser/1.1:csv",
+                "location": {
+                  "end": null,
+                  "row": 2,
+                  "bbox": null,
+                  "page": null,
+                  "sheet": null,
+                  "start": null,
+                  "column": "B"
+                },
+                "verified": true,
+                "document_id": "7ff12143-24a6-47bf-864e-1a57c0f5b630",
+                "fingerprint": "488132e90203626154280c858464ada29cacf844ddc76e7fded7934f0226a6c1",
+                "alternatives": [],
+                "extracted_at": "2026-11-22T19:09:27.644056+00:00",
+                "ocr_confidence": null,
+                "row_association": "verified",
+                "source_eligible": true,
+                "source_occurrence": true,
+                "association_reason": "same source row/block",
+                "column_association": "verified"
+              }
+            ],
+            "corrected": false,
+            "comparison": "D-007-01/A"
+          },
+          "unit": {
+            "raw": "EA",
+            "value": "EA",
+            "issues": [],
+            "status": "validated",
+            "evidence": [
+              {
+                "method": "deterministic",
+                "excerpt": "EA",
+                "raw_ocr": null,
+                "block_id": "row:2",
+                "identity": "ownerpilot-parser/1.1:csv",
+                "location": {
+                  "end": null,
+                  "row": 2,
+                  "bbox": null,
+                  "page": null,
+                  "sheet": null,
+                  "start": null,
+                  "column": "E"
+                },
+                "verified": true,
+                "document_id": "7ff12143-24a6-47bf-864e-1a57c0f5b630",
+                "fingerprint": "488132e90203626154280c858464ada29cacf844ddc76e7fded7934f0226a6c1",
+                "alternatives": [],
+                "extracted_at": "2026-11-22T19:09:27.644112+00:00",
+                "ocr_confidence": null,
+                "row_association": "verified",
+                "source_eligible": true,
+                "source_occurrence": true,
+                "association_reason": "same source row/block",
+                "column_association": "verified"
+              }
+            ],
+            "corrected": false,
+            "comparison": null
+          },
+          "currency": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "quantity": {
+            "raw": "8",
+            "value": "8",
+            "issues": [],
+            "status": "validated",
+            "evidence": [
+              {
+                "method": "deterministic",
+                "excerpt": "8",
+                "raw_ocr": null,
+                "block_id": "row:2",
+                "identity": "ownerpilot-parser/1.1:csv",
+                "location": {
+                  "end": null,
+                  "row": 2,
+                  "bbox": null,
+                  "page": null,
+                  "sheet": null,
+                  "start": null,
+                  "column": "D"
+                },
+                "verified": true,
+                "document_id": "7ff12143-24a6-47bf-864e-1a57c0f5b630",
+                "fingerprint": "488132e90203626154280c858464ada29cacf844ddc76e7fded7934f0226a6c1",
+                "alternatives": [],
+                "extracted_at": "2026-11-22T19:09:27.644083+00:00",
+                "ocr_confidence": null,
+                "row_association": "verified",
+                "source_eligible": true,
+                "source_occurrence": true,
+                "association_reason": "same source row/block",
+                "column_association": "verified"
+              }
+            ],
+            "corrected": false,
+            "comparison": null
+          },
+          "description": {
+            "raw": "Fictional memory assembly dev-07 position 1",
+            "value": "Fictional memory assembly dev-07 position 1",
+            "issues": [],
+            "status": "validated",
+            "evidence": [
+              {
+                "method": "deterministic",
+                "excerpt": "Fictional memory assembly dev-07 position 1",
+                "raw_ocr": null,
+                "block_id": "row:2",
+                "identity": "ownerpilot-parser/1.1:csv",
+                "location": {
+                  "end": null,
+                  "row": 2,
+                  "bbox": null,
+                  "page": null,
+                  "sheet": null,
+                  "start": null,
+                  "column": "C"
+                },
+                "verified": true,
+                "document_id": "7ff12143-24a6-47bf-864e-1a57c0f5b630",
+                "fingerprint": "488132e90203626154280c858464ada29cacf844ddc76e7fded7934f0226a6c1",
+                "alternatives": [],
+                "extracted_at": "2026-11-22T19:09:27.644072+00:00",
+                "ocr_confidence": null,
+                "row_association": "verified",
+                "source_eligible": true,
+                "source_occurrence": true,
+                "association_reason": "same source row/block",
+                "column_association": "verified"
+              }
+            ],
+            "corrected": false,
+            "comparison": null
+          },
+          "line_number": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "manufacturer": {
+            "raw": "LumenForge",
+            "value": "LumenForge",
+            "issues": [],
+            "status": "validated",
+            "evidence": [
+              {
+                "method": "deterministic",
+                "excerpt": "LumenForge",
+                "raw_ocr": null,
+                "block_id": "row:2",
+                "identity": "ownerpilot-parser/1.1:csv",
+                "location": {
+                  "end": null,
+                  "row": 2,
+                  "bbox": null,
+                  "page": null,
+                  "sheet": null,
+                  "start": null,
+                  "column": "A"
+                },
+                "verified": true,
+                "document_id": "7ff12143-24a6-47bf-864e-1a57c0f5b630",
+                "fingerprint": "488132e90203626154280c858464ada29cacf844ddc76e7fded7934f0226a6c1",
+                "alternatives": [],
+                "extracted_at": "2026-11-22T19:09:27.644021+00:00",
+                "ocr_confidence": null,
+                "row_association": "verified",
+                "source_eligible": true,
+                "source_occurrence": true,
+                "association_reason": "same source row/block",
+                "column_association": "verified"
+              }
+            ],
+            "corrected": false,
+            "comparison": null
+          },
+          "requested_sku": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "specifications": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "alternatives_allowed": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "customer_part_number": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "requested_unit_price": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "special_requirements": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "required_delivery_date": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          }
+        },
+        "offers": {
+          "imported": [
+            {
+              "url": null,
+              "price": null,
+              "currency": null,
+              "supplier": "Fictional catalog publisher 1",
+              "freshness": "unknown_freshness",
+              "source_id": "CAT-dev-07-0",
+              "data_class": "imported_catalog_metadata",
+              "availability": null,
+              "supplier_sku": null,
+              "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+              "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601",
+              "commercial_source_date": null
+            }
+          ],
+          "attestations": [
+            {
+              "id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+              "data": {
+                "commercial": {
+                  "price": "90",
+                  "breaks": [],
+                  "currency": "USD",
+                  "supplier": "Fictional Delta Supply",
+                  "pack_size": 6,
+                  "source_url": null,
+                  "observed_on": "2026-11-21",
+                  "price_basis": "each",
+                  "stock_units": "1000",
+                  "valid_until": "2026-12-31",
+                  "availability": "available",
+                  "effective_on": null,
+                  "supplier_sku": "SKU-dev-07-0",
+                  "minimum_units": "1",
+                  "lead_time_days": 7,
+                  "source_reference": "Fictional dated commercial note dev-07/0; no real supplier commitment",
+                  "availability_statement": null
+                },
+                "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+                "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                "supersedes_id": null,
+                "source_offer_id": null,
+                "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+              },
+              "actor": "phase31-synthetic-dd534b2461bb455f82c9c97f2313ac58",
+              "price": 90.0,
+              "reason": "Frozen independent fictional commercial source; human-attested, not live supplier data",
+              "freshness": "current_according_to_attested_validity",
+              "created_at": "2026-11-22T19:09:28.048192+00:00",
+              "data_class": "user_attested",
+              "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+              "resolution_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18"
+            }
+          ]
+        },
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "quantity": "8",
+        "selection": {
+          "query": {
+            "mpn": "D-007-01/A",
+            "unit": "EA",
+            "specs": {},
+            "category": null,
+            "quantity": "8",
+            "source_run": "518885b6-7bc1-45f7-9782-6f3d85c3f28c",
+            "description": "Fictional memory assembly dev-07 position 1 ",
+            "manufacturer": "LumenForge"
+          },
+          "state": "resolved",
+          "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+          "reviews": [
+            {
+              "id": "2a0e47ca-67b1-482e-98ef-acca1e91165d",
+              "note": "Independent synthetic reviewer decision; unsupported substitutions remain no-match",
+              "actor": "phase31-synthetic-dd534b2461bb455f82c9c97f2313ac58",
+              "run_id": "7d41521b-eb64-4750-b91c-c4fbc4c5ee7d",
+              "decision": "select",
+              "created_at": "2026-11-22T19:09:27.982838+00:00",
+              "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9"
+            }
+          ],
+          "revision": 1,
+          "candidates": [
+            {
+              "id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+              "score": 0.03278688524590164,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-07-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-007-01/A",
+                "url": null,
+                "name": "Fictional memory assembly dev-07 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-07-0",
+                "description": "Fictional memory assembly dev-07 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 1,
+                  "score": 25.30470509372726
+                },
+                "exact": {
+                  "rank": 1,
+                  "score": 1.0
+                }
+              },
+              "compatibility": {
+                "status": "exact",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": true
+              }
+            },
+            {
+              "id": "000df260ad71b6af7cb7b3c0d3a591201e5da29a99bf762adf023a9d889d4db0",
+              "score": 0.016129032258064516,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-07-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-007-01/A",
+                "url": null,
+                "name": "Fictional memory assembly val-07 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-07-0",
+                "description": "Fictional memory assembly val-07 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "a28683c481ddd4ca9f5a46ffa5eae3c2c7dddcb5ffe313906f6e53b19121df3f"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 2,
+                  "score": 10.263471330706981
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "Copperhill Devices",
+                    "attribute": "manufacturer",
+                    "requested": "LumenForge"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "85059093182ab70e1dc729fcefcb19998ca7087542eba49a9f93b921f34aebbf",
+              "score": 0.015873015873015872,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 3",
+                  "source_id": "CAT-held-07-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "H-007-01/A",
+                "url": null,
+                "name": "Fictional memory assembly held-07 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 3",
+                "source_id": "CAT-held-07-0",
+                "description": "Fictional memory assembly held-07 position 1",
+                "availability": null,
+                "manufacturer": "AsterVale Components",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "86483173b5b073ea76778619b98c5791a5b1f07e219c1625f68bd38d220c6f31"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 3,
+                  "score": 10.263471330706981
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "AsterVale Components",
+                    "attribute": "manufacturer",
+                    "requested": "LumenForge"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "1dea543042ac9dad83492873fce936a76fc39764e5c9ab674ed236fe0f2e7e8c",
+              "score": 0.015625,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-01-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-001-01/A",
+                "url": null,
+                "name": "Fictional memory assembly dev-01 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-01-0",
+                "description": "Fictional memory assembly dev-01 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "bd7d18e290aa7b5186e1fd92b61f749deeab5abe4482aca74b80db29d16b89d8"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 4,
+                  "score": 8.754321343534048
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "079ca8a7914d7e7323356b689cc74e57f273496d3ba0ff2e85f87c836a10cfb0",
+              "score": 0.015384615384615385,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-05-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-005-01/A",
+                "url": null,
+                "name": "Fictional power assembly dev-05 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "power",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-05-0",
+                "description": "Fictional power assembly dev-05 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "dca3d71f1ce791bc4a367cfab859a0a23bcf1038678c3cf3fde606878caf5af4"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 5,
+                  "score": 5.862901921045448
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "1cfb89fdb8054ce0681f4d4a9a2ae8ef1466e16fc865909dbdf54a1e2a87cc83",
+              "score": 0.015151515151515152,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-08-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-008-01/A",
+                "url": null,
+                "name": "Fictional storage assembly dev-08 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "storage",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-08-0",
+                "description": "Fictional storage assembly dev-08 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "dd56f5d1669823021c942fd30a60af10fc910f051a48e08aad20d490c27214a7"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 6,
+                  "score": 5.862901921045448
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "6b183654f41990d42406e9dec01a83fe65ca6cd76483cfc9f4658d38b167340a",
+              "score": 0.014925373134328358,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-04-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-004-01/A",
+                "url": null,
+                "name": "Fictional display assembly dev-04 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "display",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-04-0",
+                "description": "Fictional display assembly dev-04 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "d9909d133595b79670f72eeef346131907ae919b7650ac66bf9f9d69a71a9cf1"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 7,
+                  "score": 5.862901921045448
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "723738ff1eb19df9707f537dff9294dc3df7bd0480b6d21c481be743a2077e5b",
+              "score": 0.014705882352941176,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-03-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-003-01/A",
+                "url": null,
+                "name": "Fictional network assembly dev-03 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-03-0",
+                "description": "Fictional network assembly dev-03 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "3a5756737c074a26db6f1325e51ff02c14664346e15fa479ea5c168ca64b7829"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 8,
+                  "score": 5.862901921045448
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "9361d3ead56c8141fc2aff64f627bff49adea875e345bf5fac4ba3df5be72904",
+              "score": 0.014492753623188406,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-06-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-006-01/A",
+                "url": null,
+                "name": "Fictional accessory assembly dev-06 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "accessory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-06-0",
+                "description": "Fictional accessory assembly dev-06 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "b426a7cfbeb4017ed168d672e1d82a10921354b9125c6ec615c38a6eaabb231e"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 9,
+                  "score": 5.862901921045448
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "a7d66211335f53aa1ed43de090b956bba72deb3a6ec982987667dd3e4ddf019b",
+              "score": 0.014285714285714285,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-11-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-011-01/A",
+                "url": null,
+                "name": "Fictional power assembly dev-11 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "power",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-11-0",
+                "description": "Fictional power assembly dev-11 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "9f18f72a2c0179d0f248d8ed4da3daf66f04b84aa0ab354081a6932d2ced91a0"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 10,
+                  "score": 5.862901921045448
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "b530355ad5cbe4efc337b5eb516d027d9b7809a09f4ed336bc7113037bdbc004",
+              "score": 0.014084507042253521,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-10-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-010-01/A",
+                "url": null,
+                "name": "Fictional display assembly dev-10 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "display",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-10-0",
+                "description": "Fictional display assembly dev-10 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "4bdcd802164d4362b9e06c58ffb776179f8d6e757107bb173c526f7d71e691cb"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 11,
+                  "score": 5.862901921045448
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "c3f16365ef3fdc0765f9f7faa3b49fb7a9df29def4e28026c4cc868cd2881864",
+              "score": 0.013888888888888888,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-09-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-009-01/A",
+                "url": null,
+                "name": "Fictional network assembly dev-09 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-09-0",
+                "description": "Fictional network assembly dev-09 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "a9d9fea6d30c16de9870eb9993f6f4826c1541d5ac0cd28f4b83e001acdca30b"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 12,
+                  "score": 5.862901921045448
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "c92e5a569bb1868fbba4f33d489069744ae5823c22a95067cc4ecb7674947fe6",
+              "score": 0.0136986301369863,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-12-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-012-01/A",
+                "url": null,
+                "name": "Fictional accessory assembly dev-12 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "accessory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-12-0",
+                "description": "Fictional accessory assembly dev-12 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "5bb9c56d6535a5973562c12de32c1aab26a3c41a68f53c613f4256d60f559590"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 13,
+                  "score": 5.862901921045448
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "fa9990db00ad8301a78b9b7755036dfe42b625d7bf0357d6fec0c1db20d9db85",
+              "score": 0.013513513513513514,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-02-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-002-01/A",
+                "url": null,
+                "name": "Fictional storage assembly dev-02 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "storage",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-02-0",
+                "description": "Fictional storage assembly dev-02 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "7f79b41e8bef170b2ae3db541936d87cb6fbe98fd2dc0f7545cf8154d2920bdc"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 14,
+                  "score": 5.862901921045448
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "0d5e7765db469e7d6297670fd6b1c9241b61fa19c869be2e9549bf6bccaf024c",
+              "score": 0.013333333333333334,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-11-1",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-011-02/A",
+                "url": null,
+                "name": "Fictional accessory assembly dev-11 position 2",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "accessory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-11-1",
+                "description": "Fictional accessory assembly dev-11 position 2",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "1596bc73bb3bc297d34fc9da1d949ed6f544780a9d15064f917fbc84ba9024e3"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 15,
+                  "score": 5.611703019540469
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "c3287d56f4d0f8420aad9efb8f9e83e35a4c2f904cf6838d4b4c5889a70fa740",
+              "score": 0.013157894736842105,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 3",
+                  "source_id": "CAT-held-01-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "H-001-01/A",
+                "url": null,
+                "name": "Fictional memory assembly held-01 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 3",
+                "source_id": "CAT-held-01-0",
+                "description": "Fictional memory assembly held-01 position 1",
+                "availability": null,
+                "manufacturer": "AsterVale Components",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "676eaa51f7749d8a9c6f05d929b1e2224545176ad8558ae430652a1cfbde1794"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 16,
+                  "score": 3.1557566438623645
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "AsterVale Components",
+                    "attribute": "manufacturer",
+                    "requested": "LumenForge"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "d9f88e7a0703c48e2fe4149716498fb1bacb00806447f402e1d4a4933b77391b",
+              "score": 0.012987012987012988,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-01-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-001-01/A",
+                "url": null,
+                "name": "Fictional memory assembly val-01 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-01-0",
+                "description": "Fictional memory assembly val-01 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "9e43563b3cd2aff9bd1d0d0e801563b81d2ff3c4cf1b46a84b5dc38d02a5a371"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 17,
+                  "score": 3.1557566438623645
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "Copperhill Devices",
+                    "attribute": "manufacturer",
+                    "requested": "LumenForge"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "5f0840ded0c461f39478534940474e61aa1a4f33e9ed0d5f59fa9d67c61f5344",
+              "score": 0.01282051282051282,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 3",
+                  "source_id": "CAT-held-13-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "H-013-01/A",
+                "url": null,
+                "name": "Fictional memory assembly held-13 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 3",
+                "source_id": "CAT-held-13-0",
+                "description": "Fictional memory assembly held-13 position 1",
+                "availability": null,
+                "manufacturer": "AsterVale Components",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "f31b20a4d1eb9b13e8eb7249b2a0db5e0557081466a3e0c2467d2044bbe5006d"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 18,
+                  "score": 3.0877324397690518
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "AsterVale Components",
+                    "attribute": "manufacturer",
+                    "requested": "LumenForge"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "ac2f7ccd24d67c8791cba7106aa2615cf41ff395cc672709e7679c967499b589",
+              "score": 0.012658227848101266,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 3",
+                  "source_id": "CAT-held-25-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "H-025-01/A",
+                "url": null,
+                "name": "Fictional memory assembly held-25 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 3",
+                "source_id": "CAT-held-25-0",
+                "description": "Fictional memory assembly held-25 position 1",
+                "availability": null,
+                "manufacturer": "AsterVale Components",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "a8bd2a3a93cb6ebe6f64481d164e70b3d91e5b95d58cf62905fae97782095ec2"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 19,
+                  "score": 3.0877324397690518
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "AsterVale Components",
+                    "attribute": "manufacturer",
+                    "requested": "LumenForge"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "e9ba96f0d425a4936a3e9881548afb5b8adb1d123c8816aa1336036191a87a58",
+              "score": 0.0125,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 3",
+                  "source_id": "CAT-held-19-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "H-019-01/A",
+                "url": null,
+                "name": "Fictional memory assembly held-19 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 3",
+                "source_id": "CAT-held-19-0",
+                "description": "Fictional memory assembly held-19 position 1",
+                "availability": null,
+                "manufacturer": "AsterVale Components",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "cfe1d28ce0f7e37e21bc38d02b17a6787d0c90016f055eb5193be92264ebc4df"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 20,
+                  "score": 3.0877324397690518
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "AsterVale Components",
+                    "attribute": "manufacturer",
+                    "requested": "LumenForge"
+                  }
+                ],
+                "exact_identity": false
+              }
+            }
+          ],
+          "resolution": {
+            "id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+            "data": {
+              "query": {
+                "mpn": "D-007-01/A",
+                "unit": "EA",
+                "specs": {},
+                "category": null,
+                "quantity": "8",
+                "source_run": "518885b6-7bc1-45f7-9782-6f3d85c3f28c",
+                "description": "Fictional memory assembly dev-07 position 1 ",
+                "manufacturer": "LumenForge"
+              },
+              "run_id": "7d41521b-eb64-4750-b91c-c4fbc4c5ee7d",
+              "product": {
+                "mpn": "D-007-01/A",
+                "url": null,
+                "name": "Fictional memory assembly dev-07 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-07-0",
+                "description": "Fictional memory assembly dev-07 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+                }
+              ],
+              "decision": "select",
+              "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+              "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+              "content_hash": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601",
+              "compatibility": {
+                "status": "exact",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": true
+              },
+              "review_digest": "56e4a361bc9d09e1f3de39a28c93489094ad7cbe97e5d8eb391749cb615e21f8",
+              "catalog_fingerprint": "51362babde4077694ebe24fafad8c381584c208aa0615c1f606a335729da336f",
+              "alternative_attested": false
+            },
+            "actor": "phase31-synthetic-dd534b2461bb455f82c9c97f2313ac58",
+            "reason": "Explicit operator resolution of independently authored source identity",
+            "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+            "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+            "revision": 1,
+            "created_at": "2026-11-22T19:09:28.015086+00:00",
+            "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb"
+          },
+          "review_digest": "56e4a361bc9d09e1f3de39a28c93489094ad7cbe97e5d8eb391749cb615e21f8",
+          "current_run_id": "7d41521b-eb64-4750-b91c-c4fbc4c5ee7d"
+        }
+      }
+    ],
+    "header": {
+      "currency": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "contact_name": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "request_date": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "contact_email": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "customer_name": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "billing_address": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "shipping_address": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "external_rfq_number": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "submission_deadline": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "general_instructions": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "delivery_requirements": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      }
+    },
+    "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+    "quote_id": "d945c1de-bcee-4b11-b0a7-dd163dd01fa6",
+    "revision": 4,
+    "source_run": "518885b6-7bc1-45f7-9782-6f3d85c3f28c",
+    "quote_policy": {
+      "pricing": {
+        "mode": "markup",
+        "rate": "0.2",
+        "surplus": "allocate_purchase_cost",
+        "discount": "0"
+      },
+      "currency": "USD",
+      "shipping": "0",
+      "tax_rate": "0",
+      "tax_basis": "subtotal",
+      "valid_until": "2026-12-01"
+    },
+    "quote_choices": {
+      "925cb6bf-713d-5b45-9a92-af98e20cb002": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0"
+    },
+    "quote_revision": 1,
+    "catalog_versions": [
+      "2876eae6-21af-4505-aa6b-1415ce5e1676"
+    ]
+  },
+  "result": {
+    "claims": [
+      {
+        "known": true,
+        "value": "resolved",
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "pointer": "/data/state",
+        "offer_id": null,
+        "data_class": "human_reviewed_selection",
+        "field_type": "selection_state",
+        "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+        "receipt_id": "edbb8484-1fe9-4cb4-978f-5fba093757b2",
+        "source_key": "s5ebfba8d9f9c",
+        "rfq_revision": 4,
+        "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "human_reviewed_selection",
+        "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+      },
+      {
+        "known": true,
+        "value": "available",
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "pointer": "/data/attestations/0/availability",
+        "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+        "data_class": "user_attested",
+        "field_type": "availability",
+        "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+        "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+        "source_key": "s183eb405f8e2",
+        "rfq_revision": 4,
+        "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "user_attested",
+        "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+      },
+      {
+        "known": true,
+        "value": "USD",
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "pointer": "/data/attestations/0/currency",
+        "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+        "data_class": "user_attested",
+        "field_type": "currency",
+        "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+        "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+        "source_key": "s183eb405f8e2",
+        "rfq_revision": 4,
+        "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "user_attested",
+        "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+      },
+      {
+        "known": true,
+        "value": "current_according_to_attested_validity",
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "pointer": "/data/attestations/0/freshness",
+        "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+        "data_class": "user_attested",
+        "field_type": "freshness",
+        "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+        "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+        "source_key": "s183eb405f8e2",
+        "rfq_revision": 4,
+        "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "derived_classification",
+        "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+      },
+      {
+        "known": true,
+        "value": "90",
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "pointer": "/data/attestations/0/price",
+        "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+        "data_class": "user_attested",
+        "field_type": "price",
+        "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+        "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+        "source_key": "s183eb405f8e2",
+        "rfq_revision": 4,
+        "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "user_attested",
+        "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+      }
+    ],
+    "partial": false,
+    "complete": true,
+    "coverage": {
+      "lines": [
+        {
+          "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+          "complete": true,
+          "unknowns": [],
+          "missing_tools": [],
+          "inspected_tools": [
+            "get_reviewed_product_selection",
+            "get_supplier_offers"
+          ],
+          "selection_state": "resolved",
+          "commercial_review": [],
+          "missing_citations": [],
+          "source_coverage_complete": true
+        }
+      ],
+      "complete": true,
+      "quote_ready": true,
+      "quote_issues": [],
+      "approved_rfq_read": true,
+      "source_coverage_complete": true
+    },
+    "protocol": "research-citation-only/2",
+    "references": [
+      {
+        "pointers": [
+          "/data/state"
+        ],
+        "receipt_id": "edbb8484-1fe9-4cb4-978f-5fba093757b2",
+        "source_key": "s5ebfba8d9f9c"
+      },
+      {
+        "pointers": [
+          "/data/attestations/0/availability",
+          "/data/attestations/0/currency",
+          "/data/attestations/0/freshness",
+          "/data/attestations/0/price"
+        ],
+        "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+        "source_key": "s183eb405f8e2"
+      }
+    ],
+    "limitations": [
+      "Local imported and user-attested facts only",
+      "Research completion does not authorize quote approval",
+      "No live supplier availability or delivery commitment"
+    ],
+    "quote_ready": true,
+    "verification": "research-verifier/2",
+    "backend_summary": {
+      "lines_total": 1,
+      "unknown_fields": 0,
+      "verified_facts": 5,
+      "lines_inspected": 1
+    },
+    "invalid_citations": [],
+    "duplicates_removed": 0,
+    "needs_human_follow_up": false
+  },
+  "initial_result": {
+    "claims": [
+      {
+        "known": true,
+        "value": "resolved",
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "pointer": "/data/state",
+        "offer_id": null,
+        "data_class": "human_reviewed_selection",
+        "field_type": "selection_state",
+        "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+        "receipt_id": "edbb8484-1fe9-4cb4-978f-5fba093757b2",
+        "source_key": "s5ebfba8d9f9c",
+        "rfq_revision": 4,
+        "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "human_reviewed_selection",
+        "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+      },
+      {
+        "known": true,
+        "value": "available",
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "pointer": "/data/attestations/0/availability",
+        "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+        "data_class": "user_attested",
+        "field_type": "availability",
+        "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+        "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+        "source_key": "s183eb405f8e2",
+        "rfq_revision": 4,
+        "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "user_attested",
+        "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+      },
+      {
+        "known": true,
+        "value": "USD",
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "pointer": "/data/attestations/0/currency",
+        "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+        "data_class": "user_attested",
+        "field_type": "currency",
+        "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+        "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+        "source_key": "s183eb405f8e2",
+        "rfq_revision": 4,
+        "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "user_attested",
+        "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+      },
+      {
+        "known": true,
+        "value": "current_according_to_attested_validity",
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "pointer": "/data/attestations/0/freshness",
+        "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+        "data_class": "user_attested",
+        "field_type": "freshness",
+        "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+        "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+        "source_key": "s183eb405f8e2",
+        "rfq_revision": 4,
+        "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "derived_classification",
+        "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+      },
+      {
+        "known": true,
+        "value": "90",
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "pointer": "/data/attestations/0/price",
+        "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+        "data_class": "user_attested",
+        "field_type": "price",
+        "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+        "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+        "source_key": "s183eb405f8e2",
+        "rfq_revision": 4,
+        "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "user_attested",
+        "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+      }
+    ],
+    "partial": false,
+    "complete": true,
+    "coverage": {
+      "lines": [
+        {
+          "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+          "complete": true,
+          "unknowns": [],
+          "missing_tools": [],
+          "inspected_tools": [
+            "get_reviewed_product_selection",
+            "get_supplier_offers"
+          ],
+          "selection_state": "resolved",
+          "commercial_review": [],
+          "missing_citations": [],
+          "source_coverage_complete": true
+        }
+      ],
+      "complete": true,
+      "quote_ready": true,
+      "quote_issues": [],
+      "approved_rfq_read": true,
+      "source_coverage_complete": true
+    },
+    "protocol": "research-citation-only/2",
+    "references": [
+      {
+        "pointers": [
+          "/data/state"
+        ],
+        "receipt_id": "edbb8484-1fe9-4cb4-978f-5fba093757b2",
+        "source_key": "s5ebfba8d9f9c"
+      },
+      {
+        "pointers": [
+          "/data/attestations/0/availability",
+          "/data/attestations/0/currency",
+          "/data/attestations/0/freshness",
+          "/data/attestations/0/price"
+        ],
+        "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+        "source_key": "s183eb405f8e2"
+      }
+    ],
+    "limitations": [
+      "Local imported and user-attested facts only",
+      "Research completion does not authorize quote approval",
+      "No live supplier availability or delivery commitment"
+    ],
+    "quote_ready": true,
+    "verification": "research-verifier/2",
+    "backend_summary": {
+      "lines_total": 1,
+      "unknown_fields": 0,
+      "verified_facts": 5,
+      "lines_inspected": 1
+    },
+    "invalid_citations": [],
+    "duplicates_removed": 0,
+    "needs_human_follow_up": false
+  },
+  "audit": {
+    "invalid_claims": [],
+    "required_fact_coverage": true,
+    "required_facts": 5,
+    "supported_required_facts": 5,
+    "source_tool_coverage": true,
+    "tool_arguments_authorized": true,
+    "unknown_values_correct": true,
+    "facts_inspected": 5
+  },
+  "initial_audit": {
+    "invalid_claims": [],
+    "required_fact_coverage": true,
+    "required_facts": 5,
+    "supported_required_facts": 5,
+    "source_tool_coverage": true,
+    "tool_arguments_authorized": true,
+    "unknown_values_correct": true,
+    "facts_inspected": 5
+  },
+  "verified_complete": true,
+  "initial_verified_complete": true,
+  "quote_ready_expected": true,
+  "deterministic_quote_ready": true,
+  "quote_ready_matches_authored": true,
+  "latency_ms": 6326.0147999972105,
+  "initial_latency_ms": 6413.021,
+  "turns": 4,
+  "repair_attempts": 0,
+  "model_stats": [
+    {
+      "phase": "planning",
+      "wall_ms": 627.624,
+      "eval_count": 18,
+      "done_reason": "stop",
+      "input_bytes": 4924,
+      "eval_duration": 186688000,
+      "load_duration": 11579000,
+      "total_duration": 458097900,
+      "request_started": true,
+      "prompt_eval_count": 906,
+      "prompt_eval_duration": 15296000
+    },
+    {
+      "phase": "planning",
+      "wall_ms": 825.547,
+      "eval_count": 55,
+      "done_reason": "stop",
+      "input_bytes": 5551,
+      "eval_duration": 583969000,
+      "load_duration": 20649200,
+      "total_duration": 661619000,
+      "request_started": true,
+      "prompt_eval_count": 1125,
+      "prompt_eval_duration": 42181000
+    },
+    {
+      "phase": "planning",
+      "wall_ms": 810.706,
+      "eval_count": 53,
+      "done_reason": "stop",
+      "input_bytes": 6247,
+      "eval_duration": 563256000,
+      "load_duration": 18690400,
+      "total_duration": 647633100,
+      "request_started": true,
+      "prompt_eval_count": 1406,
+      "prompt_eval_duration": 50543000
+    },
+    {
+      "phase": "finalization",
+      "wall_ms": 2097.422,
+      "eval_count": 165,
+      "done_reason": "stop",
+      "input_bytes": 2921,
+      "eval_duration": 1801834000,
+      "load_duration": 13625600,
+      "total_duration": 1959553400,
+      "request_started": true,
+      "prompt_eval_count": 542,
+      "prompt_eval_duration": 52323000
+    }
+  ],
+  "actual_chat_requests": 4,
+  "tool_receipts": [
+    {
+      "id": "60e97ac8-504e-4a25-83f6-68defd503209",
+      "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+      "ordinal": 1,
+      "tool": "get_approved_rfq",
+      "schema_version": "procurement-tools/2",
+      "arguments": {},
+      "argument_hash": "4ae638b07b0c919eb53a23f11c4f66eb40b5e9a3b7642d3c14b5348ef80c38b2",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "lines": [
+          {
+            "unit": "EA",
+            "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+            "quantity": "8",
+            "description": "Fictional memory assembly dev-07 position 1"
+          }
+        ],
+        "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+        "revision": 4,
+        "source_run": "518885b6-7bc1-45f7-9782-6f3d85c3f28c"
+      },
+      "error": null,
+      "duration_ms": 33.022,
+      "started_at": "2026-11-22T19:09:48.446807+00:00",
+      "finished_at": "2026-11-22T19:09:48.446807+00:00"
+    },
+    {
+      "id": "edbb8484-1fe9-4cb4-978f-5fba093757b2",
+      "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+      "ordinal": 2,
+      "tool": "get_reviewed_product_selection",
+      "schema_version": "procurement-tools/2",
+      "arguments": {
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002"
+      },
+      "argument_hash": "79415b0d2bd4bcee2ffd794ee3357e83f16931fff4c2fe9bcf39af71228ea0c2",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "query": {
+          "mpn": "D-007-01/A",
+          "unit": "EA",
+          "specs": {},
+          "category": null,
+          "quantity": "8",
+          "source_run": "518885b6-7bc1-45f7-9782-6f3d85c3f28c",
+          "description": "Fictional memory assembly dev-07 position 1 ",
+          "manufacturer": "LumenForge"
+        },
+        "state": "resolved",
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "revision": 1,
+        "resolution": {
+          "id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+          "data": {
+            "query": {
+              "mpn": "D-007-01/A",
+              "unit": "EA",
+              "specs": {},
+              "category": null,
+              "quantity": "8",
+              "source_run": "518885b6-7bc1-45f7-9782-6f3d85c3f28c",
+              "description": "Fictional memory assembly dev-07 position 1 ",
+              "manufacturer": "LumenForge"
+            },
+            "run_id": "7d41521b-eb64-4750-b91c-c4fbc4c5ee7d",
+            "product": {
+              "mpn": "D-007-01/A",
+              "url": null,
+              "name": "Fictional memory assembly dev-07 position 1",
+              "price": null,
+              "specs": {
+                "capacity": 32,
+                "connector": "SYN-X"
+              },
+              "status": "active",
+              "category": "memory",
+              "currency": null,
+              "supplier": "Fictional catalog publisher 1",
+              "source_id": "CAT-dev-07-0",
+              "description": "Fictional memory assembly dev-07 position 1",
+              "availability": null,
+              "manufacturer": "LumenForge",
+              "supplier_sku": null
+            },
+            "sources": [
+              {
+                "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                "content_hash": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+              }
+            ],
+            "decision": "select",
+            "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+            "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+            "content_hash": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601",
+            "compatibility": {
+              "status": "exact",
+              "missing": [],
+              "conflicts": [],
+              "exact_identity": true
+            },
+            "review_digest": "56e4a361bc9d09e1f3de39a28c93489094ad7cbe97e5d8eb391749cb615e21f8",
+            "catalog_fingerprint": "51362babde4077694ebe24fafad8c381584c208aa0615c1f606a335729da336f",
+            "alternative_attested": false
+          },
+          "actor": "phase31-synthetic-dd534b2461bb455f82c9c97f2313ac58",
+          "reason": "Explicit operator resolution of independently authored source identity",
+          "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+          "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+          "revision": 1,
+          "created_at": "2026-11-22T19:09:28.015086+00:00",
+          "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb"
+        },
+        "review_digest": "56e4a361bc9d09e1f3de39a28c93489094ad7cbe97e5d8eb391749cb615e21f8",
+        "current_run_id": "7d41521b-eb64-4750-b91c-c4fbc4c5ee7d"
+      },
+      "error": null,
+      "duration_ms": 25.956,
+      "started_at": "2026-11-22T19:09:49.725504+00:00",
+      "finished_at": "2026-11-22T19:09:49.725504+00:00"
+    },
+    {
+      "id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+      "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+      "ordinal": 3,
+      "tool": "get_supplier_offers",
+      "schema_version": "procurement-tools/2",
+      "arguments": {
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002"
+      },
+      "argument_hash": "654d4c2dea1197cb71fb33976a4a8b7a162f26ebf2b9ea06fb744343b26f9085",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+        "imported": [
+          {
+            "url": null,
+            "price": null,
+            "currency": null,
+            "supplier": "Fictional catalog publisher 1",
+            "freshness": "unknown_freshness",
+            "source_id": "CAT-dev-07-0",
+            "data_class": "imported_catalog_metadata",
+            "availability": null,
+            "supplier_sku": null,
+            "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+            "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601",
+            "commercial_source_date": null
+          }
+        ],
+        "attestations": [
+          {
+            "id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+            "actor": "phase31-synthetic-dd534b2461bb455f82c9c97f2313ac58",
+            "price": "90",
+            "breaks": [],
+            "reason": "Frozen independent fictional commercial source; human-attested, not live supplier data",
+            "currency": "USD",
+            "supplier": "Fictional Delta Supply",
+            "freshness": "current_according_to_attested_validity",
+            "pack_size": 6,
+            "data_class": "user_attested",
+            "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+            "source_url": null,
+            "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+            "observed_on": "2026-11-21",
+            "price_basis": "each",
+            "stock_units": "1000",
+            "valid_until": "2026-12-31",
+            "availability": "available",
+            "effective_on": null,
+            "supplier_sku": "SKU-dev-07-0",
+            "minimum_units": "1",
+            "resolution_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+            "lead_time_days": 7,
+            "source_reference": "Fictional dated commercial note dev-07/0; no real supplier commitment",
+            "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601",
+            "availability_statement": null
+          }
+        ],
+        "selection_state": "resolved"
+      },
+      "error": null,
+      "duration_ms": 25.847,
+      "started_at": "2026-11-22T19:09:50.966623+00:00",
+      "finished_at": "2026-11-22T19:09:50.966623+00:00"
+    }
+  ],
+  "finalization_attempts": [
+    {
+      "id": "1663ef80-b1c9-4a85-bb4f-5cc47544c0fe",
+      "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+      "phase": "initial",
+      "reference_request": {
+        "claims": [
+          {
+            "pointers": [
+              "/data/state"
+            ],
+            "receipt_id": "edbb8484-1fe9-4cb4-978f-5fba093757b2",
+            "source_key": "s5ebfba8d9f9c"
+          },
+          {
+            "pointers": [
+              "/data/attestations/0/availability",
+              "/data/attestations/0/currency",
+              "/data/attestations/0/freshness",
+              "/data/attestations/0/price"
+            ],
+            "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+            "source_key": "s183eb405f8e2"
+          }
+        ]
+      },
+      "resolution": {
+        "claims": [
+          {
+            "known": true,
+            "value": "resolved",
+            "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+            "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+            "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+            "pointer": "/data/state",
+            "offer_id": null,
+            "data_class": "human_reviewed_selection",
+            "field_type": "selection_state",
+            "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+            "receipt_id": "edbb8484-1fe9-4cb4-978f-5fba093757b2",
+            "source_key": "s5ebfba8d9f9c",
+            "rfq_revision": 4,
+            "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+            "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+            "model_selected": true,
+            "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+            "observation_class": "human_reviewed_selection",
+            "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+          },
+          {
+            "known": true,
+            "value": "available",
+            "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+            "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+            "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+            "pointer": "/data/attestations/0/availability",
+            "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+            "data_class": "user_attested",
+            "field_type": "availability",
+            "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+            "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+            "source_key": "s183eb405f8e2",
+            "rfq_revision": 4,
+            "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+            "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+            "model_selected": true,
+            "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+            "observation_class": "user_attested",
+            "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+          },
+          {
+            "known": true,
+            "value": "USD",
+            "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+            "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+            "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+            "pointer": "/data/attestations/0/currency",
+            "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+            "data_class": "user_attested",
+            "field_type": "currency",
+            "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+            "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+            "source_key": "s183eb405f8e2",
+            "rfq_revision": 4,
+            "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+            "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+            "model_selected": true,
+            "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+            "observation_class": "user_attested",
+            "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+          },
+          {
+            "known": true,
+            "value": "current_according_to_attested_validity",
+            "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+            "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+            "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+            "pointer": "/data/attestations/0/freshness",
+            "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+            "data_class": "user_attested",
+            "field_type": "freshness",
+            "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+            "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+            "source_key": "s183eb405f8e2",
+            "rfq_revision": 4,
+            "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+            "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+            "model_selected": true,
+            "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+            "observation_class": "derived_classification",
+            "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+          },
+          {
+            "known": true,
+            "value": "90",
+            "rfq_id": "a2d18b00-8af6-4d1d-9374-833375fe462c",
+            "run_id": "7c304375-17a1-420b-8fed-249df6524b5f",
+            "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+            "pointer": "/data/attestations/0/price",
+            "offer_id": "d770b191-a2f6-4b5b-8b7b-33bfbe28fbb0",
+            "data_class": "user_attested",
+            "field_type": "price",
+            "product_id": "d7c0bc22a0b7422b322ae116ee6a31a3ad1ab56baf355be53d33aaeabc5de3f9",
+            "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+            "source_key": "s183eb405f8e2",
+            "rfq_revision": 4,
+            "selection_id": "b7ebf0f2-7e02-466e-a236-f3a744f45c18",
+            "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+            "model_selected": true,
+            "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+            "observation_class": "user_attested",
+            "source_fingerprint": "73d2aca52d12111784f2c7e6ce3b09aca565ef0797b7678d89120bb10428a601"
+          }
+        ],
+        "partial": false,
+        "complete": true,
+        "coverage": {
+          "lines": [
+            {
+              "line_id": "925cb6bf-713d-5b45-9a92-af98e20cb002",
+              "complete": true,
+              "unknowns": [],
+              "missing_tools": [],
+              "inspected_tools": [
+                "get_reviewed_product_selection",
+                "get_supplier_offers"
+              ],
+              "selection_state": "resolved",
+              "commercial_review": [],
+              "missing_citations": [],
+              "source_coverage_complete": true
+            }
+          ],
+          "complete": true,
+          "quote_ready": true,
+          "quote_issues": [],
+          "approved_rfq_read": true,
+          "source_coverage_complete": true
+        },
+        "protocol": "research-citation-only/2",
+        "references": [
+          {
+            "pointers": [
+              "/data/state"
+            ],
+            "receipt_id": "edbb8484-1fe9-4cb4-978f-5fba093757b2",
+            "source_key": "s5ebfba8d9f9c"
+          },
+          {
+            "pointers": [
+              "/data/attestations/0/availability",
+              "/data/attestations/0/currency",
+              "/data/attestations/0/freshness",
+              "/data/attestations/0/price"
+            ],
+            "receipt_id": "2380660e-7a0d-4401-93f7-b7d3e4bf2be0",
+            "source_key": "s183eb405f8e2"
+          }
+        ],
+        "limitations": [
+          "Local imported and user-attested facts only",
+          "Research completion does not authorize quote approval",
+          "No live supplier availability or delivery commitment"
+        ],
+        "quote_ready": true,
+        "verification": "research-verifier/2",
+        "backend_summary": {
+          "lines_total": 1,
+          "unknown_fields": 0,
+          "verified_facts": 5,
+          "lines_inspected": 1
+        },
+        "invalid_citations": [],
+        "duplicates_removed": 0,
+        "needs_human_follow_up": false
+      },
+      "created_at": "2026-11-22T19:09:53.501929+00:00"
+    }
+  ],
+  "legacy_candidate": null,
+  "resources": {
+    "before": {
+      "gpu_device_used_mib": 7458
+    },
+    "after": {
+      "gpu_device_used_mib": 7458
+    },
+    "model_loaded_before": true,
+    "scope": "Device-wide before/after samples, not an isolated peak or model-only memory measurement"
+  },
+  "actual_local_model": true,
+  "fault_injection": false,
+  "deterministic_baseline": {
+    "source_report_complete": true,
+    "quote_ready": true,
+    "expected_quote_ready": true
+  }
+}

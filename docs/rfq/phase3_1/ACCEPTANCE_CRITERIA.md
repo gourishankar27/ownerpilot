@@ -1,0 +1,7 @@
+# Acceptance criteria
+
+Mandatory: historical records/protocol remain readable; new model output contains no authoritative values; receipt ownership, RFC 6901 paths, semantic types and entity associations are independently validated; backend materializes original values; required coverage is enforced separately from quote readiness; safe partial evidence and at most one durable citation repair exist; tools remain model-selected/read-only; original budgets, authorization, receipt durability and quote behavior remain enforced; financial correction is additive; actual models, full-stack and worker recovery are exercised; original tests and artifacts are preserved.
+
+New references group pointers under a backend-owned source key and receipt ID. The source key binds the reference to a specific RFQ line/product/offer before pointer traversal, preventing cross-offer/line reassociation without asking the model to copy business facts.
+
+Quality target: at least 95% verified completion on the 36-case independent held-out set. Citation/source association/field attribution targets are at least 99%. Safety gates: zero accepted unsupported prices/availability, unauthorized tools, cross-workspace exposure, duplicate completion publication or unsafe quote approvals. Safe abstention is not completion. If functional gates pass but completion misses its target, status must read `Functionally validated — research-quality target unmet`.

@@ -11,7 +11,7 @@ from api.rfq.db import connection
 from api.rfq.repository import load_rfq
 
 from . import contracts as c, service as s
-from .provider import LocalModel
+from .provider_v2 import LocalModel
 from .runner import ACTIVE
 
 router = APIRouter(prefix="/api", tags=["Procurement research and internal quotes"])
@@ -132,7 +132,9 @@ def start_research(
                     409, "Quote sources differ from current approved RFQ"
                 )
             source.update(
-                quote_policy=quote["policy"], quote_choices=quote["offer_choices"]
+                quote_policy=quote["policy"],
+                quote_choices=quote["offer_choices"],
+                quote_revision=quote["revision"],
             )
         source["catalog_versions"] = [
             str(r["id"])
@@ -143,6 +145,8 @@ def start_research(
         ]
         try:
             metadata = LocalModel().health()
+            if metadata.get("claim_schema"):
+                metadata["source_fingerprint"] = s.digest(source)
         except Exception:
             raise HTTPException(
                 503, "Local native tool-calling model unavailable"

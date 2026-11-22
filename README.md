@@ -32,6 +32,23 @@ OwnerPilot focuses on closing that gap with:
 - explainable recommendations with evidence and confidence traces
 
 ## What is implemented now
+### Citation-only procurement research (Phase 3.1)
+
+Local research selects source references while the backend materializes exact
+commercial values with line/product/offer provenance, explicit unknowns, independent
+coverage, safe partial evidence and one durable citation correction. Historical
+protocols and financial calculations remain preserved.
+
+Validation: 386 backend passes plus the original strict oracle xfail; fifteen browser
+scenarios passed. On the new frozen 60-case benchmark, verified completion was
+36/60, including 20/36 held-out (55.6%), with zero accepted unsupported facts.
+The separate original ten-case comparison completed 10/10. **Functionally validated —
+research-quality target unmet**: planning still omits required source reads.
+
+- [Phase 3.1 final report](docs/rfq/phase3_1/FINAL_IMPLEMENTATION_REPORT.md)
+- [Independent evaluation and failures](docs/rfq/phase3_1/EVALUATION_RESULTS.md)
+- [Validation](docs/rfq/phase3_1/PHASE3_1_VALIDATION.md) · [Windows setup](docs/rfq/phase3_1/WINDOWS_SETUP.md) · [Demo](docs/rfq/phase3_1/DEMO_RUNBOOK.md)
+
 ### Procurement research and internal quotes (Phase 3)
 
 Approved RFQs now support explicit reviewed product resolutions, versioned supplier
