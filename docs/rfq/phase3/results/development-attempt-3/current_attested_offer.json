@@ -1,0 +1,273 @@
+{
+  "scenario": "current_attested_offer",
+  "split": "development",
+  "run_id": "7ec40b02-08b2-49f6-8ceb-fd750284b640",
+  "model": {
+    "model": "qwen3:4b",
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "context": 8192,
+    "max_calls": 8,
+    "max_turns": 4,
+    "max_repeats": 2,
+    "max_seconds": 240,
+    "temperature": 0,
+    "tool_schema": "procurement-tools/1",
+    "capabilities": [
+      "completion",
+      "tools",
+      "thinking"
+    ],
+    "prompt_version": "procurement-native/3",
+    "max_response_bytes": 65536,
+    "provider_timeout_seconds": 60
+  },
+  "deterministic": {
+    "completion": true,
+    "latency_ms": 0.06500002928078175,
+    "unsupported_claims": 0,
+    "evidence_valid": true,
+    "facts": {
+      "line_id": "9b6c9143-f4a2-5bd8-9760-2e2b4aec9648",
+      "selection_state": "resolved",
+      "imported": [
+        {
+          "data_class": "imported_catalog_metadata",
+          "freshness": "unknown_freshness",
+          "commercial_source_date": null,
+          "catalog_version": "817eee90-0e86-4edf-aeb7-c60957fbe082",
+          "source_fingerprint": "60d1ac4e338ab35e13dd1a5aadca972b64ae6cbee3dade259e36cf346168db9f",
+          "url": null,
+          "price": null,
+          "currency": null,
+          "supplier": "Fictional Supply",
+          "source_id": "SYN-P3-001",
+          "availability": null,
+          "supplier_sku": null
+        }
+      ],
+      "attestations": [
+        {
+          "id": "94dbb1fd-53a9-44ec-8e2e-9ce6fe1f23b4",
+          "workspace_id": "5da21923-dc8d-4313-9402-899c9b49d35f",
+          "resolution_id": "17be8ba7-e02c-4974-9087-6b8bba37c6ec",
+          "data": {
+            "commercial": {
+              "price": "10",
+              "breaks": [],
+              "currency": "USD",
+              "supplier": "Fictional Supply",
+              "pack_size": 1,
+              "observed_on": "2026-11-20",
+              "price_basis": "each",
+              "valid_until": "2026-12-20",
+              "availability": "available",
+              "supplier_sku": null,
+              "minimum_units": "1",
+              "lead_time_days": null,
+              "source_reference": "Synthetic evidence SYN-001; not a real supplier quote"
+            },
+            "product_id": "d1bdc663f5f1f2cd9af7befdcc7492a60bebedee21bdd6511889c7031a664c1f",
+            "version_id": "817eee90-0e86-4edf-aeb7-c60957fbe082",
+            "supersedes_id": null,
+            "source_offer_id": null,
+            "source_fingerprint": "60d1ac4e338ab35e13dd1a5aadca972b64ae6cbee3dade259e36cf346168db9f"
+          },
+          "price": 10.0,
+          "actor": "synthetic-evaluation-ec0588b7-238a-40b7-a19e-a8362f97656b",
+          "reason": "Frozen fictional benchmark commercial evidence",
+          "created_at": "2026-11-22T03:35:47.354509+00:00",
+          "data_class": "user_attested",
+          "freshness": "current_according_to_attested_validity"
+        }
+      ]
+    }
+  },
+  "native_without_verifier": {
+    "schema_valid_completion": false,
+    "candidate": null,
+    "valid_claims": 0,
+    "unsupported_claims": 0,
+    "paired_trace": true
+  },
+  "verified": {
+    "state": "needs_attention",
+    "error": "ValueError: Tool request rejected; human attention required",
+    "result": null,
+    "latency_ms": 12491.859999950975,
+    "accepted_claims": 0,
+    "unsupported_accepted": 0
+  },
+  "model_calls": 2,
+  "model_seconds": 11.99190839997027,
+  "tools": [
+    {
+      "id": "26febc91-1cdc-4196-aa1d-8e20144f101c",
+      "run_id": "7ec40b02-08b2-49f6-8ceb-fd750284b640",
+      "ordinal": 1,
+      "tool": "get_approved_rfq",
+      "schema_version": "procurement-tools/1",
+      "arguments": {},
+      "argument_hash": "4ae638b07b0c919eb53a23f11c4f66eb40b5e9a3b7642d3c14b5348ef80c38b2",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "lines": [
+          {
+            "unit": "EA",
+            "line_id": "9b6c9143-f4a2-5bd8-9760-2e2b4aec9648",
+            "quantity": "2",
+            "description": "Fictional device"
+          }
+        ],
+        "rfq_id": "390caf2f-f675-4d9a-9fd8-8cc9818b42e0",
+        "revision": 4,
+        "source_run": "88868265-08d2-4c2d-b14e-71f8f4f7846c"
+      },
+      "error": null,
+      "duration_ms": 6.453,
+      "started_at": "2026-11-22T03:39:40.044087+00:00",
+      "finished_at": "2026-11-22T03:39:40.044087+00:00"
+    },
+    {
+      "id": "fb68613e-71ce-4adb-8f5e-81ac76e63c32",
+      "run_id": "7ec40b02-08b2-49f6-8ceb-fd750284b640",
+      "ordinal": 2,
+      "tool": "get_approved_rfq",
+      "schema_version": "procurement-tools/1",
+      "arguments": {},
+      "argument_hash": "4ae638b07b0c919eb53a23f11c4f66eb40b5e9a3b7642d3c14b5348ef80c38b2",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "lines": [
+          {
+            "unit": "EA",
+            "line_id": "9b6c9143-f4a2-5bd8-9760-2e2b4aec9648",
+            "quantity": "2",
+            "description": "Fictional device"
+          }
+        ],
+        "rfq_id": "390caf2f-f675-4d9a-9fd8-8cc9818b42e0",
+        "revision": 4,
+        "source_run": "88868265-08d2-4c2d-b14e-71f8f4f7846c"
+      },
+      "error": null,
+      "duration_ms": 6.495,
+      "started_at": "2026-11-22T03:39:40.066478+00:00",
+      "finished_at": "2026-11-22T03:39:40.066478+00:00"
+    },
+    {
+      "id": "15a27280-cf25-434c-9302-16920047a945",
+      "run_id": "7ec40b02-08b2-49f6-8ceb-fd750284b640",
+      "ordinal": 3,
+      "tool": "get_reviewed_product_selection",
+      "schema_version": "procurement-tools/1",
+      "arguments": {
+        "line_id": "9b6c9143-f4a2-5bd8-9760-2e2b4aec9648"
+      },
+      "argument_hash": "12a46a2fd8a294588b5526d971c700c24fe479f34d32fcc801647d404a1da8e0",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "query": {
+          "mpn": "000-P3.1",
+          "unit": "EA",
+          "specs": {},
+          "category": null,
+          "quantity": "2",
+          "source_run": "88868265-08d2-4c2d-b14e-71f8f4f7846c",
+          "description": "Fictional device ",
+          "manufacturer": "Northvale"
+        },
+        "state": "resolved",
+        "line_id": "9b6c9143-f4a2-5bd8-9760-2e2b4aec9648",
+        "revision": 1,
+        "resolution": {
+          "id": "17be8ba7-e02c-4974-9087-6b8bba37c6ec",
+          "data": {
+            "query": {
+              "mpn": "000-P3.1",
+              "unit": "EA",
+              "specs": {},
+              "category": null,
+              "quantity": "2",
+              "source_run": "88868265-08d2-4c2d-b14e-71f8f4f7846c",
+              "description": "Fictional device ",
+              "manufacturer": "Northvale"
+            },
+            "run_id": "72900944-eeab-4aeb-839f-2e14cf07452b",
+            "product": {
+              "mpn": "000-P3.1",
+              "url": null,
+              "name": "Fictional device",
+              "price": null,
+              "specs": {
+                "capacity": 32
+              },
+              "status": "active",
+              "category": "memory",
+              "currency": null,
+              "supplier": "Fictional Supply",
+              "source_id": "SYN-P3-001",
+              "description": "",
+              "availability": null,
+              "manufacturer": "Northvale",
+              "supplier_sku": null
+            },
+            "sources": [
+              {
+                "version_id": "817eee90-0e86-4edf-aeb7-c60957fbe082",
+                "content_hash": "60d1ac4e338ab35e13dd1a5aadca972b64ae6cbee3dade259e36cf346168db9f"
+              }
+            ],
+            "decision": "select",
+            "product_id": "d1bdc663f5f1f2cd9af7befdcc7492a60bebedee21bdd6511889c7031a664c1f",
+            "version_id": "817eee90-0e86-4edf-aeb7-c60957fbe082",
+            "content_hash": "60d1ac4e338ab35e13dd1a5aadca972b64ae6cbee3dade259e36cf346168db9f",
+            "compatibility": {
+              "status": "exact",
+              "missing": [],
+              "conflicts": [],
+              "exact_identity": true
+            },
+            "review_digest": "377758c183571e3bbd1a674612927f8458788c1d4be75e8d78fc15f53bcf6224",
+            "catalog_fingerprint": "f62f29075d02eb767e2a5577af8359de077a2b6cb00f6eb6aac8994cc15fae2a",
+            "alternative_attested": false
+          },
+          "actor": "synthetic-evaluation-ec0588b7-238a-40b7-a19e-a8362f97656b",
+          "reason": "Explicit synthetic authoritative resolution",
+          "rfq_id": "390caf2f-f675-4d9a-9fd8-8cc9818b42e0",
+          "line_id": "9b6c9143-f4a2-5bd8-9760-2e2b4aec9648",
+          "revision": 1,
+          "created_at": "2026-11-22T03:35:47.332620+00:00",
+          "workspace_id": "5da21923-dc8d-4313-9402-899c9b49d35f"
+        },
+        "review_digest": "377758c183571e3bbd1a674612927f8458788c1d4be75e8d78fc15f53bcf6224",
+        "current_run_id": "72900944-eeab-4aeb-839f-2e14cf07452b"
+      },
+      "error": null,
+      "duration_ms": 6.806,
+      "started_at": "2026-11-22T03:39:47.676795+00:00",
+      "finished_at": "2026-11-22T03:39:47.676795+00:00"
+    },
+    {
+      "id": "7916f096-878b-4b0b-817e-ed1d69017132",
+      "run_id": "7ec40b02-08b2-49f6-8ceb-fd750284b640",
+      "ordinal": 4,
+      "tool": "get_approved_rfq",
+      "schema_version": "procurement-tools/1",
+      "arguments": {
+        "line_id": "9b6c9143-f4a2-5bd8-9760-2e2b4aec9648"
+      },
+      "argument_hash": "f2522f24e78b4441fbe8d986b6bf5d3dd56c29c46c7faf10b74b28fd0c4f78a3",
+      "status": "rejected",
+      "policy": "policy_or_data_error",
+      "result": null,
+      "error": "ValidationError: 1 validation error for Empty\nline_id\n  Extra inputs are not permitted [type=extra_forbidden, input_value='9b6c9143-f4a2-5bd8-9760-2e2b4aec9648', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden",
+      "duration_ms": 6.184,
+      "started_at": "2026-11-22T03:39:47.698506+00:00",
+      "finished_at": "2026-11-22T03:39:47.698506+00:00"
+    }
+  ],
+  "native_trace": true
+}

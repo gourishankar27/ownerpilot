@@ -1,0 +1,10 @@
+{
+  "file": "data/evaluation/procurement-v1/quote-batches.json",
+  "scenario": "batch-09",
+  "frozen_expected_total": "929",
+  "independent_manual_audit": "The authored line amounts sum to JPY 845; shipping is zero. Tax 10% is JPY 84.5, rounded ROUND_HALF_UP to JPY 85. Correct total is JPY 930.",
+  "cause": "Batch generator used integer floor for tax instead of the declared ROUND_HALF_UP rule.",
+  "frozen_label_changed": false,
+  "production_calculation_changed_to_match_bad_label": false,
+  "test_treatment": "Strict expected failure retained in the frozen-corpus comparison; separate independent manual audit asserts 845 + 85 = 930. Report as one known fixture defect, not a passing frozen scenario."
+}

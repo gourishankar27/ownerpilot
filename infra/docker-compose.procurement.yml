@@ -1,0 +1,16 @@
+# Optional Phase 3 overlay on docker-compose.yml + docker-compose.rfq.yml.
+# Registers the existing RFQ/catalog tasks and procurement research in one worker app.
+services:
+  api:
+    environment: &procurement-models
+      CATALOG_EMBED_URL: ${CATALOG_EMBED_URL:-http://host.docker.internal:11434}
+      CATALOG_EMBED_MODEL: ${CATALOG_EMBED_MODEL:-nomic-embed-text:v1.5}
+      PROCUREMENT_AGENT_URL: ${PROCUREMENT_AGENT_URL:-http://host.docker.internal:11434}
+      PROCUREMENT_AGENT_MODEL: ${PROCUREMENT_AGENT_MODEL:-qwen3:8b}
+    extra_hosts: ["host.docker.internal:host-gateway"]
+  rfq-worker:
+    command: ["celery", "-A", "api.procurement_agent.worker:celery", "worker", "--loglevel=INFO", "--concurrency=1", "--max-tasks-per-child=20", "--max-memory-per-child=1500000"]
+    environment: *procurement-models
+  rfq-dispatcher:
+    command: ["celery", "-A", "api.procurement_agent.worker:celery", "beat", "--loglevel=INFO", "--schedule=/tmp/procurement-beat"]
+    environment: *procurement-models

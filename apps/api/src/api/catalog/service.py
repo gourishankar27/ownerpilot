@@ -1,6 +1,7 @@
 import hashlib
 import json
 import time
+import httpx
 
 from fastapi import HTTPException
 from psycopg.types.json import Jsonb
@@ -185,8 +186,16 @@ def build(version_id):
 
 def retrieve(workspace, versions, query, method="reranked", provider=None):
     started = time.perf_counter()
-    provider = provider or Embeddings()
-    health = provider.health()
+    vector_required = method not in {"exact", "bm25", "sql", "exact_bm25"}
+    health = {"invoked": False, "reason": "retrieval method has no vector channel"}
+    if vector_required:
+        try:
+            provider = provider or Embeddings()
+            health = provider.health()
+        except (ValueError, RuntimeError, httpx.HTTPError) as exc:
+            raise RuntimeError(
+                "Requested vector channel unavailable; no hybrid fallback executed"
+            ) from exc
     if not versions or len(versions) > 10:
         raise HTTPException(422, "Select 1 to 10 published catalogs")
     with connection() as conn:
@@ -195,8 +204,10 @@ def retrieve(workspace, versions, query, method="reranked", provider=None):
         ]
         if any(
             v["state"] != "published"
-            or v["digest"] != health["digest"]
-            or v["model"] != health["model"]
+            or (
+                vector_required
+                and (v["digest"] != health["digest"] or v["model"] != health["model"])
+            )
             for v in selected
         ):
             raise HTTPException(
@@ -227,7 +238,8 @@ def retrieve(workspace, versions, query, method="reranked", provider=None):
         exact = [
             (k, 1)
             for k, p in index.items()
-            if query.get("mpn")
+            if method in {"exact", "exact_bm25", "hybrid", "reranked"}
+            and query.get("mpn")
             and comparison(query["mpn"]) == comparison(p["data"]["mpn"])
             and query.get("manufacturer")
             and manufacturer(query["manufacturer"])
@@ -243,9 +255,16 @@ def retrieve(workspace, versions, query, method="reranked", provider=None):
             + json.dumps(query.get("specs", {}), sort_keys=True)
         )
         channel_started = time.perf_counter()
-        lexical = BM25(
-            [canonical_text(p["data"]) + " " + p["data"]["mpn"] for p in index.values()]
-        ).scores(text)
+        lexical = (
+            BM25(
+                [
+                    canonical_text(p["data"]) + " " + p["data"]["mpn"]
+                    for p in index.values()
+                ]
+            ).scores(text)
+            if method in {"bm25", "exact_bm25", "bm25_vector", "hybrid", "reranked"}
+            else []
+        )
         bm25 = sorted(
             [(k, s) for k, s in zip(index, lexical) if s > 0],
             key=lambda x: (-x[1], x[0]),
@@ -254,7 +273,14 @@ def retrieve(workspace, versions, query, method="reranked", provider=None):
         channel_started = time.perf_counter()
         vector = []
         if method not in {"exact", "bm25", "sql", "exact_bm25"}:
-            embedding = provider.encode([text], query=True, digest=health["digest"])[0]
+            try:
+                embedding = provider.encode(
+                    [text], query=True, digest=health["digest"]
+                )[0]
+            except (ValueError, RuntimeError, httpx.HTTPError) as exc:
+                raise RuntimeError(
+                    "Requested vector channel failed; no hybrid fallback executed"
+                ) from exc
             vector_rows = conn.execute(
                 "select id,1-(embedding <=> %s::vector) as similarity from procurement.catalog_products where workspace_id=%s and version_id=any(%s::uuid[]) order by embedding <=> %s::vector,id limit 100",
                 (json.dumps(embedding), workspace, versions, json.dumps(embedding)),
@@ -328,6 +354,8 @@ def retrieve(workspace, versions, query, method="reranked", provider=None):
         return {
             "policy": POLICY,
             "method": method,
+            "executed_channels": list(channels),
+            "execution_status": "complete",
             "model": health,
             "versions": [str(v) for v in versions],
             "query": query,

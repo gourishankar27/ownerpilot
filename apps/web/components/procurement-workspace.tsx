@@ -16,6 +16,7 @@ import {
 import { rfqApi } from "@/lib/rfq-api";
 import { matchesQualityFilter } from "@/lib/rfq-quality";
 import { CatalogIntelligence } from "@/components/catalog-intelligence";
+import { ResearchQuotes } from "@/components/research-quotes";
 
 const panel =
   "rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900";
@@ -410,6 +411,7 @@ export function ProcurementWorkspace() {
         workspace={workspace}
         detail={detail}
       />
+      <ResearchQuotes key={`research:${workspace}:${detail?.id ?? "none"}`} workspace={workspace} detail={detail} />
       {detail && (
         <section className={`${panel} space-y-5`}>
           <div>

@@ -32,6 +32,7 @@ export function CatalogIntelligence({
     [],
   );
   const [line, setLine] = useState("");
+  const [retrievalMethod, setRetrievalMethod] = useState("reranked");
   const [busy, setBusy] = useState(false);
   const [records, setRecords] = useState<unknown[] | null>(null);
   const [recordOffset, setRecordOffset] = useState(0);
@@ -328,14 +329,38 @@ export function CatalogIntelligence({
         </>
       )}
       <h3 className="font-semibold">Approved RFQ product matching</h3>
+      <label className="block min-w-0 text-sm">
+        Catalog retrieval method
+        <select
+          aria-label="Catalog retrieval method"
+          className="w-full min-w-0 max-w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 dark:border-slate-600"
+          value={retrievalMethod}
+          onChange={(event) => setRetrievalMethod(event.target.value)}
+        >
+          <option value="reranked">
+            Full hybrid + compatibility (requires embeddings)
+          </option>
+          <option value="exact">
+            Exact manufacturer / MPN (works without embeddings)
+          </option>
+          <option value="bm25">Keyword BM25 (works without embeddings)</option>
+          <option value="sql">
+            SQL text search (works without embeddings)
+          </option>
+          <option value="exact_bm25">
+            Exact + keyword BM25 (works without embeddings)
+          </option>
+        </select>
+      </label>
       {detail?.status !== "approved" ? (
         <p>Approve and review an RFQ before searching for catalog products.</p>
       ) : (
         <>
-          <label>
+          <label className="block min-w-0">
             Approved line{" "}
             <select
               aria-label="Approved catalog match line"
+              className="w-full min-w-0 max-w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 text-sm dark:border-slate-600"
               value={line}
               onChange={(e) => {
                 const id = e.target.value;
@@ -380,6 +405,7 @@ export function CatalogIntelligence({
                     body: JSON.stringify({
                       revision: detail.revision,
                       versions: [version],
+                      method: retrievalMethod,
                     }),
                   },
                 );
