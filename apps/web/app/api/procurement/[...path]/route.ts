@@ -26,7 +26,9 @@ async function proxy(
     );
   const { path } = await context.params;
   if (
-    !/^(rfqs|rfq-jobs|rfq-health)$/.test(path[0] ?? "") ||
+    !/^(rfqs|rfq-jobs|rfq-health|catalogs|catalog-health|catalog-import-jobs|catalog-match-runs)$/.test(
+      path[0] ?? "",
+    ) ||
     path.some((p) => !/^[a-zA-Z0-9-]+$/.test(p))
   ) {
     return NextResponse.json(

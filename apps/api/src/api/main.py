@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from api.config import get_settings
 from api.rfq.routes import router as rfq_router
+from api.catalog.routes import router as catalog_router
 from api.rfq.middleware import RfqBodyLimit
 from api.models import (
     ActionDraft,
@@ -75,6 +76,7 @@ settings = get_settings()
 app = FastAPI(title=settings.app_name, version="1.0.0")
 
 app.include_router(rfq_router)
+app.include_router(catalog_router)
 app.add_middleware(RfqBodyLimit)
 
 
