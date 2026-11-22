@@ -12,7 +12,7 @@ from pydantic import ValidationError
 from api.rfq.auth import Identity
 from api.rfq.db import connection
 
-from .provider import LocalModel
+from .legacy_provider import LocalModel
 from .service import digest, audit, snapshot, stable_source
 from .tools import VERSION, definitions, execute, verify, fact_inventory
 
@@ -47,7 +47,7 @@ def receipts(run_id):
         ).fetchall()
 
 
-def run_agent(run_id, provider=None):
+def run_legacy(run_id, provider=None):
     # One local model execution globally plus one lock per run; both released by PostgreSQL on death.
     with connection() as lock:
         acquired = lock.execute(
@@ -383,3 +383,22 @@ def run_agent(run_id, provider=None):
             lock.execute(
                 "select pg_advisory_unlock(hashtextextended('procurement-agent-local',0))"
             )
+
+
+def run_agent(run_id, provider=None):
+    """Dispatch by the run's pinned protocol; never silently upgrade old work."""
+    with connection() as conn:
+        row = conn.execute(
+            "select metadata,state from procurement.procurement_agent_runs where id=%s",
+            (run_id,),
+        ).fetchone()
+    if not row or row["state"] not in ACTIVE:
+        return "terminal"
+    if row["metadata"].get("claim_schema") == "research-citation-only/2":
+        from .runner_v2 import run_research
+
+        return run_research(run_id, provider)
+    if row["metadata"].get("claim_schema") is not None:
+        state(run_id, "needs_attention", "unsupported_pinned_protocol")
+        return "needs_attention"
+    return run_legacy(run_id, provider)

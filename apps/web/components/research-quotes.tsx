@@ -667,13 +667,33 @@ export function ResearchQuotes({
         {run && (
           <div className="space-y-3 rounded-xl border p-4">
             <p role="status">
-              Research {readable(run.state)} · {run.turns ?? 0}/4 planning turns
+              Research {readable(run.state)} · {run.turns ?? 0}/4{" "}
+              {run.metadata.claim_schema
+                ? "initial model turns"
+                : "planning turns"}
               · {receipts.length}/8 tool calls
             </p>
             <p className="break-all text-xs">
               {run.metadata.model} · digest {run.metadata.digest} ·{" "}
               {run.metadata.prompt_version}
             </p>
+            <p className="text-sm">
+              {run.metadata.claim_schema === "research-citation-only/2"
+                ? "Citation-only research · values resolved by the backend"
+                : "Legacy research · original exact-value verification"}
+            </p>
+            {run.metadata.claim_schema && (
+              <p className="text-sm">
+                Citation corrections {run.repair_attempts ?? 0}/1 · delivery
+                attempt {run.attempts}
+                {run.diagnostics?.stage
+                  ? ` · ${run.state === "complete" ? "published" : readable(run.diagnostics.stage)}`
+                  : ""}
+                {run.diagnostics?.recovered
+                  ? " · resumed from durable checkpoints"
+                  : ""}
+              </p>
+            )}
             {run.error && (
               <p className="text-sm text-amber-700 dark:text-amber-300">
                 {run.error}
@@ -719,12 +739,116 @@ export function ResearchQuotes({
             {run.result && (
               <>
                 <h4 className="font-semibold">Verified observations</h4>
+                {run.result.protocol && (
+                  <div
+                    className="space-y-2 text-sm"
+                    aria-label="Research coverage"
+                  >
+                    <p className="font-semibold">
+                      Research{" "}
+                      {run.state === "complete" && run.result.complete
+                        ? "complete and published"
+                        : "incomplete or awaiting publication"}
+                      {run.result.partial ? " · partial evidence saved" : ""}
+                    </p>
+                    <p>
+                      Quote inputs{" "}
+                      {run.result.quote_ready
+                        ? "ready for human review"
+                        : "require human follow-up"}
+                      . Research does not approve a quote.
+                    </p>
+                    {run.result.repaired && (
+                      <p>Citations corrected using existing receipts.</p>
+                    )}
+                    {!!run.result.invalid_citations?.length && (
+                      <p role="alert">
+                        Rejected citations:{" "}
+                        {run.result.invalid_citations
+                          .map((item) => readable(item.code))
+                          .join(", ")}
+                      </p>
+                    )}
+                    {run.result.coverage?.lines.map((line) => (
+                      <details
+                        key={line.line_id}
+                        className="rounded-lg border p-3"
+                      >
+                        <summary>
+                          Line {line.line_id.slice(0, 8)} ·{" "}
+                          {line.complete
+                            ? "coverage complete"
+                            : "coverage incomplete"}{" "}
+                          · {readable(line.selection_state)}
+                        </summary>
+                        {!!line.missing_tools.length && (
+                          <p>
+                            Sources still needed:{" "}
+                            {line.missing_tools.join(", ")}
+                          </p>
+                        )}
+                        {!!line.missing_citations.length && (
+                          <p>
+                            {line.missing_citations.length} required citations
+                            missing
+                          </p>
+                        )}
+                        {line.unknowns.map((item, index) => (
+                          <p key={index}>
+                            Unknown {readable(item.field)}
+                            {item.offer_id
+                              ? ` · offer ${item.offer_id.slice(0, 8)}`
+                              : ""}{" "}
+                            · {readable(item.state)}
+                          </p>
+                        ))}
+                        {line.commercial_review.map((item) => (
+                          <p key={item.offer_id}>
+                            Offer {item.offer_id.slice(0, 8)} ·{" "}
+                            {readable(item.state)}
+                          </p>
+                        ))}
+                      </details>
+                    ))}
+                    {!!run.result.coverage?.quote_issues.length && (
+                      <p>
+                        Quote follow-up:{" "}
+                        {run.result.coverage.quote_issues
+                          .map(readable)
+                          .join(", ")}
+                      </p>
+                    )}
+                  </div>
+                )}
                 {run.result.claims.map((claim, index) => (
-                  <p className="break-words text-sm" key={index}>
+                  <div
+                    className="break-words rounded-lg border p-3 text-sm"
+                    key={index}
+                  >
+                    {claim.field_type && (
+                      <span className="font-medium">
+                        {readable(claim.field_type)} ·{" "}
+                      </span>
+                    )}
                     {claim.pointer}:{" "}
                     <strong>{String(claim.value ?? "Unknown")}</strong> ·{" "}
                     <span className="text-xs">receipt {claim.receipt_id}</span>
-                  </p>
+                    {claim.field_type && (
+                      <details className="mt-2">
+                        <summary>Source and entity associations</summary>
+                        <Evidence
+                          value={{
+                            line_id: claim.line_id,
+                            product_id: claim.product_id,
+                            offer_id: claim.offer_id,
+                            catalog_version: claim.catalog_version,
+                            source_fingerprint: claim.source_fingerprint,
+                            source_class: claim.data_class,
+                          }}
+                        />
+                      </details>
+                    )}
+                  </div>
                 ))}
                 {run.result.limitations.map((text) => (
                   <p className="text-xs" key={text}>

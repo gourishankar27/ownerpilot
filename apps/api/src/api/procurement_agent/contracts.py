@@ -1,9 +1,9 @@
 """Closed request contracts. Workspace and actor always come from authentication."""
 
-from typing import Literal
+from typing import Literal, Annotated
 from uuid import UUID
 
-from pydantic import Field
+from pydantic import Field, StringConstraints
 
 from .finance import Closed, Commercial, QuotePolicy
 
@@ -74,3 +74,20 @@ class Claim(Closed):
 
 class ResearchSummary(Closed):
     claims: list[Claim] = Field(max_length=20)
+
+
+class CitationGroup(Closed):
+    """Only source references. Business values and association overrides are forbidden."""
+
+    receipt_id: UUID
+    source_key: str = Field(pattern=r"^s[0-9a-f]{12}$")
+    pointers: list[
+        Annotated[
+            str,
+            StringConstraints(min_length=1, max_length=300, pattern=r"^/data(?:/|$)"),
+        ]
+    ] = Field(min_length=1, max_length=32)
+
+
+class CitationSummary(Closed):
+    claims: list[CitationGroup] = Field(min_length=1, max_length=32)

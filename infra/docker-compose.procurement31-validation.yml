@@ -1,0 +1,26 @@
+name: ownerpilot-procurement31-validation
+services:
+  redis:
+    image: redis:7.4-alpine
+    ports: ["127.0.0.1:6384:6379"]
+  worker:
+    build:
+      context: ..
+      dockerfile: apps/api/Dockerfile
+    command: ["celery", "-A", "api.procurement_agent.worker:celery", "worker", "-B", "--concurrency=1", "--loglevel=INFO", "--schedule=/tmp/procurement-beat"]
+    environment:
+      DATABASE_URL: postgresql://postgres:rfq-validation-local@host.docker.internal:55433/ownerpilot_rfq_phase3_demo_phase31_validation
+      RFQ_REDIS_URL: redis://redis:6379/0
+      RFQ_OLLAMA_URL: http://host.docker.internal:11434
+      RFQ_OLLAMA_MODEL: qwen3:4b
+      RFQ_MODEL_CONTEXT: 8192
+      RFQ_STORAGE_ROOT: /rfq-documents
+      CATALOG_EMBED_URL: http://host.docker.internal:11434
+      CATALOG_EMBED_MODEL: nomic-embed-text:v1.5
+      PROCUREMENT_AGENT_URL: http://host.docker.internal:11434
+      PROCUREMENT_AGENT_MODEL: qwen3:8b
+    volumes: ["../.local/rfq/phase3_1/documents:/rfq-documents"]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    mem_limit: 2g
+    depends_on: [redis]
+

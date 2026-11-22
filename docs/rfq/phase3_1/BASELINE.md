@@ -1,0 +1,9 @@
+# Phase 3.1 baseline
+
+November 22, 2026, America/Phoenix. Initial checkout: clean `feature/rfq-intelligence-phase-3` at `49eb9e1`. Verified supplied merge `9cceb900e965001bcd4e6775d4d40deb9e1b6249`, then created `feature/rfq-intelligence-phase-3-1` from that merge. No user changes were discarded and nothing was pushed.
+
+Fresh measurements: 260 backend passes and the original strict expected failure; all 11 browser scenarios passed. Frontend lint/typecheck/build, Ruff, Python compilation and dependency lock checks passed. `results/baseline-tests.xml`, `baseline-browser.json` and `baseline-metadata.json` retain evidence. Exact commands: `.venv/Scripts/python.exe -m pytest -c apps/api/pyproject.toml apps/api/tests -q`; `pnpm lint`; `pnpm typecheck`; `pnpm build`; `.venv/Scripts/ruff.exe check apps/api scripts/procurement-*.py --exclude legacy_v1`; `.venv/Scripts/python.exe -m compileall -q apps/api/src`; `python -m uv lock --project apps/api --check`; `pnpm --dir apps/web exec playwright test`.
+
+All prior Phase 3 artifact hashes matched. Offline exact replay reproduced the four rejected malformed-price summaries; this is trace replay, not four new model generations. Installed qwen3:8b digest remains `500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41`. No weights were downloaded. Historical provider source is copied byte-for-byte to `legacy_provider.py`; source hashes are recorded.
+
+`results/preservation.json` protects 525 prior documentation, dataset and migration files. New work uses isolated PostgreSQL databases, Redis 6384, API 8041, web 3041 and `ownerpilot-procurement31-validation-worker-1`. The demo database name includes `phase3_demo` so the unchanged historical browser safety guard accepts it. The initial unused phase31 scaffold database was retained; no database was reset.

@@ -6,6 +6,16 @@ All notable changes to OwnerPilot are documented in this file.
 
 ### Added
 
+- Phase 3.1 versioned citation-only research, backend scalar materialization and
+  entity provenance, independent line coverage, safe partial evidence, one durable
+  correction, immutable receipts/finalizations and recovery diagnostics. Added frozen
+  60-case research and rational finance-v2 corpora, evidence UI, native comparisons,
+  worker/network probes and additive migration checks. Final validation: 386 backend
+  passes plus the retained strict oracle xfail; fifteen browser scenarios passed.
+  New benchmark: 36/60 complete, 20/36 held-out; zero accepted unsupported facts.
+  Separate original scenarios: 10/10. Research quality remains unmet, including a
+  source-tool coverage regression. Historical artifacts and financial semantics
+  remain preserved; only the new financial dataset corrects the JPY label to 930.
 - Phase 3 restricted native Ollama procurement research, durable tool receipts,
   explicit product resolutions, append-only supplier attestations/supersession,
   deterministic Decimal quote preparation and immutable internal review/approval.

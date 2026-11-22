@@ -1,0 +1,90 @@
+{
+  "actual_worker_kill": {
+    "run_id": "3866304c-a4e2-490d-8f9b-f873f246f40e",
+    "worker": "ownerpilot-procurement31-validation-worker-1",
+    "signal": "SIGKILL",
+    "before": {
+      "state": "planning",
+      "turns": 2,
+      "repair_attempts": 0,
+      "attempts": 1,
+      "diagnostics": {
+        "stage": "planning",
+        "recovered": false
+      }
+    },
+    "after": {
+      "state": "needs_attention",
+      "turns": 4,
+      "repair_attempts": 0,
+      "attempts": 2,
+      "diagnostics": {
+        "stage": "needs_attention",
+        "recovered": true,
+        "error_code": "research_coverage_incomplete"
+      },
+      "error": "research_coverage_incomplete"
+    },
+    "recovery_seconds": 92.60982829995919,
+    "receipt_ids_before": [
+      "34f11ed4-8933-42ca-b14d-ba1ba1780428"
+    ],
+    "receipt_ids_after": [
+      "34f11ed4-8933-42ca-b14d-ba1ba1780428",
+      "207481d1-9cb3-4710-bd85-eec33d432a9d"
+    ],
+    "receipts_preserved": true,
+    "duplicate_delivery_unchanged": true,
+    "publications": 0,
+    "passed": true
+  },
+  "actual_cancellation": {
+    "run_id": "6cb3386a-b636-4fbd-9da6-9a6d48cb3928",
+    "cancelled_during": {
+      "recovered": false
+    },
+    "state": "cancelled",
+    "publications": 0,
+    "passed": true,
+    "model_calls": [
+      {
+        "ordinal": 1,
+        "phase": "planning",
+        "state": "failed",
+        "metrics": {
+          "phase": "planning",
+          "wall_ms": 771.865,
+          "eval_count": 18,
+          "done_reason": "stop",
+          "input_bytes": 4924,
+          "eval_duration": 241975000,
+          "load_duration": 16600100,
+          "total_duration": 606465400,
+          "request_started": true,
+          "prompt_eval_count": 906,
+          "prompt_eval_duration": 169847000
+        }
+      }
+    ],
+    "actual_chat_started": true
+  },
+  "actual_network_unavailability": {
+    "run_id": "d0854584-a091-465d-8cae-71010326e3d6",
+    "actual_refused_local_endpoint": true,
+    "state": "needs_attention",
+    "error": "model_unavailable",
+    "tools_executed": 0,
+    "passed": true
+  },
+  "quote_preservation": {
+    "before": {
+      "quote_versions": 60,
+      "approvals": 0
+    },
+    "after": {
+      "quote_versions": 60,
+      "approvals": 0
+    },
+    "passed": true
+  }
+}

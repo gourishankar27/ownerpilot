@@ -1,0 +1,2238 @@
+{
+  "scenario": "val-09",
+  "split": "validation",
+  "pattern": "pack_price",
+  "variant": "citation_repair",
+  "run_id": "7722eae5-40a3-44d2-a9fc-9776d609e6b8",
+  "model": {
+    "model": "qwen3:8b",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "context": 8192,
+    "max_calls": 8,
+    "max_turns": 4,
+    "max_repeats": 2,
+    "max_seconds": 240,
+    "temperature": 0,
+    "tool_schema": "procurement-tools/2",
+    "capabilities": [
+      "completion",
+      "tools",
+      "thinking"
+    ],
+    "claim_schema": "research-citation-only/2",
+    "prompt_version": "procurement-native/6",
+    "max_repair_calls": 1,
+    "verifier_version": "research-verifier/2",
+    "max_initial_turns": 4,
+    "max_response_bytes": 65536,
+    "source_fingerprint": "3b2b7c46cfac349ff0ac729b34d3b5dc21742998dad40b885da711ceb10b117e",
+    "max_total_model_calls": 5,
+    "provider_timeout_seconds": 60
+  },
+  "state": "needs_attention",
+  "error": "research_coverage_incomplete",
+  "source_snapshot": {
+    "lines": [
+      {
+        "unit": "EA",
+        "fields": {
+          "mpn": {
+            "raw": "V-009-01/A",
+            "value": "V-009-01/A",
+            "issues": [],
+            "status": "validated",
+            "evidence": [
+              {
+                "method": "deterministic",
+                "excerpt": "V-009-01/A",
+                "raw_ocr": null,
+                "block_id": "row:2",
+                "identity": "ownerpilot-parser/1.1:csv",
+                "location": {
+                  "end": null,
+                  "row": 2,
+                  "bbox": null,
+                  "page": null,
+                  "sheet": null,
+                  "start": null,
+                  "column": "B"
+                },
+                "verified": true,
+                "document_id": "897b646d-0018-4cea-849e-d782b90e5872",
+                "fingerprint": "4dc4c31c8aabb1e63f74e486abc7e99fad467fc86aa56c55d62e109958c267ca",
+                "alternatives": [],
+                "extracted_at": "2026-11-22T19:15:18.055785+00:00",
+                "ocr_confidence": null,
+                "row_association": "verified",
+                "source_eligible": true,
+                "source_occurrence": true,
+                "association_reason": "same source row/block",
+                "column_association": "verified"
+              }
+            ],
+            "corrected": false,
+            "comparison": "V-009-01/A"
+          },
+          "unit": {
+            "raw": "EA",
+            "value": "EA",
+            "issues": [],
+            "status": "validated",
+            "evidence": [
+              {
+                "method": "deterministic",
+                "excerpt": "EA",
+                "raw_ocr": null,
+                "block_id": "row:2",
+                "identity": "ownerpilot-parser/1.1:csv",
+                "location": {
+                  "end": null,
+                  "row": 2,
+                  "bbox": null,
+                  "page": null,
+                  "sheet": null,
+                  "start": null,
+                  "column": "E"
+                },
+                "verified": true,
+                "document_id": "897b646d-0018-4cea-849e-d782b90e5872",
+                "fingerprint": "4dc4c31c8aabb1e63f74e486abc7e99fad467fc86aa56c55d62e109958c267ca",
+                "alternatives": [],
+                "extracted_at": "2026-11-22T19:15:18.055847+00:00",
+                "ocr_confidence": null,
+                "row_association": "verified",
+                "source_eligible": true,
+                "source_occurrence": true,
+                "association_reason": "same source row/block",
+                "column_association": "verified"
+              }
+            ],
+            "corrected": false,
+            "comparison": null
+          },
+          "currency": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "quantity": {
+            "raw": "10",
+            "value": "10",
+            "issues": [],
+            "status": "validated",
+            "evidence": [
+              {
+                "method": "deterministic",
+                "excerpt": "10",
+                "raw_ocr": null,
+                "block_id": "row:2",
+                "identity": "ownerpilot-parser/1.1:csv",
+                "location": {
+                  "end": null,
+                  "row": 2,
+                  "bbox": null,
+                  "page": null,
+                  "sheet": null,
+                  "start": null,
+                  "column": "D"
+                },
+                "verified": true,
+                "document_id": "897b646d-0018-4cea-849e-d782b90e5872",
+                "fingerprint": "4dc4c31c8aabb1e63f74e486abc7e99fad467fc86aa56c55d62e109958c267ca",
+                "alternatives": [],
+                "extracted_at": "2026-11-22T19:15:18.055817+00:00",
+                "ocr_confidence": null,
+                "row_association": "verified",
+                "source_eligible": true,
+                "source_occurrence": true,
+                "association_reason": "same source row/block",
+                "column_association": "verified"
+              }
+            ],
+            "corrected": false,
+            "comparison": null
+          },
+          "description": {
+            "raw": "Fictional network assembly val-09 position 1",
+            "value": "Fictional network assembly val-09 position 1",
+            "issues": [],
+            "status": "validated",
+            "evidence": [
+              {
+                "method": "deterministic",
+                "excerpt": "Fictional network assembly val-09 position 1",
+                "raw_ocr": null,
+                "block_id": "row:2",
+                "identity": "ownerpilot-parser/1.1:csv",
+                "location": {
+                  "end": null,
+                  "row": 2,
+                  "bbox": null,
+                  "page": null,
+                  "sheet": null,
+                  "start": null,
+                  "column": "C"
+                },
+                "verified": true,
+                "document_id": "897b646d-0018-4cea-849e-d782b90e5872",
+                "fingerprint": "4dc4c31c8aabb1e63f74e486abc7e99fad467fc86aa56c55d62e109958c267ca",
+                "alternatives": [],
+                "extracted_at": "2026-11-22T19:15:18.055805+00:00",
+                "ocr_confidence": null,
+                "row_association": "verified",
+                "source_eligible": true,
+                "source_occurrence": true,
+                "association_reason": "same source row/block",
+                "column_association": "verified"
+              }
+            ],
+            "corrected": false,
+            "comparison": null
+          },
+          "line_number": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "manufacturer": {
+            "raw": "Copperhill Devices",
+            "value": "Copperhill Devices",
+            "issues": [],
+            "status": "validated",
+            "evidence": [
+              {
+                "method": "deterministic",
+                "excerpt": "Copperhill Devices",
+                "raw_ocr": null,
+                "block_id": "row:2",
+                "identity": "ownerpilot-parser/1.1:csv",
+                "location": {
+                  "end": null,
+                  "row": 2,
+                  "bbox": null,
+                  "page": null,
+                  "sheet": null,
+                  "start": null,
+                  "column": "A"
+                },
+                "verified": true,
+                "document_id": "897b646d-0018-4cea-849e-d782b90e5872",
+                "fingerprint": "4dc4c31c8aabb1e63f74e486abc7e99fad467fc86aa56c55d62e109958c267ca",
+                "alternatives": [],
+                "extracted_at": "2026-11-22T19:15:18.055752+00:00",
+                "ocr_confidence": null,
+                "row_association": "verified",
+                "source_eligible": true,
+                "source_occurrence": true,
+                "association_reason": "same source row/block",
+                "column_association": "verified"
+              }
+            ],
+            "corrected": false,
+            "comparison": null
+          },
+          "requested_sku": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "specifications": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "alternatives_allowed": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "customer_part_number": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "requested_unit_price": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "special_requirements": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          },
+          "required_delivery_date": {
+            "raw": null,
+            "value": null,
+            "issues": [],
+            "status": "missing",
+            "evidence": [],
+            "corrected": false,
+            "comparison": null
+          }
+        },
+        "offers": {
+          "imported": [
+            {
+              "url": null,
+              "price": null,
+              "currency": null,
+              "supplier": "Fictional catalog publisher 2",
+              "freshness": "unknown_freshness",
+              "source_id": "CAT-val-09-0",
+              "data_class": "imported_catalog_metadata",
+              "availability": null,
+              "supplier_sku": null,
+              "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+              "source_fingerprint": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7",
+              "commercial_source_date": null
+            }
+          ],
+          "attestations": [
+            {
+              "id": "5794ceeb-953f-4094-b2b4-f1863cd8062c",
+              "data": {
+                "commercial": {
+                  "price": "96",
+                  "breaks": [],
+                  "currency": "USD",
+                  "supplier": "Fictional Harbor Supply",
+                  "pack_size": 4,
+                  "source_url": null,
+                  "observed_on": "2026-11-21",
+                  "price_basis": "pack",
+                  "stock_units": "1000",
+                  "valid_until": "2026-12-31",
+                  "availability": "available",
+                  "effective_on": null,
+                  "supplier_sku": "SKU-val-09-0",
+                  "minimum_units": "1",
+                  "lead_time_days": 7,
+                  "source_reference": "Fictional dated commercial note val-09/0; no real supplier commitment",
+                  "availability_statement": null
+                },
+                "product_id": "eb5440e2132d46c074ec8062d917fc55db98b245aa0f598200992d5c532d55d9",
+                "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                "supersedes_id": null,
+                "source_offer_id": null,
+                "source_fingerprint": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7"
+              },
+              "actor": "phase31-synthetic-dd534b2461bb455f82c9c97f2313ac58",
+              "price": 96.0,
+              "reason": "Frozen independent fictional commercial source; human-attested, not live supplier data",
+              "freshness": "current_according_to_attested_validity",
+              "created_at": "2026-11-22T19:15:18.442309+00:00",
+              "data_class": "user_attested",
+              "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+              "resolution_id": "e1d55bea-013f-4e6e-8db6-0279cfa53b82"
+            }
+          ]
+        },
+        "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+        "quantity": "10",
+        "selection": {
+          "query": {
+            "mpn": "V-009-01/A",
+            "unit": "EA",
+            "specs": {},
+            "category": null,
+            "quantity": "10",
+            "source_run": "b5da012e-0b9b-4b45-9178-7a8d9f1dd354",
+            "description": "Fictional network assembly val-09 position 1 ",
+            "manufacturer": "Copperhill Devices"
+          },
+          "state": "resolved",
+          "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+          "reviews": [
+            {
+              "id": "c265922a-57d6-463a-8199-00c589f105bc",
+              "note": "Independent synthetic reviewer decision; unsupported substitutions remain no-match",
+              "actor": "phase31-synthetic-dd534b2461bb455f82c9c97f2313ac58",
+              "run_id": "b2521562-a220-4aac-9806-558c28d6d7cb",
+              "decision": "select",
+              "created_at": "2026-11-22T19:15:18.391718+00:00",
+              "product_id": "eb5440e2132d46c074ec8062d917fc55db98b245aa0f598200992d5c532d55d9"
+            }
+          ],
+          "revision": 1,
+          "candidates": [
+            {
+              "id": "eb5440e2132d46c074ec8062d917fc55db98b245aa0f598200992d5c532d55d9",
+              "score": 0.03278688524590164,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-09-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-009-01/A",
+                "url": null,
+                "name": "Fictional network assembly val-09 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-09-0",
+                "description": "Fictional network assembly val-09 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 1,
+                  "score": 26.891540644988126
+                },
+                "exact": {
+                  "rank": 1,
+                  "score": 1.0
+                }
+              },
+              "compatibility": {
+                "status": "exact",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": true
+              }
+            },
+            {
+              "id": "c3f16365ef3fdc0765f9f7faa3b49fb7a9df29def4e28026c4cc868cd2881864",
+              "score": 0.016129032258064516,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-09-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-009-01/A",
+                "url": null,
+                "name": "Fictional network assembly dev-09 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-09-0",
+                "description": "Fictional network assembly dev-09 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "a9d9fea6d30c16de9870eb9993f6f4826c1541d5ac0cd28f4b83e001acdca30b"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 2,
+                  "score": 10.67433035304457
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "LumenForge",
+                    "attribute": "manufacturer",
+                    "requested": "Copperhill Devices"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "54fc59fd34beb08693d634e6312b39f56d8c92f22e9d937416baca22c905c399",
+              "score": 0.015873015873015872,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 3",
+                  "source_id": "CAT-held-09-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "H-009-01/A",
+                "url": null,
+                "name": "Fictional network assembly held-09 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 3",
+                "source_id": "CAT-held-09-0",
+                "description": "Fictional network assembly held-09 position 1",
+                "availability": null,
+                "manufacturer": "AsterVale Components",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "1513cfb8d3ea1b2332975e08e61d89ef7fa0d172c70054fecbf3867f37138eeb"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 3,
+                  "score": 10.554243415128223
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "AsterVale Components",
+                    "attribute": "manufacturer",
+                    "requested": "Copperhill Devices"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "cc3ea3925881dc4b32e3ac43ac57db6b9c14dbe765c60f9bf0d6a4bb933e1be3",
+              "score": 0.015625,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-03-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-003-01/A",
+                "url": null,
+                "name": "Fictional network assembly val-03 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-03-0",
+                "description": "Fictional network assembly val-03 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "2649b4f88e16d2074ef92bb04cef2f4ea37a5d780405573b688fe4b90f3875e2"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 4,
+                  "score": 10.480397177263589
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "d9f88e7a0703c48e2fe4149716498fb1bacb00806447f402e1d4a4933b77391b",
+              "score": 0.015384615384615385,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-01-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-001-01/A",
+                "url": null,
+                "name": "Fictional memory assembly val-01 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-01-0",
+                "description": "Fictional memory assembly val-01 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "9e43563b3cd2aff9bd1d0d0e801563b81d2ff3c4cf1b46a84b5dc38d02a5a371"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 5,
+                  "score": 7.457612757940337
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "000df260ad71b6af7cb7b3c0d3a591201e5da29a99bf762adf023a9d889d4db0",
+              "score": 0.015151515151515152,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-07-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-007-01/A",
+                "url": null,
+                "name": "Fictional memory assembly val-07 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-07-0",
+                "description": "Fictional memory assembly val-07 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "a28683c481ddd4ca9f5a46ffa5eae3c2c7dddcb5ffe313906f6e53b19121df3f"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 6,
+                  "score": 7.389588553847025
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "4ab1b1405452dac558d9ee5b548215194340ef517478382a00a3d140072ce686",
+              "score": 0.014925373134328358,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-10-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-010-01/A",
+                "url": null,
+                "name": "Fictional display assembly val-10 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "display",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-10-0",
+                "description": "Fictional display assembly val-10 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "e1c765f95d5688b6a22c776fe4b9786e7d6c755bedd19e0ae05bcfa8777c8a26"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 7,
+                  "score": 7.389588553847025
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "5aa9e1b901191cacda5cc71d831bbc41a4a7bbe38a0d8cadb34bf68c761787a8",
+              "score": 0.014705882352941176,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-02-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-002-01/A",
+                "url": null,
+                "name": "Fictional storage assembly val-02 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "storage",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-02-0",
+                "description": "Fictional storage assembly val-02 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "44ff19ba4db6d0e5927f3103995775d64d7ddd71ef1ee15fb440a97028cb2e26"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 8,
+                  "score": 7.389588553847025
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "852b249eced1c081dbf0cf55dfaa76fa0ece1d08e600d79c2881a935b28d851b",
+              "score": 0.014492753623188406,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-11-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-011-01/A",
+                "url": null,
+                "name": "Fictional power assembly val-11 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "power",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-11-0",
+                "description": "Fictional power assembly val-11 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "c32bd2f858a04cd75df7dd344b183c1e8bb9834553633c0aabe8550f8eecc689"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 9,
+                  "score": 7.389588553847025
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "9972be3c53f4af5295b52b8e28475c9e36e614a0521d35a2d927241b1a2f8dc3",
+              "score": 0.014285714285714285,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-05-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-005-01/A",
+                "url": null,
+                "name": "Fictional power assembly val-05 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "power",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-05-0",
+                "description": "Fictional power assembly val-05 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "3771d27b21d39b6c4853459831f719b9566ae3ccb5f461a54689562dc04eeef9"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 10,
+                  "score": 7.389588553847025
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "a8c63ad9a185e16b34cc04d5eef80e03428a751e94a876b18e209cbb64f47d03",
+              "score": 0.014084507042253521,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-08-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-008-01/A",
+                "url": null,
+                "name": "Fictional storage assembly val-08 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "storage",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-08-0",
+                "description": "Fictional storage assembly val-08 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "aae30ed0bba0e372cb60697bbfb8a155654f242dc9af41be6fa38c7c85497dbb"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 11,
+                  "score": 7.389588553847025
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "b7572ac49f2a6ee271939fd7b0697bffbe1898c8d59a7dcac81e56f6b8c88156",
+              "score": 0.013888888888888888,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-04-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-004-01/A",
+                "url": null,
+                "name": "Fictional display assembly val-04 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "display",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-04-0",
+                "description": "Fictional display assembly val-04 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "27a0ad0051c0b1865ba95c07f5c86feb1e5140a16b81c7a90b0428591e0b990f"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 12,
+                  "score": 7.389588553847025
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "db027cf27576799ab114d2ad1c09866ef937b7377745414615b5a15cc37a8ca7",
+              "score": 0.0136986301369863,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-06-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-006-01/A",
+                "url": null,
+                "name": "Fictional accessory assembly val-06 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "accessory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-06-0",
+                "description": "Fictional accessory assembly val-06 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "47a46fbdd728525e4629d97b5872bc22b680ef1aac570aafeea92ad12deb68a5"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 13,
+                  "score": 7.389588553847025
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "fd10cca40a3c02d3ef0685ef63a1dbfc48d33797fbe1fba949f8ebf19a563dab",
+              "score": 0.013513513513513514,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-12-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-012-01/A",
+                "url": null,
+                "name": "Fictional accessory assembly val-12 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "accessory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-12-0",
+                "description": "Fictional accessory assembly val-12 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "74dd04937a77c06c3e88f5f401f16d5f768730994fa24d1ba4baeefb4e8e6925"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 14,
+                  "score": 7.389588553847025
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "16b157ab9317e81b4890316a543217b5388b69e77c7cd67b487e85479f8d8d71",
+              "score": 0.013333333333333334,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 2",
+                  "source_id": "CAT-val-12-1",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "V-012-02/A",
+                "url": null,
+                "name": "Fictional memory assembly val-12 position 2",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "memory",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-12-1",
+                "description": "Fictional memory assembly val-12 position 2",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "ecb8d1837783206436889b4c338e87be3992ce1354bd42cbbc99153573dfe555"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 15,
+                  "score": 7.141520716919316
+                }
+              },
+              "compatibility": {
+                "status": "possible_alternative",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "723738ff1eb19df9707f537dff9294dc3df7bd0480b6d21c481be743a2077e5b",
+              "score": 0.013157894736842105,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 1",
+                  "source_id": "CAT-dev-03-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "D-003-01/A",
+                "url": null,
+                "name": "Fictional network assembly dev-03 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 1",
+                "source_id": "CAT-dev-03-0",
+                "description": "Fictional network assembly dev-03 position 1",
+                "availability": null,
+                "manufacturer": "LumenForge",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "3a5756737c074a26db6f1325e51ff02c14664346e15fa479ea5c168ca64b7829"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 16,
+                  "score": 3.408020664475565
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "LumenForge",
+                    "attribute": "manufacturer",
+                    "requested": "Copperhill Devices"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "76cd0e9f4e7ad7874e8d12e6c82eeda0936747bd796db0ed25863f7a27d4ebf3",
+              "score": 0.012987012987012988,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 3",
+                  "source_id": "CAT-held-03-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "H-003-01/A",
+                "url": null,
+                "name": "Fictional network assembly held-03 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 3",
+                "source_id": "CAT-held-03-0",
+                "description": "Fictional network assembly held-03 position 1",
+                "availability": null,
+                "manufacturer": "AsterVale Components",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "4b822efb8265a8b31997f96cd34a2b8536755616d1445adb24c33055ade8d9c0"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 17,
+                  "score": 3.378504524190294
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "AsterVale Components",
+                    "attribute": "manufacturer",
+                    "requested": "Copperhill Devices"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "ec55a2cd41f421dced72b4fcc25bba26afc18560336ace6d5f56d8d577f3862f",
+              "score": 0.01282051282051282,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 3",
+                  "source_id": "CAT-held-33-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "H-033-01/A",
+                "url": null,
+                "name": "Fictional network assembly held-33 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 3",
+                "source_id": "CAT-held-33-0",
+                "description": "Fictional network assembly held-33 position 1",
+                "availability": null,
+                "manufacturer": "AsterVale Components",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "3b13382016b47f69eaf728d288d7d07fc71e6cc3cea4f11024ba2ad37d6104be"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 18,
+                  "score": 3.378504524190294
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "AsterVale Components",
+                    "attribute": "manufacturer",
+                    "requested": "Copperhill Devices"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "f1633d3954ecee7ace1ee2f217be515d23f97de0c82bd0ce9cc95b819ae3b4a2",
+              "score": 0.012658227848101266,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 3",
+                  "source_id": "CAT-held-15-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "H-015-01/A",
+                "url": null,
+                "name": "Fictional network assembly held-15 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 3",
+                "source_id": "CAT-held-15-0",
+                "description": "Fictional network assembly held-15 position 1",
+                "availability": null,
+                "manufacturer": "AsterVale Components",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "ce6725b695d3c66b4c76a931600b63752b4a621de12d580e8382405f262bc43c"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 19,
+                  "score": 3.378504524190294
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "AsterVale Components",
+                    "attribute": "manufacturer",
+                    "requested": "Copperhill Devices"
+                  }
+                ],
+                "exact_identity": false
+              }
+            },
+            {
+              "id": "f5c26b8956b2e36905be365e2de2d8a696a7642534d3afb7fb4cf99458d7252a",
+              "score": 0.0125,
+              "offers": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional catalog publisher 3",
+                  "source_id": "CAT-held-21-0",
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "availability": null,
+                  "supplier_sku": null
+                }
+              ],
+              "product": {
+                "mpn": "H-021-01/A",
+                "url": null,
+                "name": "Fictional network assembly held-21 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 3",
+                "source_id": "CAT-held-21-0",
+                "description": "Fictional network assembly held-21 position 1",
+                "availability": null,
+                "manufacturer": "AsterVale Components",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "707175a8bc255b864054c9d75ed71b3df767b6c060093dd08cd7318c2e4117a5"
+                }
+              ],
+              "channels": {
+                "bm25": {
+                  "rank": 20,
+                  "score": 3.378504524190294
+                }
+              },
+              "compatibility": {
+                "status": "incompatible",
+                "missing": [],
+                "conflicts": [
+                  {
+                    "catalog": "AsterVale Components",
+                    "attribute": "manufacturer",
+                    "requested": "Copperhill Devices"
+                  }
+                ],
+                "exact_identity": false
+              }
+            }
+          ],
+          "resolution": {
+            "id": "e1d55bea-013f-4e6e-8db6-0279cfa53b82",
+            "data": {
+              "query": {
+                "mpn": "V-009-01/A",
+                "unit": "EA",
+                "specs": {},
+                "category": null,
+                "quantity": "10",
+                "source_run": "b5da012e-0b9b-4b45-9178-7a8d9f1dd354",
+                "description": "Fictional network assembly val-09 position 1 ",
+                "manufacturer": "Copperhill Devices"
+              },
+              "run_id": "b2521562-a220-4aac-9806-558c28d6d7cb",
+              "product": {
+                "mpn": "V-009-01/A",
+                "url": null,
+                "name": "Fictional network assembly val-09 position 1",
+                "price": null,
+                "specs": {
+                  "capacity": 32,
+                  "connector": "SYN-X"
+                },
+                "status": "active",
+                "category": "network",
+                "currency": null,
+                "supplier": "Fictional catalog publisher 2",
+                "source_id": "CAT-val-09-0",
+                "description": "Fictional network assembly val-09 position 1",
+                "availability": null,
+                "manufacturer": "Copperhill Devices",
+                "supplier_sku": null
+              },
+              "sources": [
+                {
+                  "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                  "content_hash": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7"
+                }
+              ],
+              "decision": "select",
+              "product_id": "eb5440e2132d46c074ec8062d917fc55db98b245aa0f598200992d5c532d55d9",
+              "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+              "content_hash": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7",
+              "compatibility": {
+                "status": "exact",
+                "missing": [],
+                "conflicts": [],
+                "exact_identity": true
+              },
+              "review_digest": "ce32b29d69c32072e7d1939e1d30ad6e170b705abc4e61a995cc77f7a1f326f2",
+              "catalog_fingerprint": "51362babde4077694ebe24fafad8c381584c208aa0615c1f606a335729da336f",
+              "alternative_attested": false
+            },
+            "actor": "phase31-synthetic-dd534b2461bb455f82c9c97f2313ac58",
+            "reason": "Explicit operator resolution of independently authored source identity",
+            "rfq_id": "2e8e2d5d-0773-40f0-b84a-8bd91e397bf9",
+            "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+            "revision": 1,
+            "created_at": "2026-11-22T19:15:18.416143+00:00",
+            "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb"
+          },
+          "review_digest": "ce32b29d69c32072e7d1939e1d30ad6e170b705abc4e61a995cc77f7a1f326f2",
+          "current_run_id": "b2521562-a220-4aac-9806-558c28d6d7cb"
+        }
+      }
+    ],
+    "header": {
+      "currency": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "contact_name": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "request_date": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "contact_email": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "customer_name": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "billing_address": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "shipping_address": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "external_rfq_number": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "submission_deadline": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "general_instructions": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      },
+      "delivery_requirements": {
+        "raw": null,
+        "value": null,
+        "issues": [],
+        "status": "missing",
+        "evidence": [],
+        "corrected": false,
+        "comparison": null
+      }
+    },
+    "rfq_id": "2e8e2d5d-0773-40f0-b84a-8bd91e397bf9",
+    "quote_id": "6b0b432b-d2ea-4747-ba03-8d2edd59a4dc",
+    "revision": 4,
+    "source_run": "b5da012e-0b9b-4b45-9178-7a8d9f1dd354",
+    "quote_policy": {
+      "pricing": {
+        "mode": "markup",
+        "rate": "0.2",
+        "surplus": "allocate_purchase_cost",
+        "discount": "0"
+      },
+      "currency": "USD",
+      "shipping": "0",
+      "tax_rate": "0",
+      "tax_basis": "subtotal",
+      "valid_until": "2026-12-01"
+    },
+    "quote_choices": {
+      "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4": "5794ceeb-953f-4094-b2b4-f1863cd8062c"
+    },
+    "quote_revision": 1,
+    "catalog_versions": [
+      "2876eae6-21af-4505-aa6b-1415ce5e1676"
+    ]
+  },
+  "result": {
+    "claims": [
+      {
+        "known": true,
+        "value": "resolved",
+        "rfq_id": "2e8e2d5d-0773-40f0-b84a-8bd91e397bf9",
+        "run_id": "7722eae5-40a3-44d2-a9fc-9776d609e6b8",
+        "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+        "pointer": "/data/state",
+        "offer_id": null,
+        "data_class": "human_reviewed_selection",
+        "field_type": "selection_state",
+        "product_id": "eb5440e2132d46c074ec8062d917fc55db98b245aa0f598200992d5c532d55d9",
+        "receipt_id": "b3936a83-f994-4f06-b02d-13d2488c406d",
+        "source_key": "s56124acc4241",
+        "rfq_revision": 4,
+        "selection_id": "e1d55bea-013f-4e6e-8db6-0279cfa53b82",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "human_reviewed_selection",
+        "source_fingerprint": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7"
+      }
+    ],
+    "partial": true,
+    "complete": false,
+    "coverage": {
+      "lines": [
+        {
+          "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+          "complete": false,
+          "unknowns": [],
+          "missing_tools": [
+            "get_supplier_offers"
+          ],
+          "inspected_tools": [
+            "get_reviewed_product_selection"
+          ],
+          "selection_state": "resolved",
+          "commercial_review": [],
+          "missing_citations": [],
+          "source_coverage_complete": false
+        }
+      ],
+      "complete": false,
+      "quote_ready": true,
+      "quote_issues": [],
+      "approved_rfq_read": true,
+      "source_coverage_complete": false
+    },
+    "protocol": "research-citation-only/2",
+    "references": [
+      {
+        "pointers": [
+          "/data/state"
+        ],
+        "receipt_id": "b3936a83-f994-4f06-b02d-13d2488c406d",
+        "source_key": "s56124acc4241"
+      }
+    ],
+    "limitations": [
+      "Local imported and user-attested facts only",
+      "Research completion does not authorize quote approval",
+      "No live supplier availability or delivery commitment"
+    ],
+    "quote_ready": true,
+    "verification": "research-verifier/2",
+    "backend_summary": {
+      "lines_total": 1,
+      "unknown_fields": 0,
+      "verified_facts": 1,
+      "lines_inspected": 0
+    },
+    "invalid_citations": [],
+    "duplicates_removed": 0,
+    "needs_human_follow_up": true
+  },
+  "initial_result": {
+    "claims": [
+      {
+        "known": true,
+        "value": "resolved",
+        "rfq_id": "2e8e2d5d-0773-40f0-b84a-8bd91e397bf9",
+        "run_id": "7722eae5-40a3-44d2-a9fc-9776d609e6b8",
+        "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+        "pointer": "/data/state",
+        "offer_id": null,
+        "data_class": "human_reviewed_selection",
+        "field_type": "selection_state",
+        "product_id": "eb5440e2132d46c074ec8062d917fc55db98b245aa0f598200992d5c532d55d9",
+        "receipt_id": "b3936a83-f994-4f06-b02d-13d2488c406d",
+        "source_key": "s56124acc4241",
+        "rfq_revision": 4,
+        "selection_id": "e1d55bea-013f-4e6e-8db6-0279cfa53b82",
+        "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+        "model_selected": true,
+        "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+        "observation_class": "human_reviewed_selection",
+        "source_fingerprint": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7"
+      }
+    ],
+    "partial": true,
+    "complete": false,
+    "coverage": {
+      "lines": [
+        {
+          "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+          "complete": false,
+          "unknowns": [],
+          "missing_tools": [
+            "get_supplier_offers"
+          ],
+          "inspected_tools": [
+            "get_reviewed_product_selection"
+          ],
+          "selection_state": "resolved",
+          "commercial_review": [],
+          "missing_citations": [],
+          "source_coverage_complete": false
+        }
+      ],
+      "complete": false,
+      "quote_ready": true,
+      "quote_issues": [],
+      "approved_rfq_read": true,
+      "source_coverage_complete": false
+    },
+    "protocol": "research-citation-only/2",
+    "references": [
+      {
+        "pointers": [
+          "/data/state"
+        ],
+        "receipt_id": "b3936a83-f994-4f06-b02d-13d2488c406d",
+        "source_key": "s56124acc4241"
+      }
+    ],
+    "limitations": [
+      "Local imported and user-attested facts only",
+      "Research completion does not authorize quote approval",
+      "No live supplier availability or delivery commitment"
+    ],
+    "quote_ready": true,
+    "verification": "research-verifier/2",
+    "backend_summary": {
+      "lines_total": 1,
+      "unknown_fields": 0,
+      "verified_facts": 1,
+      "lines_inspected": 0
+    },
+    "invalid_citations": [],
+    "duplicates_removed": 0,
+    "needs_human_follow_up": true
+  },
+  "audit": {
+    "invalid_claims": [],
+    "required_fact_coverage": false,
+    "required_facts": 5,
+    "supported_required_facts": 1,
+    "source_tool_coverage": false,
+    "tool_arguments_authorized": true,
+    "unknown_values_correct": true,
+    "facts_inspected": 1
+  },
+  "initial_audit": {
+    "invalid_claims": [],
+    "required_fact_coverage": false,
+    "required_facts": 5,
+    "supported_required_facts": 1,
+    "source_tool_coverage": false,
+    "tool_arguments_authorized": true,
+    "unknown_values_correct": true,
+    "facts_inspected": 1
+  },
+  "verified_complete": false,
+  "initial_verified_complete": false,
+  "quote_ready_expected": true,
+  "deterministic_quote_ready": true,
+  "quote_ready_matches_authored": true,
+  "latency_ms": 5046.030199970119,
+  "initial_latency_ms": 5145.427,
+  "turns": 4,
+  "repair_attempts": 0,
+  "model_stats": [
+    {
+      "phase": "planning",
+      "wall_ms": 620.76,
+      "eval_count": 18,
+      "done_reason": "stop",
+      "input_bytes": 4924,
+      "eval_duration": 181433000,
+      "load_duration": 16633600,
+      "total_duration": 446891600,
+      "request_started": true,
+      "prompt_eval_count": 906,
+      "prompt_eval_duration": 16874000
+    },
+    {
+      "phase": "planning",
+      "wall_ms": 803.338,
+      "eval_count": 53,
+      "done_reason": "stop",
+      "input_bytes": 5553,
+      "eval_duration": 559852000,
+      "load_duration": 16164500,
+      "total_duration": 634668400,
+      "request_started": true,
+      "prompt_eval_count": 1117,
+      "prompt_eval_duration": 43180000
+    },
+    {
+      "phase": "planning",
+      "wall_ms": 789.371,
+      "eval_count": 50,
+      "done_reason": "stop",
+      "input_bytes": 6249,
+      "eval_duration": 532085000,
+      "load_duration": 18890100,
+      "total_duration": 618817000,
+      "request_started": true,
+      "prompt_eval_count": 1403,
+      "prompt_eval_duration": 57681000
+    },
+    {
+      "phase": "finalization",
+      "wall_ms": 929.318,
+      "eval_count": 65,
+      "done_reason": "stop",
+      "input_bytes": 2552,
+      "eval_duration": 684566000,
+      "load_duration": 17484200,
+      "total_duration": 791770100,
+      "request_started": true,
+      "prompt_eval_count": 366,
+      "prompt_eval_duration": 26763000
+    }
+  ],
+  "actual_chat_requests": 4,
+  "tool_receipts": [
+    {
+      "id": "46b2dbbd-6fe5-4bef-9b2b-f3d22ecc21b1",
+      "run_id": "7722eae5-40a3-44d2-a9fc-9776d609e6b8",
+      "ordinal": 1,
+      "tool": "get_approved_rfq",
+      "schema_version": "procurement-tools/2",
+      "arguments": {},
+      "argument_hash": "4ae638b07b0c919eb53a23f11c4f66eb40b5e9a3b7642d3c14b5348ef80c38b2",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "lines": [
+          {
+            "unit": "EA",
+            "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+            "quantity": "10",
+            "description": "Fictional network assembly val-09 position 1"
+          }
+        ],
+        "rfq_id": "2e8e2d5d-0773-40f0-b84a-8bd91e397bf9",
+        "revision": 4,
+        "source_run": "b5da012e-0b9b-4b45-9178-7a8d9f1dd354"
+      },
+      "error": null,
+      "duration_ms": 26.415,
+      "started_at": "2026-11-22T19:15:32.112514+00:00",
+      "finished_at": "2026-11-22T19:15:32.112514+00:00"
+    },
+    {
+      "id": "b3936a83-f994-4f06-b02d-13d2488c406d",
+      "run_id": "7722eae5-40a3-44d2-a9fc-9776d609e6b8",
+      "ordinal": 2,
+      "tool": "get_reviewed_product_selection",
+      "schema_version": "procurement-tools/2",
+      "arguments": {
+        "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4"
+      },
+      "argument_hash": "63fde55950ab0e6e3c6e4a14393fa8104162cdf4780ba00a89302bfc60bbb6a6",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "query": {
+          "mpn": "V-009-01/A",
+          "unit": "EA",
+          "specs": {},
+          "category": null,
+          "quantity": "10",
+          "source_run": "b5da012e-0b9b-4b45-9178-7a8d9f1dd354",
+          "description": "Fictional network assembly val-09 position 1 ",
+          "manufacturer": "Copperhill Devices"
+        },
+        "state": "resolved",
+        "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+        "revision": 1,
+        "resolution": {
+          "id": "e1d55bea-013f-4e6e-8db6-0279cfa53b82",
+          "data": {
+            "query": {
+              "mpn": "V-009-01/A",
+              "unit": "EA",
+              "specs": {},
+              "category": null,
+              "quantity": "10",
+              "source_run": "b5da012e-0b9b-4b45-9178-7a8d9f1dd354",
+              "description": "Fictional network assembly val-09 position 1 ",
+              "manufacturer": "Copperhill Devices"
+            },
+            "run_id": "b2521562-a220-4aac-9806-558c28d6d7cb",
+            "product": {
+              "mpn": "V-009-01/A",
+              "url": null,
+              "name": "Fictional network assembly val-09 position 1",
+              "price": null,
+              "specs": {
+                "capacity": 32,
+                "connector": "SYN-X"
+              },
+              "status": "active",
+              "category": "network",
+              "currency": null,
+              "supplier": "Fictional catalog publisher 2",
+              "source_id": "CAT-val-09-0",
+              "description": "Fictional network assembly val-09 position 1",
+              "availability": null,
+              "manufacturer": "Copperhill Devices",
+              "supplier_sku": null
+            },
+            "sources": [
+              {
+                "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+                "content_hash": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7"
+              }
+            ],
+            "decision": "select",
+            "product_id": "eb5440e2132d46c074ec8062d917fc55db98b245aa0f598200992d5c532d55d9",
+            "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+            "content_hash": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7",
+            "compatibility": {
+              "status": "exact",
+              "missing": [],
+              "conflicts": [],
+              "exact_identity": true
+            },
+            "review_digest": "ce32b29d69c32072e7d1939e1d30ad6e170b705abc4e61a995cc77f7a1f326f2",
+            "catalog_fingerprint": "51362babde4077694ebe24fafad8c381584c208aa0615c1f606a335729da336f",
+            "alternative_attested": false
+          },
+          "actor": "phase31-synthetic-dd534b2461bb455f82c9c97f2313ac58",
+          "reason": "Explicit operator resolution of independently authored source identity",
+          "rfq_id": "2e8e2d5d-0773-40f0-b84a-8bd91e397bf9",
+          "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+          "revision": 1,
+          "created_at": "2026-11-22T19:15:18.416143+00:00",
+          "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb"
+        },
+        "review_digest": "ce32b29d69c32072e7d1939e1d30ad6e170b705abc4e61a995cc77f7a1f326f2",
+        "current_run_id": "b2521562-a220-4aac-9806-558c28d6d7cb"
+      },
+      "error": null,
+      "duration_ms": 26.815,
+      "started_at": "2026-11-22T19:15:33.349809+00:00",
+      "finished_at": "2026-11-22T19:15:33.349809+00:00"
+    },
+    {
+      "id": "7073d389-b152-4369-b1a4-e1b008bb010c",
+      "run_id": "7722eae5-40a3-44d2-a9fc-9776d609e6b8",
+      "ordinal": 3,
+      "tool": "get_product_details",
+      "schema_version": "procurement-tools/2",
+      "arguments": {
+        "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4"
+      },
+      "argument_hash": "56c7549415be16f14ab1f3612ff2a21f8f050447f826ba6c5ca8404bdc12ab58",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "product": {
+          "query": {
+            "mpn": "V-009-01/A",
+            "unit": "EA",
+            "specs": {},
+            "category": null,
+            "quantity": "10",
+            "source_run": "b5da012e-0b9b-4b45-9178-7a8d9f1dd354",
+            "description": "Fictional network assembly val-09 position 1 ",
+            "manufacturer": "Copperhill Devices"
+          },
+          "run_id": "b2521562-a220-4aac-9806-558c28d6d7cb",
+          "product": {
+            "mpn": "V-009-01/A",
+            "url": null,
+            "name": "Fictional network assembly val-09 position 1",
+            "price": null,
+            "specs": {
+              "capacity": 32,
+              "connector": "SYN-X"
+            },
+            "status": "active",
+            "category": "network",
+            "currency": null,
+            "supplier": "Fictional catalog publisher 2",
+            "source_id": "CAT-val-09-0",
+            "description": "Fictional network assembly val-09 position 1",
+            "availability": null,
+            "manufacturer": "Copperhill Devices",
+            "supplier_sku": null
+          },
+          "sources": [
+            {
+              "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+              "content_hash": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7"
+            }
+          ],
+          "decision": "select",
+          "product_id": "eb5440e2132d46c074ec8062d917fc55db98b245aa0f598200992d5c532d55d9",
+          "version_id": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+          "content_hash": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7",
+          "compatibility": {
+            "status": "exact",
+            "missing": [],
+            "conflicts": [],
+            "exact_identity": true
+          },
+          "review_digest": "ce32b29d69c32072e7d1939e1d30ad6e170b705abc4e61a995cc77f7a1f326f2",
+          "catalog_fingerprint": "51362babde4077694ebe24fafad8c381584c208aa0615c1f606a335729da336f",
+          "alternative_attested": false
+        },
+        "selection_state": "resolved"
+      },
+      "error": null,
+      "duration_ms": 23.655,
+      "started_at": "2026-11-22T19:15:34.565656+00:00",
+      "finished_at": "2026-11-22T19:15:34.565656+00:00"
+    }
+  ],
+  "finalization_attempts": [
+    {
+      "id": "ae080674-d83a-4615-a136-4a21e6b59005",
+      "run_id": "7722eae5-40a3-44d2-a9fc-9776d609e6b8",
+      "phase": "initial",
+      "reference_request": {
+        "claims": [
+          {
+            "pointers": [
+              "/data/state"
+            ],
+            "receipt_id": "b3936a83-f994-4f06-b02d-13d2488c406d",
+            "source_key": "s56124acc4241"
+          }
+        ]
+      },
+      "resolution": {
+        "claims": [
+          {
+            "known": true,
+            "value": "resolved",
+            "rfq_id": "2e8e2d5d-0773-40f0-b84a-8bd91e397bf9",
+            "run_id": "7722eae5-40a3-44d2-a9fc-9776d609e6b8",
+            "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+            "pointer": "/data/state",
+            "offer_id": null,
+            "data_class": "human_reviewed_selection",
+            "field_type": "selection_state",
+            "product_id": "eb5440e2132d46c074ec8062d917fc55db98b245aa0f598200992d5c532d55d9",
+            "receipt_id": "b3936a83-f994-4f06-b02d-13d2488c406d",
+            "source_key": "s56124acc4241",
+            "rfq_revision": 4,
+            "selection_id": "e1d55bea-013f-4e6e-8db6-0279cfa53b82",
+            "workspace_id": "a4c57198-20ed-44d5-a611-34c54a0aa4eb",
+            "model_selected": true,
+            "catalog_version": "2876eae6-21af-4505-aa6b-1415ce5e1676",
+            "observation_class": "human_reviewed_selection",
+            "source_fingerprint": "922ce3eb0e289000a62dc8d3332756edaf9723cd6b73c69fa05bc4ad656df0c7"
+          }
+        ],
+        "partial": true,
+        "complete": false,
+        "coverage": {
+          "lines": [
+            {
+              "line_id": "fab5b552-d8a2-59e1-b7b7-d9dc7a7f47d4",
+              "complete": false,
+              "unknowns": [],
+              "missing_tools": [
+                "get_supplier_offers"
+              ],
+              "inspected_tools": [
+                "get_reviewed_product_selection"
+              ],
+              "selection_state": "resolved",
+              "commercial_review": [],
+              "missing_citations": [],
+              "source_coverage_complete": false
+            }
+          ],
+          "complete": false,
+          "quote_ready": true,
+          "quote_issues": [],
+          "approved_rfq_read": true,
+          "source_coverage_complete": false
+        },
+        "protocol": "research-citation-only/2",
+        "references": [
+          {
+            "pointers": [
+              "/data/state"
+            ],
+            "receipt_id": "b3936a83-f994-4f06-b02d-13d2488c406d",
+            "source_key": "s56124acc4241"
+          }
+        ],
+        "limitations": [
+          "Local imported and user-attested facts only",
+          "Research completion does not authorize quote approval",
+          "No live supplier availability or delivery commitment"
+        ],
+        "quote_ready": true,
+        "verification": "research-verifier/2",
+        "backend_summary": {
+          "lines_total": 1,
+          "unknown_fields": 0,
+          "verified_facts": 1,
+          "lines_inspected": 0
+        },
+        "invalid_citations": [],
+        "duplicates_removed": 0,
+        "needs_human_follow_up": true
+      },
+      "created_at": "2026-11-22T19:15:35.912109+00:00"
+    }
+  ],
+  "legacy_candidate": null,
+  "resources": {
+    "before": {
+      "gpu_device_used_mib": 10886
+    },
+    "after": {
+      "gpu_device_used_mib": 10886
+    },
+    "model_loaded_before": true,
+    "scope": "Device-wide before/after samples, not an isolated peak or model-only memory measurement"
+  },
+  "actual_local_model": true,
+  "fault_injection": false,
+  "deterministic_baseline": {
+    "source_report_complete": true,
+    "quote_ready": true,
+    "expected_quote_ready": true
+  }
+}

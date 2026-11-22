@@ -119,13 +119,47 @@ export interface ResearchRun {
   state: string;
   turns: number;
   attempts: number;
+  repair_attempts?: number;
+  diagnostics?: { stage?: string; recovered?: boolean; error_code?: string };
   error: string | null;
-  metadata: { model: string; digest: string; prompt_version: string };
+  metadata: {
+    model: string;
+    digest: string;
+    prompt_version: string;
+    claim_schema?: string;
+    verifier_version?: string;
+  };
   result?: {
+    protocol?: string;
+    complete?: boolean;
+    partial?: boolean;
+    quote_ready?: boolean;
+    repaired?: boolean;
+    invalid_citations?: { code: string; pointer?: string }[];
+    coverage?: {
+      complete: boolean;
+      quote_issues: string[];
+      lines: {
+        line_id: string;
+        complete: boolean;
+        selection_state: string;
+        missing_tools: string[];
+        missing_citations: unknown[];
+        unknowns: { field: string; state: string; offer_id?: string }[];
+        commercial_review: { offer_id: string; state: string }[];
+      }[];
+    };
     claims: {
       receipt_id: string;
       pointer: string;
       value: string | number | boolean | null;
+      field_type?: string;
+      line_id?: string;
+      product_id?: string | null;
+      offer_id?: string | null;
+      catalog_version?: string | null;
+      source_fingerprint?: string;
+      data_class?: string;
     }[];
     limitations: string[];
   } | null;
