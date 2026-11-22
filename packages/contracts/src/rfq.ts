@@ -25,6 +25,14 @@ export type RfqEvidence = {
   method: string;
   identity: string;
   verified: boolean;
+  source_occurrence?: boolean | null;
+  row_association?: "verified" | "unverified" | "unknown";
+  column_association?: "verified" | "unverified" | "unknown";
+  association_reason?: string | null;
+  raw_ocr?: string | null;
+  alternatives?: string[];
+  ocr_confidence?: number | null;
+  source_eligible?: boolean;
   extracted_at: string;
 };
 export type RfqField = {
@@ -64,6 +72,7 @@ export type RfqJob = {
   error_message: string | null;
   retryable: boolean;
   dispatch_warning?: string;
+  configuration?: Record<string, unknown>;
 };
 export type RfqDocument = {
   id: string;

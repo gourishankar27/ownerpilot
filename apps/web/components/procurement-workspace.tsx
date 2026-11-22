@@ -14,6 +14,7 @@ import {
   type RfqList,
 } from "@ownerpilot/contracts";
 import { rfqApi } from "@/lib/rfq-api";
+import { matchesQualityFilter } from "@/lib/rfq-quality";
 
 const panel =
   "rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900";
@@ -53,9 +54,11 @@ export function ProcurementWorkspace() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [busy, setBusy] = useState(false);
+  const [qualityFilter, setQualityFilter] = useState("all");
   const [evidence, setEvidence] = useState<{
     name: string;
     field: RfqField;
+    reviewed?: boolean;
   } | null>(null);
   const [editing, setEditing] = useState<RfqLine | "header" | "new" | null>(
     null,
@@ -410,6 +413,48 @@ export function ProcurementWorkspace() {
               {detail.items.length} line items
             </p>
           </div>
+          <section
+            aria-label="Extraction quality summary"
+            className="rounded-xl border border-teal-200 p-3 text-sm"
+          >
+            <h3 className="font-semibold">Extraction quality</h3>
+            <p>
+              Policy:{" "}
+              {String(detail.runs[0]?.metadata.policy ?? "phase1 (historical)")}{" "}
+              · Model calls:{" "}
+              {String(
+                detail.runs[0]?.metadata.model_call_count ?? "not recorded",
+              )}{" "}
+              · OCR strategy:{" "}
+              {String(detail.runs[0]?.metadata.ocr_strategy ?? "not recorded")}
+            </p>
+            <p>
+              {
+                detail.items.filter(
+                  (item) => item.extraction_method === "deterministic",
+                ).length
+              }{" "}
+              deterministic rows ·{" "}
+              {
+                detail.items.filter(
+                  (item) => item.extraction_method !== "deterministic",
+                ).length
+              }{" "}
+              model-assisted or human rows.
+            </p>
+            <p>
+              Source occurrence and structural association are separate checks.
+              Raw OCR confidence is an uncalibrated engine indicator. Every
+              included row still needs human review.
+            </p>
+            <ProcessingDecisions detail={detail} />
+            {detail.runs.length > 1 && (
+              <p className="mt-2 text-amber-700">
+                This is a new extraction version. Previous corrections and
+                source snapshots remain in the audit and processing history.
+              </p>
+            )}
+          </section>
           {detail.status === "approved" && (
             <p
               role="status"
@@ -576,6 +621,37 @@ export function ProcurementWorkspace() {
               </button>
             </div>
             <div className="mt-3 overflow-x-auto">
+              <label className="mb-3 block text-sm">
+                Review queue filter
+                <select
+                  aria-label="Review queue filter"
+                  value={qualityFilter}
+                  onChange={(event) => setQualityFilter(event.target.value)}
+                  className={input}
+                >
+                  <option value="all">All items</option>
+                  <option value="reviewed">Reviewed items</option>
+                  <option value="critical">
+                    Missing or unresolved critical fields
+                  </option>
+                  <option value="source">Unverified source</option>
+                  <option value="association">
+                    Ambiguous source association
+                  </option>
+                  <option value="ocr">OCR disagreement</option>
+                  <option value="conflicting">Conflicting values</option>
+                  <option value="duplicates">Potential duplicates</option>
+                </select>
+              </label>
+              <p className="mb-2 text-xs">
+                Showing{" "}
+                {
+                  detail.items.filter((item) =>
+                    matchesQualityFilter(item, qualityFilter),
+                  ).length
+                }{" "}
+                of {detail.items.length} items.
+              </p>
               <table className="w-full text-left text-sm">
                 <thead>
                   <tr>
@@ -595,42 +671,62 @@ export function ProcurementWorkspace() {
                   </tr>
                 </thead>
                 <tbody>
-                  {detail.items.map((item) => (
-                    <tr key={item.id} className="border-t border-slate-200">
-                      {[
-                        "description",
-                        "manufacturer",
-                        "mpn",
-                        "quantity",
-                        "unit",
-                      ].map((name) => (
-                        <td className="p-2" key={name}>
-                          <FieldButton
-                            name={name}
-                            field={item.fields[name]}
-                            onClick={setEvidence}
-                          />
-                        </td>
-                      ))}
-                      <td className="p-2">
-                        {item.review_status}
-                        {item.warnings.map((w) => (
-                          <p key={w} className="text-xs text-amber-700">
-                            {w}
-                          </p>
+                  {detail.items
+                    .filter((item) => matchesQualityFilter(item, qualityFilter))
+                    .map((item) => (
+                      <tr key={item.id} className="border-t border-slate-200">
+                        {[
+                          "description",
+                          "manufacturer",
+                          "mpn",
+                          "quantity",
+                          "unit",
+                        ].map((name) => (
+                          <td className="p-2" key={name}>
+                            <FieldButton
+                              name={name}
+                              field={item.fields[name]}
+                              onClick={(selection) =>
+                                setEvidence({
+                                  ...selection,
+                                  reviewed: item.review_status === "reviewed",
+                                })
+                              }
+                            />
+                          </td>
                         ))}
-                      </td>
-                      <td className="p-2">
-                        <button
-                          className="underline"
-                          disabled={locked}
-                          onClick={() => beginReview(item)}
-                        >
-                          Review line
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                        <td className="p-2">
+                          {item.review_status}
+                          <p className="text-xs text-slate-500">
+                            {item.extraction_method} ·{" "}
+                            {Object.values(item.fields).some((field) =>
+                              field.evidence.some(
+                                (source) =>
+                                  source.method === "tesseract" ||
+                                  source.raw_ocr != null ||
+                                  source.ocr_confidence != null,
+                              ),
+                            )
+                              ? "OCR-derived"
+                              : "native source"}
+                          </p>
+                          {item.warnings.map((w) => (
+                            <p key={w} className="text-xs text-amber-700">
+                              {w}
+                            </p>
+                          ))}
+                        </td>
+                        <td className="p-2">
+                          <button
+                            className="underline"
+                            disabled={locked}
+                            onClick={() => beginReview(item)}
+                          >
+                            Review line
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
@@ -657,6 +753,15 @@ export function ProcurementWorkspace() {
                 {evidence.field.corrected
                   ? "User corrected; original extraction is retained in history"
                   : "Extracted value"}
+              </p>
+              <p className="text-xs">
+                Human review:{" "}
+                {evidence.reviewed
+                  ? "row reviewed"
+                  : evidence.field.corrected
+                    ? "user-corrected field"
+                    : "pending or consult audit history"}
+                .
               </p>
               {evidence.field.issues.map((issue) => (
                 <p key={issue} className="text-sm text-amber-700">
@@ -786,6 +891,91 @@ export function ProcurementWorkspace() {
   );
 }
 
+function metadataRecord(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+}
+
+function ProcessingDecisions({ detail }: { detail: RfqDetail }) {
+  const metadata = detail.runs[0]?.metadata ?? {};
+  const routing = Array.isArray(metadata.routing) ? metadata.routing : [];
+  const merge = metadataRecord(metadata.merge);
+  const duration = (value: unknown) =>
+    typeof value === "number" && Number.isFinite(value)
+      ? `${(value / 1000).toFixed(2)} seconds`
+      : "not recorded";
+  if (!routing.length && metadata.duration_ms === undefined) return null;
+  return (
+    <details className="mt-2">
+      <summary className="cursor-pointer font-medium">
+        Processing decisions and timing
+      </summary>
+      <p className="mt-2">
+        Processing: {duration(metadata.duration_ms)} · Queue wait:{" "}
+        {duration(metadata.queue_wait_ms)} · OCR: {duration(metadata.ocr_ms)} ·
+        Model: {duration(metadata.model_ms)}
+      </p>
+      {Object.keys(merge).length > 0 && (
+        <p>
+          Repaired rows: {String(merge.repaired_rows ?? "not recorded")} · Added
+          model rows: {String(merge.added_model_rows ?? "not recorded")} ·
+          Unresolved fields:{" "}
+          {String(merge.remaining_unresolved_fields ?? "not recorded")}
+        </p>
+      )}
+      {routing.map((raw, index) => {
+        const route = metadataRecord(raw);
+        const coverage = metadataRecord(route.coverage);
+        const tasks = Array.isArray(route.tasks) ? route.tasks : [];
+        const selected = Array.isArray(route.selected_blocks)
+          ? route.selected_blocks
+          : [];
+        const filename = detail.documents.find(
+          (document) => document.id === route.document_id,
+        )?.filename;
+        return (
+          <div key={index} className="mt-2 border-t border-teal-100 pt-2">
+            <p>
+              {filename ?? "Source document"} · Observable candidate rows:{" "}
+              {String(coverage.candidate_rows ?? "unknown")} · Deterministic
+              rows: {String(coverage.deterministic_rows ?? "not recorded")}
+            </p>
+            {tasks.length ? (
+              <ul className="list-inside list-disc text-xs">
+                {tasks.slice(0, 20).map((rawTask, taskIndex) => {
+                  const task = metadataRecord(rawTask);
+                  const reasons = Array.isArray(task.reasons)
+                    ? task.reasons.filter(
+                        (reason) => typeof reason === "string",
+                      )
+                    : [];
+                  return (
+                    <li key={taskIndex}>
+                      {String(task.source ?? "Unresolved source")} ·{" "}
+                      {selected.includes(task.source)
+                        ? "Model source selected"
+                        : "Human review pending"}
+                      : {reasons.map((reason) => label(reason)).join("; ")}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p>No unresolved source tasks recorded.</p>
+            )}
+            {tasks.length > 20 && (
+              <p>
+                Showing 20 of {tasks.length} tasks; full details are in history.
+              </p>
+            )}
+          </div>
+        );
+      })}
+    </details>
+  );
+}
+
 function FieldButton({
   name,
   field,
@@ -837,6 +1027,41 @@ function EvidenceView({
         {source.verified ? "Source verified" : "Unverified"} · SHA-256{" "}
         {source.fingerprint}
       </p>
+      <p className="mt-2 text-xs">
+        Source occurrence:{" "}
+        {(source.source_occurrence ?? source.verified)
+          ? "verified literal excerpt"
+          : "unverified"}{" "}
+        · Row association: {source.row_association ?? "not recorded"} · Column
+        association: {source.column_association ?? "not observed"}.
+      </p>
+      {source.association_reason && (
+        <p className="text-xs">{source.association_reason}</p>
+      )}
+      {source.raw_ocr != null && (
+        <p className="mt-2 text-xs">
+          Raw OCR reading: {source.raw_ocr} · Normalized current value is shown
+          above.
+        </p>
+      )}
+      {!!source.alternatives?.length && (
+        <p className="text-xs text-amber-700">
+          OCR disagreement: {source.alternatives.join(" / ")}. Confirm visually;
+          no character substitution was inferred.
+        </p>
+      )}
+      {source.ocr_confidence != null && (
+        <p className="text-xs">
+          Raw Tesseract confidence: {source.ocr_confidence.toFixed(1)}{" "}
+          (uncalibrated, not an accuracy percentage).
+        </p>
+      )}
+      {loc.bbox && (
+        <p className="text-xs">
+          Observed geometry, PDF points from original page top-left: [
+          {loc.bbox.join(", ")}]. No source highlighting is fabricated.
+        </p>
+      )}
     </div>
   );
 }

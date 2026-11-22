@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import re
-import time
 
 from openpyxl.utils import get_column_letter
 
@@ -17,8 +16,8 @@ from .contracts import (
     ParsedDocument,
     Proposal,
 )
-from .provider import OllamaProvider, PROMPT_VERSION, ProviderError
-from .validation import mark_duplicates, normalize, stable_item
+from .provider import ProviderError
+from .validation import normalize, stable_item
 
 ALIASES = {
     "line": "line_number",
@@ -265,50 +264,44 @@ def chunks(doc: ParsedDocument) -> list[list[Block]]:
 
 
 async def extract(
-    documents: list[ParsedDocument], mode: str = "hybrid", provider=None
+    documents: list[ParsedDocument],
+    mode: str = "hybrid",
+    provider=None,
+    *,
+    policy: str | None = None,
+    cancel_check=None,
 ) -> Extraction:
-    start = time.perf_counter()
-    result = Extraction(header={name: FieldValue() for name in HEADER_FIELDS})
-    model_runs = []
-    model_ms = 0.0
-    deterministic_ms = 0.0
-    for doc in documents:
-        before = time.perf_counter()
-        baseline = deterministic(doc)
-        deterministic_ms += (time.perf_counter() - before) * 1000
-        use_baseline = mode == "deterministic" or (mode == "hybrid" and baseline.items)
-        if use_baseline:
-            extracted = baseline
-        else:
-            extracted = Extraction(warnings=list(doc.warnings))
-            for batch in chunks(doc):
-                before = time.perf_counter()
-                proposal, metadata = await (provider or OllamaProvider()).extract(batch)
-                model_ms += (time.perf_counter() - before) * 1000
-                model_runs.append(metadata)
-                part = verify_proposal(
-                    doc, batch, proposal, metadata.get("model", "test-provider")
-                )
-                extracted.items.extend(part.items)
-                for name, value in part.header.items():
-                    if value.value is not None or value.raw is not None:
-                        merge_header(extracted, name, value)
-        result.items.extend(extracted.items)
-        if len(result.items) > 2000:
-            raise ProviderError("line_item_limit")
-        result.warnings.extend(extracted.warnings)
-        for name, value in extracted.header.items():
-            if value.value is not None or value.raw is not None:
-                merge_header(result, name, value)
-    mark_duplicates(result.items)
-    result.metadata = {
-        "mode": mode,
-        "prompt_version": PROMPT_VERSION,
-        "model_runs": model_runs,
-        "model_ms": model_ms,
-        "deterministic_ms": deterministic_ms,
-        "ocr_ms": sum(d.ocr_ms for d in documents),
-        "parser_ms": sum(d.duration_ms for d in documents),
-        "extraction_ms": (time.perf_counter() - start) * 1000,
-    }
-    return result
+    selected_policy = policy or settings().extraction_policy
+    if selected_policy == "selective-v2":
+        from .selective import extract_selective
+
+        return await extract_selective(documents, mode, provider, cancel_check)
+    if selected_policy == "phase1":
+        from .legacy_v1.contracts import (
+            ParsedDocument as OriginalDocument,
+            Block as OriginalBlock,
+        )
+        from .legacy_v1.extraction import extract as original
+        from .legacy_v1.provider import ProviderError as OriginalError
+
+        converted = []
+        for doc in documents:
+            data = {
+                k: v
+                for k, v in doc.model_dump().items()
+                if k in OriginalDocument.model_fields
+            }
+            data["blocks"] = [
+                {k: v for k, v in b.items() if k in OriginalBlock.model_fields}
+                for b in data["blocks"]
+            ]
+            converted.append(OriginalDocument.model_validate(data))
+        try:
+            result = Extraction.model_validate(
+                (await original(converted, mode, provider)).model_dump()
+            )
+        except OriginalError as exc:
+            raise ProviderError(exc.category, exc.retryable) from exc
+        result.metadata["policy"] = "phase1"
+        return result
+    raise ProviderError("unknown_extraction_policy")
