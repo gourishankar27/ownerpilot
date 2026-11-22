@@ -15,6 +15,7 @@ import {
 } from "@ownerpilot/contracts";
 import { rfqApi } from "@/lib/rfq-api";
 import { matchesQualityFilter } from "@/lib/rfq-quality";
+import { CatalogIntelligence } from "@/components/catalog-intelligence";
 
 const panel =
   "rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900";
@@ -404,6 +405,11 @@ export function ProcurementWorkspace() {
         </div>
       </section>
       {selected && !detail && <p role="status">Loading RFQ details…</p>}
+      <CatalogIntelligence
+        key={`${workspace}:${detail?.id ?? "none"}`}
+        workspace={workspace}
+        detail={detail}
+      />
       {detail && (
         <section className={`${panel} space-y-5`}>
           <div>

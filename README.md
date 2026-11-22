@@ -32,6 +32,19 @@ OwnerPilot focuses on closing that gap with:
 - explainable recommendations with evidence and confidence traces
 
 ## What is implemented now
+### Catalog Intelligence (Phase 2)
+
+Approved RFQ lines can be matched to versioned catalogs using exact manufacturer/MPN,
+genuine BM25, local learned embeddings in pgvector, rank fusion and conservative
+specification checks. Imports require preview/confirmation; product decisions retain
+catalog/query provenance and audit history. Synthetic validation:145 backend tests,
+seven browser scenarios,1,020 vectors and816 query/method evaluations. Real-world
+compatibility and production hardening remain open.
+
+- [Phase 2 report and measured limits](docs/rfq/phase2/FINAL_IMPLEMENTATION_REPORT.md)
+- [Retrieval results](docs/rfq/phase2/EVALUATION_RESULTS.md)
+- [Windows setup and demonstration](docs/rfq/phase2/WINDOWS_SETUP.md)
+
 ### Procurement extraction hardening (Phase 1.1)
 
 Versioned selective RFQ routing, bounded OCR geometry/preprocessing, stronger source

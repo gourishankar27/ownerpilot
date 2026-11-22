@@ -1,0 +1,80 @@
+{
+  "scope": "Selected reranked hybrid, finite synthetic corpus; raw fusion baselines are weaker. Latency budgets are proposed separately, not predeclared wins.",
+  "gates": [
+    {
+      "metric": "clean_exact_recall1",
+      "actual": 1.0,
+      "target": 0.99,
+      "passed": true,
+      "counts": {
+        "correct": 14,
+        "total": 14
+      }
+    },
+    {
+      "metric": "false_exact_rate",
+      "actual": 0,
+      "target_max": 0.01,
+      "passed": true,
+      "counts": {
+        "incorrect": 0,
+        "total": 14
+      }
+    },
+    {
+      "metric": "hybrid_recall10",
+      "actual": 0.9742857142857143,
+      "target": 0.95,
+      "passed": true,
+      "counts": "341/350 relevant identities on35 answerable queries"
+    },
+    {
+      "metric": "hybrid_mrr10",
+      "actual": 1.0,
+      "target": 0.9,
+      "passed": true
+    },
+    {
+      "metric": "hybrid_ndcg10",
+      "actual": 0.9577756588410389,
+      "target": 0.9,
+      "passed": true
+    },
+    {
+      "metric": "deduplication_precision",
+      "actual": 1.0,
+      "target": 0.98,
+      "passed": true,
+      "counts": {
+        "true_positive_pairs": 204,
+        "predicted_pairs": 204,
+        "expected_pairs": 204,
+        "false_variant_merges": 0,
+        "source_offers_preserved": 1224,
+        "source_offers_expected": 1224
+      }
+    },
+    {
+      "metric": "critical_false_compatible",
+      "actual": 0,
+      "target": 0,
+      "passed": true,
+      "counts": {
+        "incorrect": 0,
+        "total": 327
+      }
+    },
+    {
+      "metric": "cross_workspace_leaks",
+      "actual": 0,
+      "target": 0,
+      "passed": true
+    },
+    {
+      "metric": "duplicate_publications",
+      "actual": 0,
+      "target": 0,
+      "passed": true
+    }
+  ]
+}

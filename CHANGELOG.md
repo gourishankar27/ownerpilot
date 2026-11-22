@@ -6,6 +6,11 @@ All notable changes to OwnerPilot are documented in this file.
 
 ### Added
 
+- Phase 2 Catalog Intelligence: versioned catalog preview/confirmation, durable
+  neural indexing, genuine BM25, pgvector cosine retrieval, RRF, deterministic
+  compatibility and approved-RFQ product decision history. Synthetic corpus has
+  1,224 offers/1,020 products;816 final query/method comparisons,145 backend tests
+  and seven browser scenarios. No distributor actions or Phase 3 implementation.
 - Phase 1.1 versioned selective RFQ routing, bounded geometry-aware OCR, explicit
   source occurrence/row/column associations, processing telemetry and review filters.
 - Local 4B/8B/27B inference experiments, independent frozen v2 synthetic layouts,

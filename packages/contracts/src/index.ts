@@ -1,5 +1,6 @@
 import { z } from "zod";
 export * from "./rfq";
+export * from "./catalog";
 
 export const memberRoleSchema = z.enum(["owner", "manager", "accountant"]);
 export type MemberRole = z.infer<typeof memberRoleSchema>;
