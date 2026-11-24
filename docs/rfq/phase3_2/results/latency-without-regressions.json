@@ -1,0 +1,757 @@
+{
+  "accuracy_denominator_unchanged": "All first frozen trials remain in the 60-case accuracy denominator per variant; no native trial was rerun",
+  "measurement_issue": "The full backend suite includes actual qwen3:4b inference. It was initially mistaken for CPU-only work. Two regression suites overlapped held-out timing; the earlier suite overlapped development work.",
+  "windows": [
+    {
+      "suite": "regression-tests.xml",
+      "start_utc": "2026-11-22T22:25:34.438935+00:00",
+      "end_utc": "2026-11-22T22:32:40.427935+00:00",
+      "real_qwen4_test_seconds": 7.809,
+      "method": "Conservatively exclude the entire regression suite, 300 seconds of configured model residence afterwards and 5 seconds of boundary padding"
+    },
+    {
+      "suite": "regression-469.xml",
+      "start_utc": "2026-11-23T00:32:32.826305+00:00",
+      "end_utc": "2026-11-23T00:40:02.419305+00:00",
+      "real_qwen4_test_seconds": 8.142,
+      "method": "Conservatively exclude the entire regression suite, 300 seconds of configured model residence afterwards and 5 seconds of boundary padding"
+    },
+    {
+      "suite": "final-backend-tests.xml",
+      "start_utc": "2026-11-23T00:51:24.616091+00:00",
+      "end_utc": "2026-11-23T00:58:53.811091+00:00",
+      "real_qwen4_test_seconds": 7.661,
+      "method": "Conservatively exclude the entire regression suite, 300 seconds of configured model residence afterwards and 5 seconds of boundary padding"
+    }
+  ],
+  "trial_interval_method": "First model admission through last recorded model-call finish, padded by 5 seconds; inference and tool execution are within this interval",
+  "matched_case_exclusion": "Exclude every variant for a case if any variant overlaps a recorded window; independent of its outcome or observed latency",
+  "excluded_cases": {
+    "v3-held-05": [
+      {
+        "variant": "coverage_native",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "hybrid",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "native_batch",
+        "windows": [
+          "regression-469.xml"
+        ]
+      }
+    ],
+    "v3-held-06": [
+      {
+        "variant": "coverage_native",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "hybrid",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "native_batch",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "phase31",
+        "windows": [
+          "regression-469.xml"
+        ]
+      }
+    ],
+    "v3-held-07": [
+      {
+        "variant": "coverage_native",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "hybrid",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "native_batch",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "phase31",
+        "windows": [
+          "regression-469.xml"
+        ]
+      }
+    ],
+    "v3-held-08": [
+      {
+        "variant": "coverage_native",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "hybrid",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "native_batch",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "phase31",
+        "windows": [
+          "regression-469.xml"
+        ]
+      }
+    ],
+    "v3-held-09": [
+      {
+        "variant": "coverage_native",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "hybrid",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "native_batch",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "phase31",
+        "windows": [
+          "regression-469.xml"
+        ]
+      }
+    ],
+    "v3-held-10": [
+      {
+        "variant": "native_batch",
+        "windows": [
+          "regression-469.xml"
+        ]
+      },
+      {
+        "variant": "phase31",
+        "windows": [
+          "regression-469.xml"
+        ]
+      }
+    ],
+    "v3-held-19": [
+      {
+        "variant": "coverage_native",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "hybrid",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "native_batch",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      }
+    ],
+    "v3-held-20": [
+      {
+        "variant": "coverage_native",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "hybrid",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "native_batch",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "phase31",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      }
+    ],
+    "v3-held-21": [
+      {
+        "variant": "coverage_native",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "hybrid",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "native_batch",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "phase31",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      }
+    ],
+    "v3-held-22": [
+      {
+        "variant": "coverage_native",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "hybrid",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "native_batch",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "phase31",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      }
+    ],
+    "v3-held-23": [
+      {
+        "variant": "coverage_native",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "hybrid",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "native_batch",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "phase31",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      }
+    ],
+    "v3-held-24": [
+      {
+        "variant": "native_batch",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      },
+      {
+        "variant": "phase31",
+        "windows": [
+          "final-backend-tests.xml"
+        ]
+      }
+    ]
+  },
+  "timing_cases_retained_per_variant": 48,
+  "limitation": "Other CPU/host activity was not controlled. These are practical local validation timings, not idle-host or isolated-GPU measurements.",
+  "groups": {
+    "phase31": {
+      "n": 48,
+      "complete": 3,
+      "source_complete_cases": 3,
+      "lines": 250,
+      "covered_lines": 40,
+      "source_pairs_required": 500,
+      "source_pairs_inspected": 92,
+      "required_facts": 1311,
+      "supported_required_facts": 241,
+      "invalid_facts": 0,
+      "source_errors": 0,
+      "unauthorized_successful_tools": 0,
+      "model_selected_tools": 147,
+      "backend_scheduled_tools": 0,
+      "model_source_pairs": 92,
+      "backend_source_pairs": 0,
+      "useful_model_tool_decisions": 140,
+      "duplicate_source_reads": 0,
+      "optional_calls": 7,
+      "model_tool_successes": 147,
+      "early_finalization_attempts": null,
+      "source_covered_lines_per_all_tool_rpc": 0.272108843537415,
+      "batch_lines_per_successful_parent": {
+        "n": 0,
+        "median": null,
+        "p95_nearest_rank": null
+      },
+      "batch_output_bytes": {
+        "n": 0,
+        "median": null,
+        "p95_nearest_rank": null
+      },
+      "batch_line_utilization": {
+        "requested_lines": 0,
+        "capacity": 0
+      },
+      "per_completed_run": {
+        "denominator": 3,
+        "model_calls": {
+          "n": 3,
+          "median": 4,
+          "p95_nearest_rank": 4
+        },
+        "model_output_tokens": {
+          "n": 3,
+          "median": 294,
+          "p95_nearest_rank": 426
+        },
+        "model_input_tokens": {
+          "n": 3,
+          "median": 3994,
+          "p95_nearest_rank": 4195
+        },
+        "tool_calls": {
+          "n": 3,
+          "median": 3,
+          "p95_nearest_rank": 3
+        }
+      },
+      "gpu_before_after_mib": {
+        "samples": 96,
+        "minimum": 671,
+        "maximum": 6982,
+        "scope": "Device-wide before/after samples; not peaks or isolated model memory"
+      },
+      "inference_warm_before": 47,
+      "timing_scope": "Inline execution; no broker queue. Admission-to-runner preparation and terminal execution are timed. Independent grading excluded. Queue/recovery measured separately.",
+      "batch_line_counts": {},
+      "unused_tool_capacity": 237,
+      "planning_calls": 144,
+      "finalization_calls": 48,
+      "repair_calls": 0,
+      "chat_request_attempts": 192,
+      "acknowledged_model_responses": 192,
+      "tokens": {
+        "prompt_eval_count": 216780,
+        "eval_count": 14322
+      },
+      "actual_inference_cases": 48,
+      "latency_ms_all": {
+        "n": 48,
+        "median": 8359.893649991136,
+        "p95_nearest_rank": 11447.666099993512
+      },
+      "latency_ms_complete": {
+        "n": 3,
+        "median": 6949.024899979122,
+        "p95_nearest_rank": 8759.977099951357
+      },
+      "errors": {
+        "research_coverage_incomplete": 45,
+        "none": 3
+      },
+      "rejected_citation_codes": {
+        "incorrect_claim_association": 1
+      },
+      "unknowns_correct_cases": 48,
+      "quote_readiness_correct_cases": 48
+    },
+    "native_batch": {
+      "n": 48,
+      "complete": 41,
+      "source_complete_cases": 47,
+      "lines": 250,
+      "covered_lines": 249,
+      "source_pairs_required": 500,
+      "source_pairs_inspected": 498,
+      "required_facts": 1311,
+      "supported_required_facts": 1251,
+      "invalid_facts": 0,
+      "source_errors": 0,
+      "unauthorized_successful_tools": 0,
+      "model_selected_tools": 123,
+      "backend_scheduled_tools": 0,
+      "model_source_pairs": 498,
+      "backend_source_pairs": 0,
+      "useful_model_tool_decisions": 123,
+      "duplicate_source_reads": 0,
+      "optional_calls": 0,
+      "model_tool_successes": 123,
+      "early_finalization_attempts": 0,
+      "source_covered_lines_per_all_tool_rpc": 2.024390243902439,
+      "batch_lines_per_successful_parent": {
+        "n": 75,
+        "median": 4,
+        "p95_nearest_rank": 4
+      },
+      "batch_output_bytes": {
+        "n": 75,
+        "median": 16799,
+        "p95_nearest_rank": 19011
+      },
+      "batch_line_utilization": {
+        "requested_lines": 249,
+        "capacity": 300
+      },
+      "per_completed_run": {
+        "denominator": 41,
+        "model_calls": {
+          "n": 41,
+          "median": 3,
+          "p95_nearest_rank": 5
+        },
+        "model_output_tokens": {
+          "n": 41,
+          "median": 833,
+          "p95_nearest_rank": 3040
+        },
+        "model_input_tokens": {
+          "n": 41,
+          "median": 3916,
+          "p95_nearest_rank": 11532
+        },
+        "tool_calls": {
+          "n": 41,
+          "median": 2,
+          "p95_nearest_rank": 4
+        }
+      },
+      "gpu_before_after_mib": {
+        "samples": 96,
+        "minimum": 6777,
+        "maximum": 6982,
+        "scope": "Device-wide before/after samples; not peaks or isolated model memory"
+      },
+      "inference_warm_before": 48,
+      "timing_scope": "Inline execution; no broker queue. Admission-to-runner preparation and terminal execution are timed. Independent grading excluded. Queue/recovery measured separately.",
+      "batch_line_counts": {
+        "1": 10,
+        "2": 10,
+        "4": 54,
+        "3": 1
+      },
+      "unused_tool_capacity": 261,
+      "planning_calls": 117,
+      "finalization_calls": 47,
+      "repair_calls": 8,
+      "chat_request_attempts": 172,
+      "acknowledged_model_responses": 172,
+      "tokens": {
+        "prompt_eval_count": 296363,
+        "eval_count": 75447
+      },
+      "actual_inference_cases": 48,
+      "latency_ms_all": {
+        "n": 48,
+        "median": 14233.869049989153,
+        "p95_nearest_rank": 78728.57969999313
+      },
+      "latency_ms_complete": {
+        "n": 41,
+        "median": 12716.737400041893,
+        "p95_nearest_rank": 44766.040900023654
+      },
+      "errors": {
+        "none": 41,
+        "citation_correction_exhausted": 6,
+        "planning_budget_exhausted": 1
+      },
+      "rejected_citation_codes": {
+        "claim_schema_rejected": 11,
+        "missing_pointer_value": 1
+      },
+      "unknowns_correct_cases": 48,
+      "quote_readiness_correct_cases": 48
+    },
+    "coverage_native": {
+      "n": 48,
+      "complete": 44,
+      "source_complete_cases": 48,
+      "lines": 250,
+      "covered_lines": 250,
+      "source_pairs_required": 500,
+      "source_pairs_inspected": 500,
+      "required_facts": 1311,
+      "supported_required_facts": 1258,
+      "invalid_facts": 0,
+      "source_errors": 0,
+      "unauthorized_successful_tools": 0,
+      "model_selected_tools": 123,
+      "backend_scheduled_tools": 0,
+      "model_source_pairs": 500,
+      "backend_source_pairs": 0,
+      "useful_model_tool_decisions": 123,
+      "duplicate_source_reads": 0,
+      "optional_calls": 0,
+      "model_tool_successes": 123,
+      "early_finalization_attempts": 0,
+      "source_covered_lines_per_all_tool_rpc": 2.032520325203252,
+      "batch_lines_per_successful_parent": {
+        "n": 75,
+        "median": 4,
+        "p95_nearest_rank": 4
+      },
+      "batch_output_bytes": {
+        "n": 75,
+        "median": 16799,
+        "p95_nearest_rank": 19011
+      },
+      "batch_line_utilization": {
+        "requested_lines": 250,
+        "capacity": 300
+      },
+      "per_completed_run": {
+        "denominator": 44,
+        "model_calls": {
+          "n": 44,
+          "median": 3.0,
+          "p95_nearest_rank": 5
+        },
+        "model_output_tokens": {
+          "n": 44,
+          "median": 879.5,
+          "p95_nearest_rank": 3193
+        },
+        "model_input_tokens": {
+          "n": 44,
+          "median": 4264.5,
+          "p95_nearest_rank": 13639
+        },
+        "tool_calls": {
+          "n": 44,
+          "median": 2.0,
+          "p95_nearest_rank": 4
+        }
+      },
+      "gpu_before_after_mib": {
+        "samples": 96,
+        "minimum": 6777,
+        "maximum": 6982,
+        "scope": "Device-wide before/after samples; not peaks or isolated model memory"
+      },
+      "inference_warm_before": 48,
+      "timing_scope": "Inline execution; no broker queue. Admission-to-runner preparation and terminal execution are timed. Independent grading excluded. Queue/recovery measured separately.",
+      "batch_line_counts": {
+        "1": 10,
+        "2": 10,
+        "4": 55
+      },
+      "unused_tool_capacity": 261,
+      "planning_calls": 123,
+      "finalization_calls": 48,
+      "repair_calls": 7,
+      "chat_request_attempts": 178,
+      "acknowledged_model_responses": 178,
+      "tokens": {
+        "prompt_eval_count": 341986,
+        "eval_count": 68140
+      },
+      "actual_inference_cases": 48,
+      "latency_ms_all": {
+        "n": 48,
+        "median": 14517.4365999992,
+        "p95_nearest_rank": 54292.75659995619
+      },
+      "latency_ms_complete": {
+        "n": 44,
+        "median": 13700.77080000192,
+        "p95_nearest_rank": 50295.91740004253
+      },
+      "errors": {
+        "none": 44,
+        "citation_correction_exhausted": 4
+      },
+      "rejected_citation_codes": {
+        "claim_schema_rejected": 6,
+        "incorrect_claim_association": 51,
+        "missing_pointer_value": 1
+      },
+      "unknowns_correct_cases": 48,
+      "quote_readiness_correct_cases": 48
+    },
+    "hybrid": {
+      "n": 48,
+      "complete": 41,
+      "source_complete_cases": 48,
+      "lines": 250,
+      "covered_lines": 250,
+      "source_pairs_required": 500,
+      "source_pairs_inspected": 500,
+      "required_facts": 1311,
+      "supported_required_facts": 1250,
+      "invalid_facts": 0,
+      "source_errors": 0,
+      "unauthorized_successful_tools": 0,
+      "model_selected_tools": 96,
+      "backend_scheduled_tools": 27,
+      "model_source_pairs": 284,
+      "backend_source_pairs": 216,
+      "useful_model_tool_decisions": 96,
+      "duplicate_source_reads": 0,
+      "optional_calls": 0,
+      "model_tool_successes": 96,
+      "early_finalization_attempts": 0,
+      "source_covered_lines_per_all_tool_rpc": 2.032520325203252,
+      "batch_lines_per_successful_parent": {
+        "n": 75,
+        "median": 4,
+        "p95_nearest_rank": 4
+      },
+      "batch_output_bytes": {
+        "n": 75,
+        "median": 16799,
+        "p95_nearest_rank": 19011
+      },
+      "batch_line_utilization": {
+        "requested_lines": 250,
+        "capacity": 300
+      },
+      "per_completed_run": {
+        "denominator": 41,
+        "model_calls": {
+          "n": 41,
+          "median": 3,
+          "p95_nearest_rank": 4
+        },
+        "model_output_tokens": {
+          "n": 41,
+          "median": 818,
+          "p95_nearest_rank": 3320
+        },
+        "model_input_tokens": {
+          "n": 41,
+          "median": 4177,
+          "p95_nearest_rank": 9192
+        },
+        "tool_calls": {
+          "n": 41,
+          "median": 2,
+          "p95_nearest_rank": 4
+        }
+      },
+      "gpu_before_after_mib": {
+        "samples": 96,
+        "minimum": 6777,
+        "maximum": 6982,
+        "scope": "Device-wide before/after samples; not peaks or isolated model memory"
+      },
+      "inference_warm_before": 48,
+      "timing_scope": "Inline execution; no broker queue. Admission-to-runner preparation and terminal execution are timed. Independent grading excluded. Queue/recovery measured separately.",
+      "batch_line_counts": {
+        "1": 10,
+        "2": 10,
+        "4": 55
+      },
+      "unused_tool_capacity": 261,
+      "planning_calls": 96,
+      "finalization_calls": 48,
+      "repair_calls": 10,
+      "chat_request_attempts": 154,
+      "acknowledged_model_responses": 154,
+      "tokens": {
+        "prompt_eval_count": 274035,
+        "eval_count": 73918
+      },
+      "actual_inference_cases": 48,
+      "latency_ms_all": {
+        "n": 48,
+        "median": 14657.402449985966,
+        "p95_nearest_rank": 66340.70390008856
+      },
+      "latency_ms_complete": {
+        "n": 41,
+        "median": 12861.757399979979,
+        "p95_nearest_rank": 46400.530499988236
+      },
+      "errors": {
+        "none": 41,
+        "citation_correction_exhausted": 7
+      },
+      "rejected_citation_codes": {
+        "claim_schema_rejected": 15,
+        "incorrect_claim_association": 50,
+        "missing_pointer_value": 1
+      },
+      "unknowns_correct_cases": 48,
+      "quote_readiness_correct_cases": 48
+    }
+  },
+  "matched_successful_cases": [
+    "v3-held-26",
+    "v3-held-31",
+    "v3-held-46"
+  ],
+  "matched_successful_latency_ms": {
+    "phase31": {
+      "n": 3,
+      "median": 6949.024899979122,
+      "p95_nearest_rank": 8759.977099951357
+    },
+    "native_batch": {
+      "n": 3,
+      "median": 6082.7200000640005,
+      "p95_nearest_rank": 8223.221600055695
+    },
+    "coverage_native": {
+      "n": 3,
+      "median": 5990.745999966748,
+      "p95_nearest_rank": 8207.908900105394
+    },
+    "hybrid": {
+      "n": 3,
+      "median": 6017.891899915412,
+      "p95_nearest_rank": 8136.348200030625
+    }
+  }
+}

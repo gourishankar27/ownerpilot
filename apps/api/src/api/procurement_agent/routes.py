@@ -11,7 +11,7 @@ from api.rfq.db import connection
 from api.rfq.repository import load_rfq
 
 from . import contracts as c, service as s
-from .provider_v2 import LocalModel
+from .provider_v3 import LocalModel
 from .runner import ACTIVE
 
 router = APIRouter(prefix="/api", tags=["Procurement research and internal quotes"])

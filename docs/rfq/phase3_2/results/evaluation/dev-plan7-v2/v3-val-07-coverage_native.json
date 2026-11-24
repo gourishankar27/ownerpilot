@@ -1,0 +1,1687 @@
+{
+  "scenario": "v3-val-07",
+  "split": "validation",
+  "pattern": "2-line/mix-6",
+  "line_count": 2,
+  "variant": "coverage_native",
+  "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+  "model": {
+    "model": "qwen3:8b",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "context": 8192,
+    "max_calls": 8,
+    "max_lines": 12,
+    "max_turns": 5,
+    "batch_size": 4,
+    "max_repeats": 2,
+    "max_seconds": 240,
+    "temperature": 0,
+    "tool_schema": "procurement-tools/3",
+    "capabilities": [
+      "completion",
+      "tools",
+      "thinking"
+    ],
+    "claim_schema": "research-citation-only/2",
+    "prompt_version": "procurement-native/7",
+    "planning_policy": "procurement-planning/2",
+    "coverage_version": "research-coverage/2",
+    "max_repair_calls": 1,
+    "verifier_version": "research-verifier/3",
+    "max_planning_calls": 4,
+    "max_response_bytes": 65536,
+    "source_fingerprint": "9650144b5f1759b9574512a757043cfdfb3c6e72f58524f7fef9aba901f20bbb",
+    "max_total_model_calls": 6,
+    "max_finalization_calls": 1,
+    "orchestration_strategy": "coverage_native",
+    "planning_output_tokens": 1600,
+    "provider_timeout_seconds": 60,
+    "finalization_output_tokens": 4096
+  },
+  "state": "complete",
+  "error": null,
+  "result": {
+    "claims": [
+      {
+        "known": true,
+        "value": "resolved",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/selection/state",
+        "offer_id": null,
+        "data_class": "human_reviewed_selection",
+        "field_type": "selection_state",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s36fa1a4e9c00",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "human_reviewed_selection",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "available",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/offers/attestations/0/availability",
+        "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+        "data_class": "user_attested",
+        "field_type": "availability",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s50e2be1f4df2",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "user_attested",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "conflicting_information",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/offers/attestations/0/commercial_review_state",
+        "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+        "data_class": "user_attested",
+        "field_type": "review_state",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s50e2be1f4df2",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "derived_classification",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "USD",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/offers/attestations/0/currency",
+        "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+        "data_class": "user_attested",
+        "field_type": "currency",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s50e2be1f4df2",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "user_attested",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "current_according_to_attested_validity",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/offers/attestations/0/freshness",
+        "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+        "data_class": "user_attested",
+        "field_type": "freshness",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s50e2be1f4df2",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "derived_classification",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "119.08",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/offers/attestations/0/price",
+        "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+        "data_class": "user_attested",
+        "field_type": "price",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s50e2be1f4df2",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "user_attested",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "available",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/offers/attestations/1/availability",
+        "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+        "data_class": "user_attested",
+        "field_type": "availability",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s5a95cbd47fd5",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "user_attested",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "conflicting_information",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/offers/attestations/1/commercial_review_state",
+        "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+        "data_class": "user_attested",
+        "field_type": "review_state",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s5a95cbd47fd5",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "derived_classification",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "USD",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/offers/attestations/1/currency",
+        "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+        "data_class": "user_attested",
+        "field_type": "currency",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s5a95cbd47fd5",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "user_attested",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "current_according_to_attested_validity",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/offers/attestations/1/freshness",
+        "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+        "data_class": "user_attested",
+        "field_type": "freshness",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s5a95cbd47fd5",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "derived_classification",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "122.08",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "pointer": "/data/lines/0/offers/attestations/1/price",
+        "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+        "data_class": "user_attested",
+        "field_type": "price",
+        "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s5a95cbd47fd5",
+        "rfq_revision": 5,
+        "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "user_attested",
+        "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+      },
+      {
+        "known": true,
+        "value": "resolved",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+        "pointer": "/data/lines/1/selection/state",
+        "offer_id": null,
+        "data_class": "human_reviewed_selection",
+        "field_type": "selection_state",
+        "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s21a802dad121",
+        "rfq_revision": 5,
+        "selection_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "human_reviewed_selection",
+        "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+      },
+      {
+        "known": true,
+        "value": "available",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+        "pointer": "/data/lines/1/offers/attestations/0/availability",
+        "offer_id": "f80ab3dd-5512-4c68-a3f2-f92aeca1a238",
+        "data_class": "user_attested",
+        "field_type": "availability",
+        "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s49cec8a869c1",
+        "rfq_revision": 5,
+        "selection_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "user_attested",
+        "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+      },
+      {
+        "known": true,
+        "value": "USD",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+        "pointer": "/data/lines/1/offers/attestations/0/currency",
+        "offer_id": "f80ab3dd-5512-4c68-a3f2-f92aeca1a238",
+        "data_class": "user_attested",
+        "field_type": "currency",
+        "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s49cec8a869c1",
+        "rfq_revision": 5,
+        "selection_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "user_attested",
+        "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+      },
+      {
+        "known": true,
+        "value": "current_according_to_attested_validity",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+        "pointer": "/data/lines/1/offers/attestations/0/freshness",
+        "offer_id": "f80ab3dd-5512-4c68-a3f2-f92aeca1a238",
+        "data_class": "user_attested",
+        "field_type": "freshness",
+        "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s49cec8a869c1",
+        "rfq_revision": 5,
+        "selection_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "derived_classification",
+        "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+      },
+      {
+        "known": true,
+        "value": "83.35",
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+        "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+        "pointer": "/data/lines/1/offers/attestations/0/price",
+        "offer_id": "f80ab3dd-5512-4c68-a3f2-f92aeca1a238",
+        "data_class": "user_attested",
+        "field_type": "price",
+        "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s49cec8a869c1",
+        "rfq_revision": 5,
+        "selection_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+        "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+        "model_selected": true,
+        "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+        "observation_class": "user_attested",
+        "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+      }
+    ],
+    "partial": false,
+    "complete": true,
+    "coverage": {
+      "lines": [
+        {
+          "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+          "complete": true,
+          "unknowns": [],
+          "missing_tools": [],
+          "inspected_tools": [
+            "get_reviewed_product_selection",
+            "get_supplier_offers"
+          ],
+          "selection_state": "resolved",
+          "commercial_review": [
+            {
+              "state": "conflicting_information",
+              "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367"
+            },
+            {
+              "state": "conflicting_information",
+              "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51"
+            }
+          ],
+          "missing_citations": [],
+          "source_coverage_complete": true
+        },
+        {
+          "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+          "complete": true,
+          "unknowns": [],
+          "missing_tools": [],
+          "inspected_tools": [
+            "get_reviewed_product_selection",
+            "get_supplier_offers"
+          ],
+          "selection_state": "resolved",
+          "commercial_review": [],
+          "missing_citations": [],
+          "source_coverage_complete": true
+        }
+      ],
+      "complete": true,
+      "quote_ready": false,
+      "quote_issues": [
+        "2302adc4-585a-5351-8e32-bfbd77955e06:conflicting_supplier_attestations_require_explicit_supersession"
+      ],
+      "approved_rfq_read": true,
+      "source_coverage_complete": true
+    },
+    "protocol": "research-citation-only/2",
+    "references": [
+      {
+        "pointers": [
+          "/data/lines/0/selection/state"
+        ],
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s36fa1a4e9c00"
+      },
+      {
+        "pointers": [
+          "/data/lines/0/offers/attestations/0/availability",
+          "/data/lines/0/offers/attestations/0/commercial_review_state",
+          "/data/lines/0/offers/attestations/0/currency",
+          "/data/lines/0/offers/attestations/0/freshness",
+          "/data/lines/0/offers/attestations/0/price"
+        ],
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s50e2be1f4df2"
+      },
+      {
+        "pointers": [
+          "/data/lines/0/offers/attestations/1/availability",
+          "/data/lines/0/offers/attestations/1/commercial_review_state",
+          "/data/lines/0/offers/attestations/1/currency",
+          "/data/lines/0/offers/attestations/1/freshness",
+          "/data/lines/0/offers/attestations/1/price"
+        ],
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s5a95cbd47fd5"
+      },
+      {
+        "pointers": [
+          "/data/lines/1/selection/state"
+        ],
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s21a802dad121"
+      },
+      {
+        "pointers": [
+          "/data/lines/1/offers/attestations/0/availability",
+          "/data/lines/1/offers/attestations/0/currency",
+          "/data/lines/1/offers/attestations/0/freshness",
+          "/data/lines/1/offers/attestations/0/price"
+        ],
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+        "source_key": "s49cec8a869c1"
+      }
+    ],
+    "limitations": [
+      "Local imported and user-attested facts only",
+      "Research completion does not authorize quote approval",
+      "No live supplier availability or delivery commitment"
+    ],
+    "quote_ready": false,
+    "verification": "research-verifier/3",
+    "orchestration": {
+      "strategy": "coverage_native",
+      "planning_policy": "procurement-planning/2",
+      "model_selected_tools": 2,
+      "backend_scheduled_tools": 0
+    },
+    "tool_failures": [],
+    "backend_summary": {
+      "lines_total": 2,
+      "unknown_fields": 0,
+      "verified_facts": 16,
+      "lines_inspected": 2
+    },
+    "invalid_citations": [],
+    "duplicates_removed": 0,
+    "needs_human_follow_up": true
+  },
+  "audit": {
+    "required_source_coverage": true,
+    "approved_rfq_read": true,
+    "source_pairs_required": 4,
+    "source_pairs_inspected": 4,
+    "covered_lines": 2,
+    "required_fact_coverage": true,
+    "required_facts": 16,
+    "supported_required_facts": 16,
+    "invalid_facts": [],
+    "source_errors": [],
+    "unknowns_correct": true,
+    "quote_readiness_correct": true,
+    "unauthorized_successful_tools": 0,
+    "model_selected_tools": 2,
+    "backend_scheduled_tools": 0,
+    "useful_model_tool_decisions": 2,
+    "model_source_pairs": 4,
+    "backend_source_pairs": 0,
+    "duplicate_source_reads": 0,
+    "optional_calls": 0,
+    "batch_line_counts": [
+      2
+    ],
+    "facts_inspected": 16
+  },
+  "verified_complete": true,
+  "latency_ms": 10423.716900055297,
+  "runner_ms": 10246.555800084025,
+  "timing_scope": "Admission preparation through runner terminal state; excludes independent scoring/resource samples",
+  "planning_calls": 2,
+  "finalization_calls": 1,
+  "repair_attempts": 0,
+  "attempts": 1,
+  "model_calls": [
+    {
+      "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+      "ordinal": 1,
+      "phase": "planning",
+      "state": "succeeded",
+      "metrics": {
+        "phase": "planning",
+        "wall_ms": 460.253,
+        "eval_count": 18,
+        "done_reason": "stop",
+        "input_bytes": 6241,
+        "eval_duration": 185753000,
+        "load_duration": 10749000,
+        "total_duration": 314935800,
+        "request_started": true,
+        "prompt_eval_count": 1143,
+        "prompt_eval_duration": 23291000
+      },
+      "created_at": "2026-11-22T22:47:11.868906+00:00",
+      "finished_at": "2026-11-22T22:47:12.600006+00:00"
+    },
+    {
+      "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+      "ordinal": 2,
+      "phase": "planning",
+      "state": "succeeded",
+      "metrics": {
+        "phase": "planning",
+        "wall_ms": 1323.826,
+        "eval_count": 98,
+        "done_reason": "stop",
+        "input_bytes": 7184,
+        "eval_duration": 1058227000,
+        "load_duration": 21005200,
+        "total_duration": 1172545800,
+        "request_started": true,
+        "prompt_eval_count": 1476,
+        "prompt_eval_duration": 79879000
+      },
+      "created_at": "2026-11-22T22:47:13.041199+00:00",
+      "finished_at": "2026-11-22T22:47:14.591287+00:00"
+    },
+    {
+      "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+      "ordinal": 3,
+      "phase": "finalization",
+      "state": "succeeded",
+      "metrics": {
+        "phase": "finalization",
+        "wall_ms": 6360.5,
+        "eval_count": 550,
+        "done_reason": "stop",
+        "input_bytes": 4411,
+        "eval_duration": 5952595000,
+        "load_duration": 14474500,
+        "total_duration": 6202688000,
+        "request_started": true,
+        "prompt_eval_count": 1144,
+        "prompt_eval_duration": 173347000
+      },
+      "created_at": "2026-11-22T22:47:14.972247+00:00",
+      "finished_at": "2026-11-22T22:47:21.588119+00:00"
+    }
+  ],
+  "chat_requests": 3,
+  "tool_receipts": [
+    {
+      "id": "29424d30-75b6-41e9-b45a-368b94b1155d",
+      "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+      "ordinal": 1,
+      "tool": "get_approved_rfq",
+      "schema_version": "procurement-tools/3",
+      "arguments": {},
+      "argument_hash": "4ae638b07b0c919eb53a23f11c4f66eb40b5e9a3b7642d3c14b5348ef80c38b2",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "lines": [
+          {
+            "unit": "EA",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "quantity": "9",
+            "description": "Fictional actuators module v3-val-07 position 1"
+          },
+          {
+            "unit": "EA",
+            "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+            "quantity": "10",
+            "description": "Fictional controllers module v3-val-07 position 2"
+          }
+        ],
+        "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+        "revision": 5,
+        "source_run": "34664fd3-e5fb-4866-a94f-10fef0fb8793"
+      },
+      "error": null,
+      "duration_ms": 17.418,
+      "started_at": "2026-11-22T22:47:12.866533+00:00",
+      "finished_at": "2026-11-22T22:47:12.866533+00:00",
+      "execution_origin": "model_selected",
+      "call_details": {
+        "reason": "native_model_choice",
+        "line_ids": [
+          "2302adc4-585a-5351-8e32-bfbd77955e06",
+          "d38dcb84-bcb7-5695-9d90-ce6a8c038022"
+        ],
+        "result_bytes": 433,
+        "source_reads": [
+          "get_approved_rfq"
+        ],
+        "source_version": "9650144b5f1759b9574512a757043cfdfb3c6e72f58524f7fef9aba901f20bbb",
+        "batch_line_count": 0,
+        "source_covered_after": 0,
+        "source_covered_before": 0,
+        "contributed_to_coverage": true
+      }
+    },
+    {
+      "id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+      "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+      "ordinal": 2,
+      "tool": "get_line_research_batch",
+      "schema_version": "procurement-tools/3",
+      "arguments": {
+        "include": [
+          "reviewed_product_selection",
+          "supplier_offers"
+        ],
+        "line_ids": [
+          "2302adc4-585a-5351-8e32-bfbd77955e06",
+          "d38dcb84-bcb7-5695-9d90-ce6a8c038022"
+        ]
+      },
+      "argument_hash": "355245149e0ea7a1726fc5760fbdb5579900f8c1f6fa0dc78ce3e78be5813080",
+      "status": "succeeded",
+      "policy": "allowed_read_only",
+      "result": {
+        "lines": [
+          {
+            "offers": {
+              "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+              "imported": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional v3 catalog publisher 1",
+                  "freshness": "unknown_freshness",
+                  "source_id": "V3-CAT-v3-val-07-1",
+                  "data_class": "imported_catalog_metadata",
+                  "availability": null,
+                  "supplier_sku": null,
+                  "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+                  "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca",
+                  "commercial_source_date": null
+                }
+              ],
+              "attestations": [
+                {
+                  "id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+                  "actor": "phase32-fictional-fixture-be2a40786fd240bdbcb4ddab1b02d375",
+                  "price": "119.08",
+                  "breaks": [],
+                  "reason": "Frozen independent fictional commercial source; human-attested, not live supplier data",
+                  "currency": "USD",
+                  "supplier": "Fictional Orchard Components",
+                  "freshness": "current_according_to_attested_validity",
+                  "pack_size": 1,
+                  "data_class": "user_attested",
+                  "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+                  "source_url": null,
+                  "version_id": "b508465b-9ff0-4f3e-898e-44663d34820f",
+                  "observed_on": "2026-11-22",
+                  "price_basis": "each",
+                  "stock_units": "20000",
+                  "valid_until": "2027-01-31",
+                  "availability": "available",
+                  "effective_on": null,
+                  "supplier_sku": "V3-SKU-6-0",
+                  "minimum_units": "1",
+                  "resolution_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+                  "lead_time_days": 2,
+                  "source_reference": "Independent fictional source V3/v3-val-07/1; not a real supplier promise",
+                  "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca",
+                  "availability_statement": null,
+                  "commercial_review_state": "conflicting_information"
+                },
+                {
+                  "id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+                  "actor": "phase32-fictional-fixture-be2a40786fd240bdbcb4ddab1b02d375",
+                  "price": "122.08",
+                  "breaks": [],
+                  "reason": "Frozen independent fictional commercial source; human-attested, not live supplier data",
+                  "currency": "USD",
+                  "supplier": "Fictional Orchard Components",
+                  "freshness": "current_according_to_attested_validity",
+                  "pack_size": 1,
+                  "data_class": "user_attested",
+                  "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+                  "source_url": null,
+                  "version_id": "b508465b-9ff0-4f3e-898e-44663d34820f",
+                  "observed_on": "2026-11-22",
+                  "price_basis": "each",
+                  "stock_units": "20000",
+                  "valid_until": "2027-01-31",
+                  "availability": "available",
+                  "effective_on": null,
+                  "supplier_sku": "V3-SKU-6-0",
+                  "minimum_units": "1",
+                  "resolution_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+                  "lead_time_days": 2,
+                  "source_reference": "Independent fictional source V3/v3-val-07/1; not a real supplier promise",
+                  "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca",
+                  "availability_statement": null,
+                  "commercial_review_state": "conflicting_information"
+                }
+              ],
+              "selection_state": "resolved"
+            },
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "selection": {
+              "query": {
+                "mpn": "GF-007-01.R1",
+                "unit": "EA",
+                "specs": {},
+                "category": null,
+                "quantity": "9",
+                "source_run": "34664fd3-e5fb-4866-a94f-10fef0fb8793",
+                "description": "Fictional actuators module v3-val-07 position 1 ",
+                "manufacturer": "GlacierField Devices"
+              },
+              "state": "resolved",
+              "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+              "revision": 1,
+              "resolution": {
+                "id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+                "data": {
+                  "query": {
+                    "mpn": "GF-007-01.R1",
+                    "unit": "EA",
+                    "specs": {},
+                    "category": null,
+                    "quantity": "9",
+                    "source_run": "34664fd3-e5fb-4866-a94f-10fef0fb8793",
+                    "description": "Fictional actuators module v3-val-07 position 1 ",
+                    "manufacturer": "GlacierField Devices"
+                  },
+                  "run_id": "7bc03c65-0449-4654-93ab-ec2ddc2678f6",
+                  "product": {
+                    "mpn": "GF-007-01.R1",
+                    "url": null,
+                    "name": "Fictional actuators module v3-val-07 position 1",
+                    "price": null,
+                    "specs": {
+                      "revision": 1,
+                      "interface": "SYN-1-BUS"
+                    },
+                    "status": "active",
+                    "category": "actuators",
+                    "currency": null,
+                    "supplier": "Fictional v3 catalog publisher 1",
+                    "source_id": "V3-CAT-v3-val-07-1",
+                    "description": "Fictional actuators module v3-val-07 position 1",
+                    "availability": null,
+                    "manufacturer": "GlacierField Devices",
+                    "supplier_sku": null
+                  },
+                  "sources": [
+                    {
+                      "version_id": "b508465b-9ff0-4f3e-898e-44663d34820f",
+                      "content_hash": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+                    }
+                  ],
+                  "decision": "select",
+                  "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+                  "version_id": "b508465b-9ff0-4f3e-898e-44663d34820f",
+                  "content_hash": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca",
+                  "compatibility": {
+                    "status": "exact",
+                    "missing": [],
+                    "conflicts": [],
+                    "exact_identity": true
+                  },
+                  "review_digest": "074df7487a9ba89d88a699e2367d71737f2f9ea22419c75f54e9fd5ee78e9a16",
+                  "catalog_fingerprint": "51fdf35921446432155ee41555c164cc9ace073b76f0c2fc5c5c77fb49fe5341",
+                  "alternative_attested": false
+                },
+                "actor": "phase32-fictional-fixture-be2a40786fd240bdbcb4ddab1b02d375",
+                "reason": "Explicit operator resolution of independently authored source identity",
+                "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+                "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+                "revision": 1,
+                "created_at": "2026-11-22T21:53:13.970993+00:00",
+                "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0"
+              },
+              "review_digest": "074df7487a9ba89d88a699e2367d71737f2f9ea22419c75f54e9fd5ee78e9a16",
+              "current_run_id": "7bc03c65-0449-4654-93ab-ec2ddc2678f6"
+            },
+            "source_status": "inspected"
+          },
+          {
+            "offers": {
+              "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+              "imported": [
+                {
+                  "url": null,
+                  "price": null,
+                  "currency": null,
+                  "supplier": "Fictional v3 catalog publisher 1",
+                  "freshness": "unknown_freshness",
+                  "source_id": "V3-CAT-v3-val-07-2",
+                  "data_class": "imported_catalog_metadata",
+                  "availability": null,
+                  "supplier_sku": null,
+                  "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+                  "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4",
+                  "commercial_source_date": null
+                }
+              ],
+              "attestations": [
+                {
+                  "id": "f80ab3dd-5512-4c68-a3f2-f92aeca1a238",
+                  "actor": "phase32-fictional-fixture-be2a40786fd240bdbcb4ddab1b02d375",
+                  "price": "83.35",
+                  "breaks": [],
+                  "reason": "Frozen independent fictional commercial source; human-attested, not live supplier data",
+                  "currency": "USD",
+                  "supplier": "Fictional Orchard Components",
+                  "freshness": "current_according_to_attested_validity",
+                  "pack_size": 1,
+                  "data_class": "user_attested",
+                  "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+                  "source_url": null,
+                  "version_id": "b508465b-9ff0-4f3e-898e-44663d34820f",
+                  "observed_on": "2026-11-22",
+                  "price_basis": "each",
+                  "stock_units": "20000",
+                  "valid_until": "2027-01-31",
+                  "availability": "available",
+                  "effective_on": null,
+                  "supplier_sku": "V3-SKU-6-1",
+                  "minimum_units": "1",
+                  "resolution_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+                  "lead_time_days": 3,
+                  "source_reference": "Independent fictional source V3/v3-val-07/2; not a real supplier promise",
+                  "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4",
+                  "availability_statement": null
+                }
+              ],
+              "selection_state": "resolved"
+            },
+            "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+            "selection": {
+              "query": {
+                "mpn": "GF-007-02.R1",
+                "unit": "EA",
+                "specs": {},
+                "category": null,
+                "quantity": "10",
+                "source_run": "34664fd3-e5fb-4866-a94f-10fef0fb8793",
+                "description": "Fictional controllers module v3-val-07 position 2 ",
+                "manufacturer": "GlacierField Devices"
+              },
+              "state": "resolved",
+              "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+              "revision": 1,
+              "resolution": {
+                "id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+                "data": {
+                  "query": {
+                    "mpn": "GF-007-02.R1",
+                    "unit": "EA",
+                    "specs": {},
+                    "category": null,
+                    "quantity": "10",
+                    "source_run": "34664fd3-e5fb-4866-a94f-10fef0fb8793",
+                    "description": "Fictional controllers module v3-val-07 position 2 ",
+                    "manufacturer": "GlacierField Devices"
+                  },
+                  "run_id": "5d4df381-09a0-46b0-b153-3eb6379beb06",
+                  "product": {
+                    "mpn": "GF-007-02.R1",
+                    "url": null,
+                    "name": "Fictional controllers module v3-val-07 position 2",
+                    "price": null,
+                    "specs": {
+                      "revision": 1,
+                      "interface": "SYN-1-BUS"
+                    },
+                    "status": "active",
+                    "category": "controllers",
+                    "currency": null,
+                    "supplier": "Fictional v3 catalog publisher 1",
+                    "source_id": "V3-CAT-v3-val-07-2",
+                    "description": "Fictional controllers module v3-val-07 position 2",
+                    "availability": null,
+                    "manufacturer": "GlacierField Devices",
+                    "supplier_sku": null
+                  },
+                  "sources": [
+                    {
+                      "version_id": "b508465b-9ff0-4f3e-898e-44663d34820f",
+                      "content_hash": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+                    }
+                  ],
+                  "decision": "select",
+                  "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+                  "version_id": "b508465b-9ff0-4f3e-898e-44663d34820f",
+                  "content_hash": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4",
+                  "compatibility": {
+                    "status": "exact",
+                    "missing": [],
+                    "conflicts": [],
+                    "exact_identity": true
+                  },
+                  "review_digest": "375de8c2ee385bb2b78ba7ecb22a9d8cb4962537b221ca9ff75473a40b580c5b",
+                  "catalog_fingerprint": "51fdf35921446432155ee41555c164cc9ace073b76f0c2fc5c5c77fb49fe5341",
+                  "alternative_attested": false
+                },
+                "actor": "phase32-fictional-fixture-be2a40786fd240bdbcb4ddab1b02d375",
+                "reason": "Explicit operator resolution of independently authored source identity",
+                "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+                "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+                "revision": 1,
+                "created_at": "2026-11-22T21:53:14.156123+00:00",
+                "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0"
+              },
+              "review_digest": "375de8c2ee385bb2b78ba7ecb22a9d8cb4962537b221ca9ff75473a40b580c5b",
+              "current_run_id": "5d4df381-09a0-46b0-b153-3eb6379beb06"
+            },
+            "source_status": "inspected"
+          }
+        ],
+        "complete": true,
+        "requested_line_ids": [
+          "2302adc4-585a-5351-8e32-bfbd77955e06",
+          "d38dcb84-bcb7-5695-9d90-ce6a8c038022"
+        ]
+      },
+      "error": null,
+      "duration_ms": 15.544,
+      "started_at": "2026-11-22T22:47:14.810325+00:00",
+      "finished_at": "2026-11-22T22:47:14.810325+00:00",
+      "execution_origin": "model_selected",
+      "call_details": {
+        "reason": "native_model_choice",
+        "line_ids": [
+          "2302adc4-585a-5351-8e32-bfbd77955e06",
+          "d38dcb84-bcb7-5695-9d90-ce6a8c038022"
+        ],
+        "result_bytes": 9617,
+        "source_reads": [
+          "get_reviewed_product_selection",
+          "get_supplier_offers"
+        ],
+        "source_version": "9650144b5f1759b9574512a757043cfdfb3c6e72f58524f7fef9aba901f20bbb",
+        "batch_line_count": 2,
+        "source_covered_after": 2,
+        "source_covered_before": 0,
+        "contributed_to_coverage": true
+      }
+    }
+  ],
+  "finalization_attempts": [
+    {
+      "id": "30828d0f-8d70-4dfb-8b44-9fc8413d25cb",
+      "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+      "phase": "initial",
+      "reference_request": {
+        "claims": [
+          {
+            "pointers": [
+              "/data/lines/0/selection/state"
+            ],
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s36fa1a4e9c00"
+          },
+          {
+            "pointers": [
+              "/data/lines/0/offers/attestations/0/availability",
+              "/data/lines/0/offers/attestations/0/commercial_review_state",
+              "/data/lines/0/offers/attestations/0/currency",
+              "/data/lines/0/offers/attestations/0/freshness",
+              "/data/lines/0/offers/attestations/0/price"
+            ],
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s50e2be1f4df2"
+          },
+          {
+            "pointers": [
+              "/data/lines/0/offers/attestations/1/availability",
+              "/data/lines/0/offers/attestations/1/commercial_review_state",
+              "/data/lines/0/offers/attestations/1/currency",
+              "/data/lines/0/offers/attestations/1/freshness",
+              "/data/lines/0/offers/attestations/1/price"
+            ],
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s5a95cbd47fd5"
+          },
+          {
+            "pointers": [
+              "/data/lines/1/selection/state"
+            ],
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s21a802dad121"
+          },
+          {
+            "pointers": [
+              "/data/lines/1/offers/attestations/0/availability",
+              "/data/lines/1/offers/attestations/0/currency",
+              "/data/lines/1/offers/attestations/0/freshness",
+              "/data/lines/1/offers/attestations/0/price"
+            ],
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s49cec8a869c1"
+          }
+        ]
+      },
+      "resolution": {
+        "claims": [
+          {
+            "known": true,
+            "value": "resolved",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/selection/state",
+            "offer_id": null,
+            "data_class": "human_reviewed_selection",
+            "field_type": "selection_state",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s36fa1a4e9c00",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "human_reviewed_selection",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "available",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/offers/attestations/0/availability",
+            "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+            "data_class": "user_attested",
+            "field_type": "availability",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s50e2be1f4df2",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "user_attested",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "conflicting_information",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/offers/attestations/0/commercial_review_state",
+            "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+            "data_class": "user_attested",
+            "field_type": "review_state",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s50e2be1f4df2",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "derived_classification",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "USD",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/offers/attestations/0/currency",
+            "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+            "data_class": "user_attested",
+            "field_type": "currency",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s50e2be1f4df2",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "user_attested",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "current_according_to_attested_validity",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/offers/attestations/0/freshness",
+            "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+            "data_class": "user_attested",
+            "field_type": "freshness",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s50e2be1f4df2",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "derived_classification",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "119.08",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/offers/attestations/0/price",
+            "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367",
+            "data_class": "user_attested",
+            "field_type": "price",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s50e2be1f4df2",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "user_attested",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "available",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/offers/attestations/1/availability",
+            "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+            "data_class": "user_attested",
+            "field_type": "availability",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s5a95cbd47fd5",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "user_attested",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "conflicting_information",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/offers/attestations/1/commercial_review_state",
+            "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+            "data_class": "user_attested",
+            "field_type": "review_state",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s5a95cbd47fd5",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "derived_classification",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "USD",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/offers/attestations/1/currency",
+            "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+            "data_class": "user_attested",
+            "field_type": "currency",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s5a95cbd47fd5",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "user_attested",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "current_according_to_attested_validity",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/offers/attestations/1/freshness",
+            "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+            "data_class": "user_attested",
+            "field_type": "freshness",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s5a95cbd47fd5",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "derived_classification",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "122.08",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+            "pointer": "/data/lines/0/offers/attestations/1/price",
+            "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51",
+            "data_class": "user_attested",
+            "field_type": "price",
+            "product_id": "be7a5a2f857f59e28350dd954df85497d2c9889adb9ff019d33e2d28d0a230a0",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s5a95cbd47fd5",
+            "rfq_revision": 5,
+            "selection_id": "a3213912-c395-473b-b721-0f9f9db9bedc",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "user_attested",
+            "source_fingerprint": "b37d81b214d901b031df7f948f96aa03a2b3cd0b3fadcf42c5e4e6e5fa081cca"
+          },
+          {
+            "known": true,
+            "value": "resolved",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+            "pointer": "/data/lines/1/selection/state",
+            "offer_id": null,
+            "data_class": "human_reviewed_selection",
+            "field_type": "selection_state",
+            "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s21a802dad121",
+            "rfq_revision": 5,
+            "selection_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "human_reviewed_selection",
+            "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+          },
+          {
+            "known": true,
+            "value": "available",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+            "pointer": "/data/lines/1/offers/attestations/0/availability",
+            "offer_id": "f80ab3dd-5512-4c68-a3f2-f92aeca1a238",
+            "data_class": "user_attested",
+            "field_type": "availability",
+            "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s49cec8a869c1",
+            "rfq_revision": 5,
+            "selection_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "user_attested",
+            "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+          },
+          {
+            "known": true,
+            "value": "USD",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+            "pointer": "/data/lines/1/offers/attestations/0/currency",
+            "offer_id": "f80ab3dd-5512-4c68-a3f2-f92aeca1a238",
+            "data_class": "user_attested",
+            "field_type": "currency",
+            "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s49cec8a869c1",
+            "rfq_revision": 5,
+            "selection_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "user_attested",
+            "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+          },
+          {
+            "known": true,
+            "value": "current_according_to_attested_validity",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+            "pointer": "/data/lines/1/offers/attestations/0/freshness",
+            "offer_id": "f80ab3dd-5512-4c68-a3f2-f92aeca1a238",
+            "data_class": "user_attested",
+            "field_type": "freshness",
+            "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s49cec8a869c1",
+            "rfq_revision": 5,
+            "selection_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "derived_classification",
+            "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+          },
+          {
+            "known": true,
+            "value": "83.35",
+            "rfq_id": "4b285319-d72f-466c-8211-29118a269470",
+            "run_id": "189a8e29-c2f3-4472-8a43-b209fe229bf1",
+            "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+            "pointer": "/data/lines/1/offers/attestations/0/price",
+            "offer_id": "f80ab3dd-5512-4c68-a3f2-f92aeca1a238",
+            "data_class": "user_attested",
+            "field_type": "price",
+            "product_id": "e639debd3a5b4aa5f58a157e0ebff5917f8dbb481e27805620d948bd35e467b7",
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s49cec8a869c1",
+            "rfq_revision": 5,
+            "selection_id": "abc6c999-7260-4c5d-8f23-38891aaae78a",
+            "workspace_id": "a5511f5f-7c69-4b8c-b953-cb975b95aab0",
+            "model_selected": true,
+            "catalog_version": "b508465b-9ff0-4f3e-898e-44663d34820f",
+            "observation_class": "user_attested",
+            "source_fingerprint": "2485fdeaca1afa1bfc64e587da18d2e1bc6cc233c3b253c9356d9c47a3b69ff4"
+          }
+        ],
+        "partial": false,
+        "complete": true,
+        "coverage": {
+          "lines": [
+            {
+              "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+              "complete": true,
+              "unknowns": [],
+              "missing_tools": [],
+              "inspected_tools": [
+                "get_reviewed_product_selection",
+                "get_supplier_offers"
+              ],
+              "selection_state": "resolved",
+              "commercial_review": [
+                {
+                  "state": "conflicting_information",
+                  "offer_id": "9038a682-b7b2-46aa-8ad0-9831e15a3367"
+                },
+                {
+                  "state": "conflicting_information",
+                  "offer_id": "de63fed2-3436-4e54-bda1-c17da8755b51"
+                }
+              ],
+              "missing_citations": [],
+              "source_coverage_complete": true
+            },
+            {
+              "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+              "complete": true,
+              "unknowns": [],
+              "missing_tools": [],
+              "inspected_tools": [
+                "get_reviewed_product_selection",
+                "get_supplier_offers"
+              ],
+              "selection_state": "resolved",
+              "commercial_review": [],
+              "missing_citations": [],
+              "source_coverage_complete": true
+            }
+          ],
+          "complete": true,
+          "quote_ready": false,
+          "quote_issues": [
+            "2302adc4-585a-5351-8e32-bfbd77955e06:conflicting_supplier_attestations_require_explicit_supersession"
+          ],
+          "approved_rfq_read": true,
+          "source_coverage_complete": true
+        },
+        "protocol": "research-citation-only/2",
+        "references": [
+          {
+            "pointers": [
+              "/data/lines/0/selection/state"
+            ],
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s36fa1a4e9c00"
+          },
+          {
+            "pointers": [
+              "/data/lines/0/offers/attestations/0/availability",
+              "/data/lines/0/offers/attestations/0/commercial_review_state",
+              "/data/lines/0/offers/attestations/0/currency",
+              "/data/lines/0/offers/attestations/0/freshness",
+              "/data/lines/0/offers/attestations/0/price"
+            ],
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s50e2be1f4df2"
+          },
+          {
+            "pointers": [
+              "/data/lines/0/offers/attestations/1/availability",
+              "/data/lines/0/offers/attestations/1/commercial_review_state",
+              "/data/lines/0/offers/attestations/1/currency",
+              "/data/lines/0/offers/attestations/1/freshness",
+              "/data/lines/0/offers/attestations/1/price"
+            ],
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s5a95cbd47fd5"
+          },
+          {
+            "pointers": [
+              "/data/lines/1/selection/state"
+            ],
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s21a802dad121"
+          },
+          {
+            "pointers": [
+              "/data/lines/1/offers/attestations/0/availability",
+              "/data/lines/1/offers/attestations/0/currency",
+              "/data/lines/1/offers/attestations/0/freshness",
+              "/data/lines/1/offers/attestations/0/price"
+            ],
+            "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c",
+            "source_key": "s49cec8a869c1"
+          }
+        ],
+        "limitations": [
+          "Local imported and user-attested facts only",
+          "Research completion does not authorize quote approval",
+          "No live supplier availability or delivery commitment"
+        ],
+        "quote_ready": false,
+        "verification": "research-verifier/3",
+        "tool_failures": [],
+        "backend_summary": {
+          "lines_total": 2,
+          "unknown_fields": 0,
+          "verified_facts": 16,
+          "lines_inspected": 2
+        },
+        "invalid_citations": [],
+        "duplicates_removed": 0,
+        "needs_human_follow_up": true
+      },
+      "created_at": "2026-11-22T22:47:21.720089+00:00"
+    }
+  ],
+  "coverage_state": {
+    "lines": [
+      {
+        "line_id": "2302adc4-585a-5351-8e32-bfbd77955e06",
+        "receipt_ids": [
+          "e677d2b5-4445-4df9-9565-a357de499b9c"
+        ],
+        "missing_tools": [],
+        "source_covered": true,
+        "failed_receipts": [],
+        "offers_inspected": true,
+        "selection_inspected": true
+      },
+      {
+        "line_id": "d38dcb84-bcb7-5695-9d90-ce6a8c038022",
+        "receipt_ids": [
+          "e677d2b5-4445-4df9-9565-a357de499b9c"
+        ],
+        "missing_tools": [],
+        "source_covered": true,
+        "failed_receipts": [],
+        "offers_inspected": true,
+        "selection_inspected": true
+      }
+    ],
+    "policy": "procurement-planning/2",
+    "capacity": {
+      "blockers": [],
+      "supported": true,
+      "batch_size": 4,
+      "line_count": 2,
+      "maximum_lines": 12,
+      "minimum_tool_calls": 2,
+      "estimated_line_bytes": [
+        7606,
+        6234
+      ],
+      "continuation_guidance": null,
+      "continuation_available": false,
+      "estimated_bytes_by_line": {
+        "2302adc4-585a-5351-8e32-bfbd77955e06": 7606,
+        "d38dcb84-bcb7-5695-9d90-ce6a8c038022": 6234
+      },
+      "required_reference_groups": 5
+    },
+    "total_lines": 2,
+    "covered_lines": 2,
+    "pending_calls": 0,
+    "research_stage": "source_collection",
+    "remaining_lines": [],
+    "required_action": "select_citations",
+    "coverage_version": "research-coverage/2",
+    "approved_rfq_read": true,
+    "remaining_tool_calls": 6,
+    "remaining_planning_turns": 2,
+    "source_coverage_complete": true
+  },
+  "planning_state": {
+    "pending": [],
+    "timeline": [
+      {
+        "at": "2026-11-22T22:47:11.852688+00:00",
+        "stage": "coverage_updated",
+        "total_lines": 2,
+        "covered_lines": 0
+      },
+      {
+        "at": "2026-11-22T22:47:11.907285+00:00",
+        "stage": "planning_request",
+        "ordinal": 1
+      },
+      {
+        "at": "2026-11-22T22:47:12.696352+00:00",
+        "calls": 1,
+        "stage": "tools_requested",
+        "origin": "model_selected"
+      },
+      {
+        "at": "2026-11-22T22:47:12.840229+00:00",
+        "stage": "tool_validated",
+        "origin": "model_selected",
+        "line_count": 2
+      },
+      {
+        "at": "2026-11-22T22:47:12.900645+00:00",
+        "lines": 2,
+        "stage": "receipt_persisted",
+        "origin": "model_selected",
+        "status": "succeeded",
+        "receipt_id": "29424d30-75b6-41e9-b45a-368b94b1155d"
+      },
+      {
+        "at": "2026-11-22T22:47:13.024325+00:00",
+        "stage": "coverage_updated",
+        "total_lines": 2,
+        "covered_lines": 0
+      },
+      {
+        "at": "2026-11-22T22:47:13.080663+00:00",
+        "stage": "planning_request",
+        "ordinal": 2
+      },
+      {
+        "at": "2026-11-22T22:47:14.665797+00:00",
+        "calls": 1,
+        "stage": "batch_requested",
+        "origin": "model_selected"
+      },
+      {
+        "at": "2026-11-22T22:47:14.786907+00:00",
+        "stage": "batch_validated",
+        "origin": "model_selected",
+        "line_count": 2
+      },
+      {
+        "at": "2026-11-22T22:47:14.839811+00:00",
+        "lines": 2,
+        "stage": "receipt_persisted",
+        "origin": "model_selected",
+        "status": "succeeded",
+        "receipt_id": "e677d2b5-4445-4df9-9565-a357de499b9c"
+      },
+      {
+        "at": "2026-11-22T22:47:14.953631+00:00",
+        "stage": "coverage_updated",
+        "total_lines": 2,
+        "covered_lines": 2
+      },
+      {
+        "at": "2026-11-22T22:47:15.008094+00:00",
+        "stage": "citation_finalization",
+        "ordinal": 3
+      },
+      {
+        "at": "2026-11-22T22:47:21.625483+00:00",
+        "stage": "finalization_received"
+      },
+      {
+        "at": "2026-11-22T22:47:21.700216+00:00",
+        "stage": "coverage_updated",
+        "total_lines": 2,
+        "covered_lines": 2
+      },
+      {
+        "at": "2026-11-22T22:47:21.759621+00:00",
+        "stage": "evidence_materialized",
+        "verified_facts": 16
+      },
+      {
+        "at": "2026-11-22T22:47:21.784900+00:00",
+        "stage": "before_publication"
+      }
+    ]
+  },
+  "source_snapshot_file": "sources/v3-val-07.json",
+  "source_sha256": "31d91a5ca2fcc0e9d8971ce87b6852b8e01afafce3d37cbc5c15d267e43ba987",
+  "resources": {
+    "before": {
+      "gpu_device_used_mib": 6978
+    },
+    "model_loaded_before": true,
+    "after": {
+      "gpu_device_used_mib": 6978
+    },
+    "scope": "Device-wide before/after samples, not isolated model memory or peaks"
+  },
+  "actual_local_inference": true,
+  "acknowledged_model_responses": 3,
+  "fault_injection": false,
+  "quote_ready_expected": false
+}

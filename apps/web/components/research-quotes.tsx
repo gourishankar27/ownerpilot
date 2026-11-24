@@ -19,6 +19,7 @@ import type {
   ToolReceipt,
 } from "@ownerpilot/contracts";
 import { rfqApi } from "@/lib/rfq-api";
+import { ResearchCoverage } from "./research-coverage";
 
 const box =
   "rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900";
@@ -667,10 +668,15 @@ export function ResearchQuotes({
         {run && (
           <div className="space-y-3 rounded-xl border p-4">
             <p role="status">
-              Research {readable(run.state)} · {run.turns ?? 0}/4{" "}
-              {run.metadata.claim_schema
-                ? "initial model turns"
-                : "planning turns"}
+              Research {readable(run.state)} ·{" "}
+              {run.metadata.planning_policy
+                ? `Planning ${run.planning_calls ?? 0}/4 · Finalization ${run.finalization_calls ?? 0}/1`
+                : `${run.turns ?? 0}/4`}{" "}
+              {run.metadata.planning_policy
+                ? ""
+                : run.metadata.claim_schema
+                  ? "initial model turns"
+                  : "planning turns"}
               · {receipts.length}/8 tool calls
             </p>
             <p className="break-all text-xs">
@@ -685,7 +691,7 @@ export function ResearchQuotes({
             {run.metadata.claim_schema && (
               <p className="text-sm">
                 Citation corrections {run.repair_attempts ?? 0}/1 · delivery
-                attempt {run.attempts}
+                attempt {run.attempts ?? 0}
                 {run.diagnostics?.stage
                   ? ` · ${run.state === "complete" ? "published" : readable(run.diagnostics.stage)}`
                   : ""}
@@ -699,6 +705,7 @@ export function ResearchQuotes({
                 {run.error}
               </p>
             )}
+            <ResearchCoverage run={run} receipts={receipts} />
             {activeRun && (
               <button
                 className={button}
@@ -725,6 +732,18 @@ export function ResearchQuotes({
                     <p className="my-2 break-all">
                       Receipt {receipt.id} · {receipt.policy}
                     </p>
+                    {receipt.execution_origin && (
+                      <p>
+                        {receipt.execution_origin === "backend_scheduled"
+                          ? "Backend scheduled"
+                          : receipt.execution_origin === "model_selected"
+                            ? "Native model-selected"
+                            : "Legacy native model"}
+                        {receipt.call_details?.line_ids
+                          ? ` · ${receipt.call_details.line_ids.length} scoped lines · ${receipt.call_details.result_bytes ?? 0} result bytes`
+                          : ""}
+                      </p>
+                    )}
                     {receipt.error && <p>{receipt.error}</p>}
                     <Evidence
                       value={{
@@ -761,14 +780,16 @@ export function ResearchQuotes({
                     {run.result.repaired && (
                       <p>Citations corrected using existing receipts.</p>
                     )}
-                    {!!run.result.invalid_citations?.length && (
-                      <p role="alert">
-                        Rejected citations:{" "}
-                        {run.result.invalid_citations
-                          .map((item) => readable(item.code))
-                          .join(", ")}
-                      </p>
-                    )}
+                    {!!run.result.invalid_citations?.length &&
+                      (!run.metadata.planning_policy ||
+                        (run.finalization_calls ?? 0) > 0) && (
+                        <p role="alert">
+                          Rejected citations:{" "}
+                          {run.result.invalid_citations
+                            .map((item) => readable(item.code))
+                            .join(", ")}
+                        </p>
+                      )}
                     {run.result.coverage?.lines.map((line) => (
                       <details
                         key={line.line_id}

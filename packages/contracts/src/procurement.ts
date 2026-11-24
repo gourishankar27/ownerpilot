@@ -119,6 +119,47 @@ export interface ResearchRun {
   state: string;
   turns: number;
   attempts: number;
+  planning_calls?: number;
+  finalization_calls?: number;
+  planning_state?: {
+    timeline?: {
+      stage: string;
+      at: string;
+      origin?: string;
+      calls?: number;
+      lines?: number;
+      line_count?: number;
+      covered_lines?: number;
+      total_lines?: number;
+      status?: string;
+    }[];
+  };
+  coverage_state?: {
+    approved_rfq_read?: boolean;
+    source_coverage_complete?: boolean;
+    covered_lines: number;
+    total_lines: number;
+    remaining_tool_calls?: number;
+    remaining_planning_turns?: number;
+    lines?: {
+      line_id: string;
+      selection_inspected: boolean;
+      offers_inspected: boolean;
+      source_covered: boolean;
+      missing_tools: string[];
+      receipt_ids: string[];
+      failed_receipts: string[];
+    }[];
+    capacity?: {
+      supported: boolean;
+      line_count: number;
+      maximum_lines: number;
+      batch_size: number;
+      blockers: string[];
+      continuation_available: boolean;
+      continuation_guidance?: string | null;
+    };
+  };
   repair_attempts?: number;
   diagnostics?: { stage?: string; recovered?: boolean; error_code?: string };
   error: string | null;
@@ -128,6 +169,9 @@ export interface ResearchRun {
     prompt_version: string;
     claim_schema?: string;
     verifier_version?: string;
+    planning_policy?: string;
+    orchestration_strategy?: string;
+    batch_size?: number;
   };
   result?: {
     protocol?: string;
@@ -174,4 +218,14 @@ export interface ToolReceipt {
   arguments: Record<string, unknown>;
   result: unknown;
   error: string | null;
+  execution_origin?: "legacy_model" | "model_selected" | "backend_scheduled";
+  call_details?: {
+    line_ids?: string[];
+    source_reads?: string[];
+    result_bytes?: number;
+    batch_line_count?: number;
+    reason?: string;
+    contributed_to_coverage?: boolean;
+    source_version?: string;
+  };
 }
