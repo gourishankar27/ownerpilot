@@ -6,6 +6,18 @@ All notable changes to OwnerPilot are documented in this file.
 
 ### Added
 
+- Phase 3.2 coverage-aware planning, a closed four-line batch source tool, exact
+  parent-receipt citation verification, separate planning/finalization budgets,
+  durable pending work and explicit native/backend execution origins. Added
+  independent procurement-v3 scenarios (96 RFQs, 514 lines), native strategy and
+  batch-size experiments, source/citation coverage UI, additive migration 0008,
+  preserved-source checks and isolated recovery/browser validation tooling.
+  Validation: 473 backend passes plus the historical strict xfail, 21 browser
+  passes, and actual isolated worker/Redis recovery. Selected hybrid: 52/60 held-out
+  completions and 324/324 source-covered lines; coverage-native: 56/60. The 57/60
+  quality target remains unmet. Zero unsupported accepted facts/unauthorized
+  successes across 240 held-out executions. Timing interference is disclosed,
+  with regression-window exclusions and a separate serialized development study.
 - Phase 3.1 versioned citation-only research, backend scalar materialization and
   entity provenance, independent line coverage, safe partial evidence, one durable
   correction, immutable receipts/finalizations and recovery diagnostics. Added frozen

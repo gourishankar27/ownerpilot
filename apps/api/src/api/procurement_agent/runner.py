@@ -394,6 +394,13 @@ def run_agent(run_id, provider=None):
         ).fetchone()
     if not row or row["state"] not in ACTIVE:
         return "terminal"
+    if row["metadata"].get("planning_policy") == "procurement-planning/2":
+        from .runner_v3 import run_research
+
+        return run_research(run_id, provider)
+    if row["metadata"].get("planning_policy") is not None:
+        state(run_id, "needs_attention", "unsupported_pinned_planning_policy")
+        return "needs_attention"
     if row["metadata"].get("claim_schema") == "research-citation-only/2":
         from .runner_v2 import run_research
 

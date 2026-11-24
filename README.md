@@ -32,6 +32,30 @@ OwnerPilot focuses on closing that gap with:
 - explainable recommendations with evidence and confidence traces
 
 ## What is implemented now
+### Coverage-aware procurement planning (Phase 3.2)
+
+Versioned local research now tracks required source reads separately from citations,
+uses closed batches of up to four approved lines, and supports bounded research of
+up to twelve lines. Native model choices and backend mandatory completion have
+separate durable attribution. Citation-only verification, exact source associations,
+human quote approvals and historical protocols remain preserved.
+
+Validation: 473 backend passes plus the retained strict xfail; 21 browser scenarios
+passed. The preselected hybrid completed 52/60 held-out RFQs (86.7%) with 324/324
+source-covered lines. Coverage-aware native planning completed 56/60 (93.3%); the
+target was 57/60. All 240 held-out executions had zero independently detected
+unsupported accepted facts or unauthorized successful tools. **Functionally validated —
+research-quality target unmet**. Complete source reads can still end with incomplete
+model-selected citations. Actual worker recovery preserved receipts and completed
+remaining reads, then safely required attention after citation correction exhausted.
+
+- [Phase 3.2 final report](docs/rfq/phase3_2/FINAL_IMPLEMENTATION_REPORT.md)
+- [Evaluation, failures and timing limitations](docs/rfq/phase3_2/EVALUATION_RESULTS.md)
+- [Phase 3.2 status](docs/rfq/phase3_2/STATUS.md)
+- [Architecture and attribution](docs/rfq/phase3_2/ARCHITECTURE.md) · [Budget policy](docs/rfq/phase3_2/BUDGET_POLICY.md)
+- [Independent evaluation methodology](docs/rfq/phase3_2/EVALUATION_METHODOLOGY.md)
+- [Windows setup](docs/rfq/phase3_2/WINDOWS_SETUP.md) · [Demo](docs/rfq/phase3_2/DEMO_RUNBOOK.md)
+
 ### Citation-only procurement research (Phase 3.1)
 
 Local research selects source references while the backend materializes exact
